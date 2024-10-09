@@ -1,0 +1,23 @@
+@use '../../styles/variables' as v;
+.header-container {
+  height: 3.5rem;
+  width: 100%;
+  background-color: rgba(56, 56, 61, 0.6);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: v.$light-font-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  .header-main-title {
+    font-family: 'GFS Didot', serif;
+    font-size: 1.5rem;
+    text-shadow: 3px 3px 5px black;
+  }
+  .header-settings-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+}

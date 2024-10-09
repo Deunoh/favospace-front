@@ -2,3 +2,10 @@
 Définition de variables Sass, par exemple :
    $color: #282c34;
 */
+
+$main-title-font: 'GFS Didot', serif;
+$light-font-color: #e0e0e0;
+
+// Dégradé
+$default-degrade: linear-gradient(to right, #dc2430, #7b4397);
+$webkit-default-degrade: -webkit-linear-gradient(to right, #dc2430, #7b4397);

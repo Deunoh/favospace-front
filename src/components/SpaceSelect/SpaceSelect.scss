@@ -1,0 +1,66 @@
+.select-container {
+  margin-top: 4rem;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  .space-select {
+    width: 60%;
+    height: 2.5rem;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    padding: 0 1rem;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Style pour la flèche du select */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+
+    option {
+      background-color: #333;
+      color: #fff;
+    }
+  }
+
+  .add-icon {
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      color: #4a90e2;
+      transform: scale(1.1);
+    }
+  }
+}
+
+/* Pour assurer la compatibilité avec Firefox */
+@-moz-document url-prefix() {
+  .select-container .space-select {
+    background-image: none;
+    padding-right: 0.5rem;
+  }
+}

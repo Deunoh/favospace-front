@@ -1,9 +1,12 @@
+import Header from '../Header/Header';
+import SpaceSelect from '../SpaceSelect/SpaceSelect';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <p>Tout à faire</p>
+      <Header />
+      <SpaceSelect />
     </div>
   );
 }
