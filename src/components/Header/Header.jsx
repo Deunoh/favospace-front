@@ -1,14 +1,35 @@
 import './Header.scss';
+import { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { IoIosColorPalette } from 'react-icons/io';
 import ThemeModal from './ThemeModal/ThemeModal';
-import { useState } from 'react';
+import UserModal from './UserModal/UserModal';
 
 const Header = () => {
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
+  const [isUserModalOpen, setIsUserModalOpen] = useState(false);
 
-  const toggleModal = () => {
+  const userName = 'Denovann';
+
+  const toggleThemeModal = () => {
     setIsThemeModalOpen(!isThemeModalOpen);
+    setIsUserModalOpen(false);
+  };
+  const toggleUserModal = () => {
+    setIsUserModalOpen(!isUserModalOpen);
+    setIsThemeModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    // TODO logique à faire
+    console.log('Déconnexion');
+    setIsUserModalOpen(false);
+  };
+
+  const handleDeleteAccount = () => {
+    // TODO logique à faire
+    console.log('Suppression du compte');
+    setIsUserModalOpen(false);
   };
 
   const changeGradient = (newGradient) => {
@@ -23,13 +44,29 @@ const Header = () => {
           <FaTrashAlt size={22} />
           <IoIosColorPalette
             size={22}
-            onClick={toggleModal}
-            style={{ cursor: 'pointer' }}
+            onClick={toggleThemeModal}
+            className="clickable-icon"
           />
-          <p>Bonjour Denovann</p>
+          <button
+            type="button"
+            onClick={toggleUserModal}
+            className="user-button"
+            aria-haspopup="true"
+            aria-expanded={isUserModalOpen}
+            title={`Bonjour ${userName}`}
+          >
+            Bonjour {userName}
+          </button>
         </div>
       </header>
       {isThemeModalOpen && <ThemeModal onChangeGradient={changeGradient} />}
+      {isUserModalOpen && (
+        <UserModal
+          onLogout={handleLogout}
+          onDeleteAccount={handleDeleteAccount}
+          onClose={() => setIsUserModalOpen(false)}
+        />
+      )}
     </>
   );
 };

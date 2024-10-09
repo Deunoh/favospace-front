@@ -20,4 +20,33 @@
     gap: 15px;
     align-items: center;
   }
+
+  .user-button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0.3125rem 0.625rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+
+    &:hover,
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.1);
+      outline: none;
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 2px v.$light-font-color;
+    }
+
+    // Styles pour smartphone
+    @media screen and (max-width: 767px) {
+      max-width: 120px; // Ajustez cette valeur selon vos besoins
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
