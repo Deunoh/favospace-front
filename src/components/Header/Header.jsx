@@ -41,7 +41,7 @@ const Header = () => {
       <header className="header-container">
         <h1 className="header-main-title">Favospace</h1>
         <div className="header-settings-container">
-          <FaTrashAlt size={22} />
+          <FaTrashAlt size={22} className="clickable-icon" />
           <IoIosColorPalette
             size={22}
             onClick={toggleThemeModal}

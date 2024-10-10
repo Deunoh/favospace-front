@@ -8,9 +8,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // background: #7b4397; /* fallback for old browsers */
-  background: v.$webkit-default-degrade;
-  background: v.$default-degrade;
+  // background: v.$webkit-default-degrade;
+  // background: v.$default-degrade;
+  // Image de fond
+  background-image: url('../assets/mountain-3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 code {

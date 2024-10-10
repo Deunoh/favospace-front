@@ -2,9 +2,9 @@
 .header-container {
   height: 3.5rem;
   width: 100%;
-  background-color: rgba(56, 56, 61, 0.6);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  // background-color: rgba(56, 56, 61, 0.6);
+  // -webkit-backdrop-filter: blur(14px);
+  // backdrop-filter: blur(14px);
   color: v.$light-font-color;
   display: flex;
   justify-content: space-between;
@@ -19,6 +19,9 @@
     display: flex;
     gap: 15px;
     align-items: center;
+    .clickable-icon {
+      cursor: pointer;
+    }
   }
 
   .user-button {

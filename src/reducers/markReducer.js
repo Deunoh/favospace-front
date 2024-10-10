@@ -1,23 +1,12 @@
-import { CHANGE_SPACE_SELECT } from '../actions/markActions';
-
-export const mockSpaceList = [
-  {
-    id: '1',
-    name: 'Travail',
-  },
-  {
-    id: '2',
-    name: 'Personnel',
-  },
-  {
-    id: '3',
-    name: 'Projets',
-  },
-];
+import {
+  CHANGE_SPACE_SELECT,
+  SAVE_MARKS,
+  SAVE_SPACES,
+} from '../actions/markActions';
 
 export const initialState = {
   markList: [],
-  spaceList: mockSpaceList,
+  spaceList: [],
   spaceSelected: '',
 };
 
@@ -27,6 +16,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         spaceSelected: action.space,
+      };
+    case SAVE_SPACES:
+      return {
+        ...state,
+        spaceList: action.spaces,
+      };
+    case SAVE_MARKS:
+      return {
+        ...state,
+        markList: action.marks,
       };
     default:
       return state;
