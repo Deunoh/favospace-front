@@ -15,24 +15,34 @@ const SpaceSelect = () => {
     dispatch(addSpace(spaceName));
   };
 
+  const spaceLabel = spaces.length === 1 ? 'Mon espace' : 'Mes espaces';
+
   return (
     <div className="select-container">
-      <select
-        className="space-select"
-        name="space-select"
-        id="spaceSelect"
-        value={selectedSpace}
-        aria-label="choisissez votre espace"
-        onChange={(event) => {
-          dispatch(changeSpaceSelect(event.currentTarget.value));
-        }}
-      >
-        {spaces.map((space) => (
-          <option key={space.id}>{space.name}</option>
-        ))}
-      </select>
+      <label htmlFor="spaceSelect" className="space-label">
+        {spaceLabel}
+      </label>
+      <div className="select-wrapper">
+        <select
+          className="space-select"
+          name="space-select"
+          id="spaceSelect"
+          value={selectedSpace}
+          aria-label="choisissez votre espace"
+          onChange={(event) => {
+            dispatch(changeSpaceSelect(event.currentTarget.value));
+          }}
+        >
+          {spaces.map((space) => (
+            <option key={space.id}>{space.name}</option>
+          ))}
+        </select>
 
-      <FaCirclePlus className="add-icon" onClick={() => setIsModalOpen(true)} />
+        <FaCirclePlus
+          className="add-icon"
+          onClick={() => setIsModalOpen(true)}
+        />
+      </div>
 
       {isModalOpen && (
         <AddSpaceModal
