@@ -1,7 +1,7 @@
 import './Mark.scss';
 
 const Mark = () => {
-  const url = 'https://music.apple.com/';
+  const url = 'https://music.apple.com/fr/new';
   const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=64`;
 
   return (

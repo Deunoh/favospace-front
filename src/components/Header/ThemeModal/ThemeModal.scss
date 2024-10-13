@@ -1,29 +1,30 @@
-.color-modal {
+.theme-modal {
   position: absolute;
-  top: 60px;
-  width: 300px;
-  right: 3rem;
+  top: 60px; // Ajustez cette valeur selon la hauteur de votre header
+  left: 0;
+  right: 0;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 20px;
   z-index: 1000;
-  border-radius: 20px;
 
   h2 {
     color: white;
     margin-bottom: 15px;
   }
 
-  .gradient-grid {
-    display: flex;
-    flex-direction: column;
+  .theme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
   }
 
-  .gradient-option {
+  .theme-option {
     height: 100px;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s;
+    background-size: cover;
+    background-position: center;
 
     &:hover {
       transform: scale(1.05);

@@ -44,9 +44,8 @@
       box-shadow: 0 0 0 2px v.$light-font-color;
     }
 
-    // Styles pour smartphone
     @media screen and (max-width: 767px) {
-      max-width: 120px; // Ajustez cette valeur selon vos besoins
+      max-width: 120px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

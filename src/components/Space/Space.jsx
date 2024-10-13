@@ -4,8 +4,32 @@ import './Space.scss';
 const Space = () => {
   return (
     <div className="space-container">
-      <Mark />
-      <Mark />
+      <div className="space-content">
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+        <Mark />
+      </div>
     </div>
   );
 };

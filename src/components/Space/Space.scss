@@ -1,8 +1,6 @@
 .space-container {
-  width: 70%;
-  padding: 2rem;
-  // TODO delete height
-  height: 300px;
+  width: 75%;
+  height: 60vh;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -10,7 +8,57 @@
   border-radius: 20px;
   margin: auto;
   box-shadow: 0 0 32px 0 rgba(31, 38, 135, 0.37);
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.space-content {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 2rem;
+  margin-right: -2rem; // Compense le padding pour aligner le contenu
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1rem;
+  align-content: flex-start;
+  justify-content: center;
+
+  // Stylisation de la barre de défilement pour les navigateurs WebKit
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+// Stylisation de la barre de défilement pour Firefox
+@-moz-document url-prefix() {
+  .space-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .space-container {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .space-content {
+    padding-right: 1rem;
+    margin-right: -1rem;
+  }
 }

@@ -6,6 +6,9 @@
   text-decoration: none;
   transition: transform 0.2s ease;
   height: fit-content;
+  @media screen and (max-width: 767px) {
+    width: 75px;
+  }
 
   &:hover {
     transform: scale(1.05);

@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import './Header.scss';
-import { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { IoIosColorPalette } from 'react-icons/io';
 import ThemeModal from './ThemeModal/ThemeModal';
@@ -9,12 +9,14 @@ const Header = () => {
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
 
+  // TODO à dynamiser
   const userName = 'Denovann';
 
   const toggleThemeModal = () => {
     setIsThemeModalOpen(!isThemeModalOpen);
     setIsUserModalOpen(false);
   };
+
   const toggleUserModal = () => {
     setIsUserModalOpen(!isUserModalOpen);
     setIsThemeModalOpen(false);
@@ -32,10 +34,14 @@ const Header = () => {
     setIsUserModalOpen(false);
   };
 
-  const changeGradient = (newGradient) => {
-    document.body.style.background = newGradient;
+  const changeTheme = (newImageUrl) => {
+    document.body.style.backgroundImage = `url(${newImageUrl})`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundAttachment = 'fixed';
     setIsThemeModalOpen(false);
   };
+
   return (
     <>
       <header className="header-container">
@@ -59,7 +65,7 @@ const Header = () => {
           </button>
         </div>
       </header>
-      {isThemeModalOpen && <ThemeModal onChangeGradient={changeGradient} />}
+      {isThemeModalOpen && <ThemeModal onChangeTheme={changeTheme} />}
       {isUserModalOpen && (
         <UserModal
           onLogout={handleLogout}
