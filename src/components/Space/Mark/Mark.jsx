@@ -1,7 +1,6 @@
 import './Mark.scss';
 
-const Mark = () => {
-  const url = 'https://music.apple.com/fr/new';
+const Mark = ({ url, name }) => {
   const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=64`;
 
   return (
@@ -16,7 +15,7 @@ const Mark = () => {
       <div className="TileImgContainer">
         <img src={faviconUrl} alt="Apple Music icon" />
       </div>
-      <p className="TileTitle">Apple music avec un titre long</p>
+      <p className="TileTitle">{name}</p>
     </a>
   );
 };

@@ -2,6 +2,7 @@ import {
   CHANGE_SPACE_SELECT,
   SAVE_MARKS,
   SAVE_SPACES,
+  ADD_SPACE,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -26,6 +27,14 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         markList: action.marks,
+      };
+    case ADD_SPACE:
+      return {
+        ...state,
+        spaceList: [
+          ...state.spaceList,
+          { id: Date.now().toString(), name: action.spaceName },
+        ],
       };
     default:
       return state;
