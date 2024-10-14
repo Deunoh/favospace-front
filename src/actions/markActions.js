@@ -4,6 +4,7 @@ export const FETCH_MARKS = 'FETCH_MARKS';
 export const SAVE_SPACES = 'SAVE_SPACES';
 export const SAVE_MARKS = 'SAVE_MARKS';
 export const ADD_SPACE = 'ADD_SPACE';
+export const ADD_MARK = 'ADD_MARK';
 
 export const changeSpaceSelect = (space) => ({
   type: CHANGE_SPACE_SELECT,
@@ -31,4 +32,8 @@ export const saveMarks = (marks) => ({
 export const addSpace = (spaceName) => ({
   type: ADD_SPACE,
   spaceName,
+});
+export const addMark = (mark) => ({
+  type: ADD_MARK,
+  mark,
 });

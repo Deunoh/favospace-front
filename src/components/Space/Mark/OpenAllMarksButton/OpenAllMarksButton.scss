@@ -1,0 +1,46 @@
+.OpenAllMarksButton {
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  height: fit-content;
+
+  @media screen and (max-width: 767px) {
+    width: 75px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .TileImgContainer {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+
+  .TileTitle {
+    color: #fff;
+    width: 100%;
+    font-weight: 600;
+    padding: 0 2px;
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

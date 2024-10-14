@@ -3,6 +3,7 @@ import {
   SAVE_MARKS,
   SAVE_SPACES,
   ADD_SPACE,
+  ADD_MARK,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -34,6 +35,19 @@ const reducer = (state = initialState, action = {}) => {
         spaceList: [
           ...state.spaceList,
           { id: Date.now().toString(), name: action.spaceName },
+        ],
+      };
+    case ADD_MARK:
+      return {
+        ...state,
+        markList: [
+          ...state.markList,
+          {
+            id: Date.now().toString(),
+            name: action.mark.name,
+            url: action.mark.url,
+            spaceId: state.spaceSelected, // Associe le mark à l'espace actuellement sélectionné
+          },
         ],
       };
     default:
