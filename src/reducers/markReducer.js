@@ -10,6 +10,8 @@ export const initialState = {
   markList: [],
   spaceList: [],
   spaceSelected: '',
+  isSpaceModalOpen: false,
+  isMarkModalOpen: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
