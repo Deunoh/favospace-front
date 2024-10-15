@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import './AddMarkModal.scss';
+import { useDispatch } from 'react-redux';
+import { addMark, toggleMarkModal } from '../../../actions/markActions';
 
-const AddMarkModal = ({ onClose, onAddMark }) => {
+const AddMarkModal = () => {
+  const dispatch = useDispatch();
   const [markName, setMarkName] = useState('');
   const [markUrl, setMarkUrl] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (markName.trim() && markUrl.trim()) {
-      onAddMark({ name: markName.trim(), url: markUrl.trim() });
-      onClose();
+      dispatch(addMark({ name: markName.trim(), url: markUrl.trim() }));
+      dispatch(toggleMarkModal());
     }
+  };
+
+  const handleCloseMarkModal = () => {
+    dispatch(toggleMarkModal());
   };
 
   return (
@@ -34,7 +41,7 @@ const AddMarkModal = ({ onClose, onAddMark }) => {
           />
           <div className="modal-actions">
             <button type="submit">Ajouter</button>
-            <button type="button" onClick={onClose}>
+            <button type="button" onClick={handleCloseMarkModal}>
               Annuler
             </button>
           </div>

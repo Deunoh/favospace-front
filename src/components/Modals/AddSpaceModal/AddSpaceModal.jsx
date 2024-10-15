@@ -1,16 +1,23 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import './AddSpaceModal.scss';
+import { useDispatch } from 'react-redux';
+import { addSpace, toggleSpaceModal } from '../../../actions/markActions';
 
-const AddSpaceModal = ({ onClose, onAddSpace }) => {
+const AddSpaceModal = () => {
   const [spaceName, setSpaceName] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (spaceName.trim()) {
-      onAddSpace(spaceName.trim());
-      onClose();
+      dispatch(addSpace(spaceName.trim()));
+      dispatch(toggleSpaceModal());
     }
+  };
+
+  const handleCloseSpaceModal = () => {
+    dispatch(toggleSpaceModal());
   };
 
   return (
@@ -27,7 +34,7 @@ const AddSpaceModal = ({ onClose, onAddSpace }) => {
           />
           <div className="modal-actions">
             <button type="submit">Ajouter</button>
-            <button type="button" onClick={onClose}>
+            <button type="button" onClick={handleCloseSpaceModal}>
               Annuler
             </button>
           </div>
@@ -35,11 +42,6 @@ const AddSpaceModal = ({ onClose, onAddSpace }) => {
       </div>
     </div>
   );
-};
-
-AddSpaceModal.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onAddSpace: PropTypes.func.isRequired,
 };
 
 export default AddSpaceModal;

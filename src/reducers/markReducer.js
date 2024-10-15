@@ -4,6 +4,8 @@ import {
   SAVE_SPACES,
   ADD_SPACE,
   ADD_MARK,
+  TOGGLE_MARK_MODAL,
+  TOGGLE_SPACE_MODAL,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -48,9 +50,19 @@ const reducer = (state = initialState, action = {}) => {
             id: Date.now().toString(),
             name: action.mark.name,
             url: action.mark.url,
-            spaceId: state.spaceSelected, // Associe le mark à l'espace actuellement sélectionné
+            spaceId: state.spaceSelected,
           },
         ],
+      };
+    case TOGGLE_MARK_MODAL:
+      return {
+        ...state,
+        isMarkModalOpen: !state.isMarkModalOpen,
+      };
+    case TOGGLE_SPACE_MODAL:
+      return {
+        ...state,
+        isSpaceModalOpen: !state.isSpaceModalOpen,
       };
     default:
       return state;

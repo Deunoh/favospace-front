@@ -5,6 +5,8 @@ export const SAVE_SPACES = 'SAVE_SPACES';
 export const SAVE_MARKS = 'SAVE_MARKS';
 export const ADD_SPACE = 'ADD_SPACE';
 export const ADD_MARK = 'ADD_MARK';
+export const TOGGLE_MARK_MODAL = 'TOGGLE_MARK_MODAL';
+export const TOGGLE_SPACE_MODAL = 'TOGGLE_SPACE_MODAL';
 
 export const changeSpaceSelect = (space) => ({
   type: CHANGE_SPACE_SELECT,
@@ -36,4 +38,10 @@ export const addSpace = (spaceName) => ({
 export const addMark = (mark) => ({
   type: ADD_MARK,
   mark,
+});
+export const toggleMarkModal = () => ({
+  type: TOGGLE_MARK_MODAL,
+});
+export const toggleSpaceModal = () => ({
+  type: TOGGLE_SPACE_MODAL,
 });
