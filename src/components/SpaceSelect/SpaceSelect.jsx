@@ -1,12 +1,7 @@
-import { useState } from 'react';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { useDispatch, useSelector } from 'react-redux';
 import './SpaceSelect.scss';
-import {
-  changeSpaceSelect,
-  addSpace,
-  toggleSpaceModal,
-} from '../../actions/markActions';
+import { changeSpaceSelect, toggleSpaceModal } from '../../actions/markActions';
 
 const SpaceSelect = () => {
   const dispatch = useDispatch();

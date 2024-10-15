@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import './AddSpaceModal.scss';
 import { useDispatch } from 'react-redux';
