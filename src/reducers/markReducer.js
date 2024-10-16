@@ -8,6 +8,7 @@ import {
   TOGGLE_SPACE_MODAL,
   ACTIVATE_EDIT_MODE,
   DESACTIVATE_EDIT_MODE,
+  TOGGLE_REMOVE_SPACE_MODAL,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -17,6 +18,7 @@ export const initialState = {
   isSpaceModalOpen: false,
   isMarkModalOpen: false,
   isEditMode: false,
+  isRemoveSpaceModalOpen: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -76,6 +78,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isEditMode: false,
+      };
+    case TOGGLE_REMOVE_SPACE_MODAL:
+      return {
+        ...state,
+        isRemoveSpaceModalOpen: !state.isRemoveSpaceModalOpen,
       };
     default:
       return state;

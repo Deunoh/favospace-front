@@ -7,10 +7,14 @@ import { fetchMarks, fetchSpaces } from '../../actions/markActions';
 import Space from '../Space/Space';
 import AddMarkModal from '../Modals/AddMarkModal/AddMarkModal';
 import AddSpaceModal from '../Modals/AddSpaceModal/AddSpaceModal';
+import RemoveSpaceConfirmModal from '../Modals/RemoveSpaceConfirmModal/RemoveSpaceConfirmModal';
 
 function App() {
   const isMarkModalOpen = useSelector((state) => state.mark.isMarkModalOpen);
   const isSpaceModalOpen = useSelector((state) => state.mark.isSpaceModalOpen);
+  const isRemoveSpaceModalOpen = useSelector(
+    (state) => state.mark.isRemoveSpaceModalOpen
+  );
   const dispatch = useDispatch();
   // call api to save spaces in state
   useEffect(() => {
@@ -32,6 +36,7 @@ function App() {
       {/* Modals */}
       {isMarkModalOpen && <AddMarkModal />}
       {isSpaceModalOpen && <AddSpaceModal />}
+      {isRemoveSpaceModalOpen && <RemoveSpaceConfirmModal />}
     </div>
   );
 }
