@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
 import './Header.scss';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaTrashAlt } from 'react-icons/fa';
 import { IoIosColorPalette } from 'react-icons/io';
 import ThemeModal from './ThemeModal/ThemeModal';
 import UserModal from './UserModal/UserModal';
+import {
+  activateEditMode,
+  desactivateEditMode,
+} from '../../actions/markActions';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const isEditMode = useSelector((state) => state.mark.isEditMode);
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
 
@@ -34,6 +41,14 @@ const Header = () => {
     setIsUserModalOpen(false);
   };
 
+  const handleEdit = () => {
+    console.log('mode edit');
+    dispatch(activateEditMode());
+  };
+  const handleFinishEdit = () => {
+    console.log('finished edit mode');
+    dispatch(desactivateEditMode());
+  };
   const changeTheme = (newImageUrl) => {
     document.body.style.backgroundImage = `url(${newImageUrl})`;
     document.body.style.backgroundSize = 'cover';
@@ -45,25 +60,41 @@ const Header = () => {
   return (
     <>
       <header className="header-container">
-        <h1 className="header-main-title">Favospace</h1>
-        <div className="header-settings-container">
-          <FaTrashAlt size={22} className="clickable-icon" />
-          <IoIosColorPalette
-            size={22}
-            onClick={toggleThemeModal}
-            className="clickable-icon"
-          />
+        {isEditMode ? (
           <button
             type="button"
-            onClick={toggleUserModal}
-            className="user-button"
-            aria-haspopup="true"
-            aria-expanded={isUserModalOpen}
-            title={`Bonjour ${userName}`}
+            className="finish-edit-button"
+            onClick={handleFinishEdit}
           >
-            Bonjour {userName}
+            Terminé
           </button>
-        </div>
+        ) : (
+          <>
+            <h1 className="header-main-title">Favospace</h1>
+            <div className="header-settings-container">
+              <FaTrashAlt
+                size={22}
+                className="clickable-icon"
+                onClick={handleEdit}
+              />
+              <IoIosColorPalette
+                size={22}
+                onClick={toggleThemeModal}
+                className="clickable-icon"
+              />
+              <button
+                type="button"
+                onClick={toggleUserModal}
+                className="user-button"
+                aria-haspopup="true"
+                aria-expanded={isUserModalOpen}
+                title={`Bonjour ${userName}`}
+              >
+                Bonjour {userName}
+              </button>
+            </div>
+          </>
+        )}
       </header>
       {isThemeModalOpen && <ThemeModal onChangeTheme={changeTheme} />}
       {isUserModalOpen && (

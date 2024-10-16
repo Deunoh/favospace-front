@@ -6,6 +6,8 @@ import {
   ADD_MARK,
   TOGGLE_MARK_MODAL,
   TOGGLE_SPACE_MODAL,
+  ACTIVATE_EDIT_MODE,
+  DESACTIVATE_EDIT_MODE,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -14,6 +16,7 @@ export const initialState = {
   spaceSelected: '',
   isSpaceModalOpen: false,
   isMarkModalOpen: false,
+  isEditMode: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -63,6 +66,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isSpaceModalOpen: !state.isSpaceModalOpen,
+      };
+    case ACTIVATE_EDIT_MODE:
+      return {
+        ...state,
+        isEditMode: true,
+      };
+    case DESACTIVATE_EDIT_MODE:
+      return {
+        ...state,
+        isEditMode: false,
       };
     default:
       return state;

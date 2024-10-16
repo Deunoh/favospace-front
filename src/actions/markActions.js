@@ -7,6 +7,8 @@ export const ADD_SPACE = 'ADD_SPACE';
 export const ADD_MARK = 'ADD_MARK';
 export const TOGGLE_MARK_MODAL = 'TOGGLE_MARK_MODAL';
 export const TOGGLE_SPACE_MODAL = 'TOGGLE_SPACE_MODAL';
+export const ACTIVATE_EDIT_MODE = 'ACTIVATE_EDIT_MODE';
+export const DESACTIVATE_EDIT_MODE = 'DESACTIVATE_EDIT_MODE';
 
 export const changeSpaceSelect = (space) => ({
   type: CHANGE_SPACE_SELECT,
@@ -44,4 +46,10 @@ export const toggleMarkModal = () => ({
 });
 export const toggleSpaceModal = () => ({
   type: TOGGLE_SPACE_MODAL,
+});
+export const activateEditMode = () => ({
+  type: ACTIVATE_EDIT_MODE,
+});
+export const desactivateEditMode = () => ({
+  type: DESACTIVATE_EDIT_MODE,
 });
