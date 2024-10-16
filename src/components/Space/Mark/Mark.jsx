@@ -10,29 +10,38 @@ const Mark = ({ url, name }) => {
     console.log('cliqué !');
   };
   return (
-    <a
-      role="button"
-      href={url}
-      target="_blank"
-      rel="noreferrer"
-      className={`Mark ${isEditMode ? 'edit-icon' : ''}`}
-      style={{ pointerEvents: isEditMode ? 'none' : 'auto' }}
-    >
-      {isEditMode && (
-        <button
-          type="button"
-          className="remove-icon-container"
-          onClick={handleRemove}
-          aria-label="supprimer le raccourci"
+    <>
+      {!isEditMode && (
+        <a
+          role="button"
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          className="Mark"
         >
-          <IoIosRemoveCircle className="remove-icon" />
-        </button>
+          <div className="TileImgContainer">
+            <img src={faviconUrl} alt="" />
+          </div>
+          <p className="TileTitle">{name}</p>
+        </a>
       )}
-      <div className="TileImgContainer">
-        <img src={faviconUrl} alt="" />
-      </div>
-      <p className="TileTitle">{name}</p>
-    </a>
+      {isEditMode && (
+        <div className="Mark edit-icon">
+          <button
+            type="button"
+            className="remove-icon-container"
+            onClick={handleRemove}
+            aria-label="supprimer le raccourci"
+          >
+            <IoIosRemoveCircle className="remove-icon" />
+          </button>
+          <div className="TileImgContainer">
+            <img src={faviconUrl} alt="" />
+          </div>
+          <p className="TileTitle">{name}</p>
+        </div>
+      )}
+    </>
   );
 };
 

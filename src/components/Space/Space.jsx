@@ -5,6 +5,7 @@ import AddMarkButton from './Mark/AddMarkButton/AddMarkButton';
 
 const Space = () => {
   const marks = useSelector((state) => state.mark.markList);
+  const isEditMode = useSelector((state) => state.mark.isEditMode);
 
   return (
     <div className="space-container">
@@ -12,7 +13,7 @@ const Space = () => {
         {marks.map((mark) => (
           <Mark key={mark.id} {...mark} />
         ))}
-        <AddMarkButton />
+        {!isEditMode && <AddMarkButton />}
       </div>
     </div>
   );

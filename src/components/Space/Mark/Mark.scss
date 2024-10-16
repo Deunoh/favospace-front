@@ -12,7 +12,8 @@
     width: 75px;
   }
 
-  &:hover {
+  // Appliquer l'effet hover uniquement si on n'est pas en mode édition
+  &:not(.edit-icon):hover {
     transform: scale(1.1);
   }
 
