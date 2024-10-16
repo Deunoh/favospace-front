@@ -21,8 +21,8 @@ const RemoveSpaceConfirmModal = () => {
       <div className="modal-content">
         <h2>Confirmer la suppression</h2>
         <p>
-          Voulez-vous vraiment supprimer l'espace "{selectedSpace}" ? Cela
-          supprimera tous les raccourcis qu'il contient.
+          Voulez-vous vraiment supprimer l&apos;espace &quot;{selectedSpace}
+          &quot; ? Cela supprimera tous les raccourcis qu&apos;il contient.
         </p>
         <div className="modal-actions">
           <button
