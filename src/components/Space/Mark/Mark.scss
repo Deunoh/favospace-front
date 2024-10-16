@@ -1,6 +1,6 @@
 @use '../../../styles/variables' as v;
 .Mark {
-  padding-top: 0.5rem;
+  // padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,6 +14,20 @@
 
   &:hover {
     transform: scale(1.1);
+  }
+
+  .remove-icon-container {
+    all: unset;
+    z-index: 99;
+    position: absolute;
+    top: -10px;
+    right: 4px;
+    font-size: 1.6rem;
+    color: #ff3b30;
+    cursor: pointer;
+    @media screen and (max-width: 767px) {
+      right: -4px;
+    }
   }
 
   .TileImgContainer {

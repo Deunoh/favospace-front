@@ -15,6 +15,7 @@
 .space-content {
   height: 100%;
   overflow-y: auto;
+  padding-top: 0.6rem;
   padding-right: 2rem;
   margin-right: -2rem; // Compense le padding pour aligner le contenu
   display: flex;
@@ -40,6 +41,43 @@
 
   &::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.5);
+  }
+  .edit-icon:nth-child(2n) {
+    animation-name: shake1;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+    transform-origin: 50% 10%;
+  }
+
+  .edit-icon:nth-child(2n-1) {
+    animation-name: shake2;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transform-origin: 30% 5%;
+  }
+  @keyframes shake1 {
+    0% {
+      transform: rotate(-1deg);
+      animation-timing-function: ease-in;
+    }
+
+    50% {
+      transform: rotate(1.5deg);
+      animation-timing-function: ease-out;
+    }
+  }
+
+  @keyframes shake2 {
+    0% {
+      transform: rotate(1deg);
+      animation-timing-function: ease-in;
+    }
+
+    50% {
+      transform: rotate(-1.5deg);
+      animation-timing-function: ease-out;
+    }
   }
 }
 
