@@ -56,6 +56,12 @@
       }
     }
   }
+  .error-message {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
 }
 
 @media (max-width: 480px) {

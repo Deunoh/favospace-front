@@ -1,18 +1,35 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import './AddSpaceModal.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addSpace, toggleSpaceModal } from '../../../actions/markActions';
 
 const AddSpaceModal = () => {
-  const [spaceName, setSpaceName] = useState('');
   const dispatch = useDispatch();
+  const existingSpaces = useSelector((state) => state.mark.spaceList);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (spaceName.trim()) {
-      dispatch(addSpace(spaceName.trim()));
-      dispatch(toggleSpaceModal());
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const spaceName = data.spaceName.trim();
+    if (
+      existingSpaces.some(
+        (space) => space.name.toLowerCase() === spaceName.toLowerCase()
+      )
+    ) {
+      setError('spaceName', {
+        type: 'manual',
+        message: 'Un espace avec ce nom existe déjà',
+      });
+      return;
     }
+    dispatch(addSpace(spaceName));
+    dispatch(toggleSpaceModal());
   };
 
   const handleCloseSpaceModal = () => {
@@ -23,14 +40,21 @@ const AddSpaceModal = () => {
     <div className="modal-overlay">
       <div className="modal-content">
         <h2>Ajouter un nouvel espace</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
-            value={spaceName}
-            onChange={(e) => setSpaceName(e.target.value)}
+            {...register('spaceName', {
+              required: "Le nom de l'espace est requis",
+              minLength: {
+                value: 2,
+                message: 'Le nom doit contenir au moins 2 caractères',
+              },
+            })}
             placeholder="Nom de l'espace"
-            required
           />
+          {errors.spaceName && (
+            <p className="error-message">{errors.spaceName.message}</p>
+          )}
           <div className="modal-actions">
             <button type="submit">Ajouter</button>
             <button type="button" onClick={handleCloseSpaceModal}>

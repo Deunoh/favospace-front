@@ -1,0 +1,18 @@
+export const popularSites = [
+  { name: 'Amazon', url: 'https://www.amazon.com' },
+  { name: 'Google', url: 'https://www.google.com' },
+  { name: 'Facebook', url: 'https://www.facebook.com' },
+  { name: 'YouTube', url: 'https://www.youtube.com' },
+  { name: 'Twitter', url: 'https://www.twitter.com' },
+  { name: 'Instagram', url: 'https://www.instagram.com' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com' },
+  { name: 'Netflix', url: 'https://www.netflix.com' },
+  { name: 'Wikipedia', url: 'https://www.wikipedia.org' },
+  { name: 'Reddit', url: 'https://www.reddit.com' },
+  { name: 'Twitch', url: 'https://www.twitch.tv' },
+  { name: 'Microsoft', url: 'https://www.microsoft.com' },
+  { name: 'Apple', url: 'https://www.apple.com' },
+  { name: 'GitHub', url: 'https://www.github.com' },
+  { name: 'Stack Overflow', url: 'https://stackoverflow.com' },
+  { name: 'Micro mobility', url: 'https://www.micro-mobility.fr/' },
+];
