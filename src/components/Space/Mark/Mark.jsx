@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import './Mark.scss';
@@ -9,6 +10,7 @@ const Mark = ({ url, name }) => {
   const handleRemove = () => {
     console.log('cliqué !');
   };
+
   return (
     <>
       {!isEditMode && (
@@ -45,4 +47,8 @@ const Mark = ({ url, name }) => {
   );
 };
 
+Mark.propTypes = {
+  url: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 export default Mark;
