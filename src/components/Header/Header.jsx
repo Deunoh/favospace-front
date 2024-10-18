@@ -1,5 +1,6 @@
 import './Header.scss';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTrashAlt } from 'react-icons/fa';
 import { IoIosColorPalette } from 'react-icons/io';
@@ -10,7 +11,7 @@ import {
   desactivateEditMode,
 } from '../../actions/markActions';
 
-const Header = () => {
+const Header = ({ displayTrash }) => {
   const dispatch = useDispatch();
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
@@ -72,11 +73,14 @@ const Header = () => {
           <>
             <h1 className="header-main-title">Favospace</h1>
             <div className="header-settings-container">
-              <FaTrashAlt
-                size={22}
-                className="clickable-icon"
-                onClick={handleEdit}
-              />
+              {!displayTrash && (
+                <FaTrashAlt
+                  size={22}
+                  className="clickable-icon"
+                  onClick={handleEdit}
+                />
+              )}
+
               <IoIosColorPalette
                 size={22}
                 onClick={toggleThemeModal}
@@ -106,6 +110,10 @@ const Header = () => {
       )}
     </>
   );
+};
+
+Header.propTypes = {
+  displayTrash: PropTypes.bool.isRequired,
 };
 
 export default Header;

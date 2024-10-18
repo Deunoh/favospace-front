@@ -1,16 +1,16 @@
 export const mockSpaceList = [
-  {
-    id: '1',
-    name: 'Travail',
-  },
-  {
-    id: '2',
-    name: 'Personnel',
-  },
-  {
-    id: '3',
-    name: 'Projets',
-  },
+  // {
+  //   id: '1',
+  //   name: 'Travail',
+  // },
+  // {
+  //   id: '2',
+  //   name: 'Personnel',
+  // },
+  // {
+  //   id: '3',
+  //   name: 'Projets',
+  // },
 ];
 
 export const mockFavoritesList = [

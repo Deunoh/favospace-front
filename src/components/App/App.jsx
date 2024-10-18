@@ -8,31 +8,35 @@ import Space from '../Space/Space';
 import AddMarkModal from '../Modals/AddMarkModal/AddMarkModal';
 import AddSpaceModal from '../Modals/AddSpaceModal/AddSpaceModal';
 import RemoveSpaceConfirmModal from '../Modals/RemoveSpaceConfirmModal/RemoveSpaceConfirmModal';
+import StartButton from '../StartButton/StartButton';
 
 function App() {
   const isMarkModalOpen = useSelector((state) => state.mark.isMarkModalOpen);
   const isSpaceModalOpen = useSelector((state) => state.mark.isSpaceModalOpen);
+  const spaceList = useSelector((state) => state.mark.spaceList);
+  const isSpacesEmpty = spaceList.length === 0;
   const isRemoveSpaceModalOpen = useSelector(
     (state) => state.mark.isRemoveSpaceModalOpen
   );
-  const dispatch = useDispatch();
-  // call api to save spaces in state
-  useEffect(() => {
-    const action = fetchSpaces();
-    dispatch(action);
-  }, [dispatch]);
 
-  // call api to save spaces in state
+  const dispatch = useDispatch();
+  // call api to save spaces and marks in state
   useEffect(() => {
-    const action = fetchMarks();
-    dispatch(action);
+    dispatch(fetchSpaces());
+    dispatch(fetchMarks());
   }, [dispatch]);
 
   return (
     <div className="App">
-      <Header />
-      <SpaceSelect />
-      <Space />
+      <Header displayTrash={isSpacesEmpty} />
+      {isSpacesEmpty ? (
+        <StartButton />
+      ) : (
+        <>
+          <SpaceSelect />
+          <Space />
+        </>
+      )}
       {/* Modals */}
       {isMarkModalOpen && <AddMarkModal />}
       {isSpaceModalOpen && <AddSpaceModal />}
