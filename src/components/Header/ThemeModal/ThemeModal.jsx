@@ -1,4 +1,3 @@
-import React from 'react';
 import './ThemeModal.scss';
 import mountain1 from '../../../assets/mountain-1.jpg';
 import mountain2 from '../../../assets/mountain-2.jpg';
@@ -7,10 +6,11 @@ import mountain4 from '../../../assets/mountain-4.jpg';
 import mountainDark1 from '../../../assets/mountain_dark-1.png';
 import mountainDark2 from '../../../assets/mountain_dark-2.png';
 import mountainDark3 from '../../../assets/mountain_dark-3.png';
+import AddTheme from './AddTheme';
 
 const themes = [
-  { name: 'Mountain 1', image: mountain1 },
-  { name: 'Mountain 2', image: mountain2 },
+  // { name: 'Mountain 1', image: mountain1 },
+  // { name: 'Mountain 2', image: mountain2 },
   { name: 'Mountain 3', image: mountain3 },
   { name: 'Mountain 4', image: mountain4 },
   { name: 'Mountain dark 1', image: mountainDark1 },
@@ -31,6 +31,7 @@ const ThemeModal = ({ onChangeTheme }) => {
             onClick={() => onChangeTheme(theme.image)}
           />
         ))}
+        <AddTheme />
       </div>
     </div>
   );

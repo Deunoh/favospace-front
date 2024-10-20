@@ -1,6 +1,6 @@
 @use '../../styles/variables' as v;
 .header-container {
-  height: 3.5rem;
+  height: v.$header-height;
   width: 100%;
   // background-color: rgba(56, 56, 61, 0.6);
   // -webkit-backdrop-filter: blur(14px);

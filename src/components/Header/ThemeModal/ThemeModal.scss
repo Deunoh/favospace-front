@@ -30,4 +30,26 @@
       transform: scale(1.05);
     }
   }
+  .add-theme-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(75, 85, 99, 0.6);
+    border: 2px dashed #ffffff;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(75, 85, 99, 0.8);
+      border-color: #f3f4f6;
+      svg {
+        color: #f3f4f6;
+        transform: scale(1.1);
+      }
+    }
+
+    svg {
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+  }
 }
