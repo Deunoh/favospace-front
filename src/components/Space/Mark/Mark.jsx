@@ -4,11 +4,12 @@ import { IoIosRemoveCircle } from 'react-icons/io';
 import './Mark.scss';
 
 const Mark = ({ url, name }) => {
-  // const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=64`;
-  // const faviconUrl = `https://icon.horse/icon/${url}`;
-  let domain = new URL(url);
-  domain = domain.hostname.replace('www.', '');
-  const faviconUrl = `https://icon.horse/icon/${domain}`;
+  // With google
+  const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=64`;
+  // With icon horse
+  // let domain = new URL(url);
+  // domain = domain.hostname.replace('www.', '');
+  // const faviconUrl = `https://icon.horse/icon/${domain}`;
 
   const isEditMode = useSelector((state) => state.mark.isEditMode);
 
