@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getImageFromIndexedDB } from '../../../utils/indexedDBService';
+import {
+  getImageFromIndexedDB,
+  saveImageToIndexedDB,
+} from '../../../utils/indexedDBService';
 import './ThemeModal.scss';
 import mountain1 from '../../../assets/mountain-1.jpg';
 import mountain2 from '../../../assets/mountain-2.jpg';
@@ -36,14 +39,18 @@ const ThemeModal = ({ onChangeTheme }) => {
     loadCustomTheme();
   }, []);
 
-  const handleAddCustomTheme = (imageDataUrl) => {
+  const handleAddCustomTheme = async (imageDataUrl) => {
     setThemes((prevThemes) => [
       ...prevThemes,
       { name: 'Custom', image: imageDataUrl },
     ]);
     onChangeTheme(imageDataUrl);
-  };
 
+    // Sauvegarder l'image personnalisée
+    await saveImageToIndexedDB('customBackgroundImage', imageDataUrl);
+    // Définir le thème actuel comme l'image personnalisée
+    await saveImageToIndexedDB('currentTheme', imageDataUrl);
+  };
   return (
     <div className="theme-modal">
       <h2>Choisissez un thème</h2>

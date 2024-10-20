@@ -10,7 +10,10 @@ import {
   activateEditMode,
   desactivateEditMode,
 } from '../../actions/markActions';
-import { getImageFromIndexedDB } from '../../utils/indexedDBService';
+import {
+  getImageFromIndexedDB,
+  saveImageToIndexedDB,
+} from '../../utils/indexedDBService';
 
 const Header = ({ displayTrash }) => {
   const dispatch = useDispatch();
@@ -51,19 +54,29 @@ const Header = ({ displayTrash }) => {
     console.log('finished edit mode');
     dispatch(desactivateEditMode());
   };
-  const changeTheme = (newImageUrl) => {
+  const changeTheme = async (newImageUrl) => {
     document.body.style.backgroundImage = `url(${newImageUrl})`;
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundAttachment = 'fixed';
     setIsThemeModalOpen(false);
+
+    // Sauvegarder le thème actuel
+    await saveImageToIndexedDB('currentTheme', newImageUrl);
   };
 
   useEffect(() => {
     const loadSavedTheme = async () => {
-      const savedTheme = await getImageFromIndexedDB('customBackgroundImage');
-      if (savedTheme) {
-        changeTheme(savedTheme);
+      const currentTheme = await getImageFromIndexedDB('currentTheme');
+      if (currentTheme) {
+        changeTheme(currentTheme);
+      } else {
+        const savedCustomTheme = await getImageFromIndexedDB(
+          'customBackgroundImage'
+        );
+        if (savedCustomTheme) {
+          changeTheme(savedCustomTheme);
+        }
       }
     };
     loadSavedTheme();
