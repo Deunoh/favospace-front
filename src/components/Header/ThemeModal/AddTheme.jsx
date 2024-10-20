@@ -26,7 +26,7 @@ const AddTheme = ({ onAddCustomTheme }) => {
 
   return (
     <div className="add-theme-option theme-option" onClick={handleClick}>
-      <FaCirclePlus size={60} />
+      <FaCirclePlus size={40} />
       <input
         type="file"
         ref={fileInputRef}
