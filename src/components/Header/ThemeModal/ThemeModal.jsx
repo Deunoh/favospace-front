@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import './ThemeModal.scss';
 import mountain1 from '../../../assets/mountain-1.jpg';
 import mountain2 from '../../../assets/mountain-2.jpg';
@@ -8,7 +9,7 @@ import mountainDark2 from '../../../assets/mountain_dark-2.png';
 import mountainDark3 from '../../../assets/mountain_dark-3.png';
 import AddTheme from './AddTheme';
 
-const themes = [
+const defaultThemes = [
   // { name: 'Mountain 1', image: mountain1 },
   // { name: 'Mountain 2', image: mountain2 },
   { name: 'Mountain 3', image: mountain3 },
@@ -19,6 +20,26 @@ const themes = [
 ];
 
 const ThemeModal = ({ onChangeTheme }) => {
+  const [themes, setThemes] = useState(defaultThemes);
+
+  useEffect(() => {
+    const savedCustomTheme = localStorage.getItem('customBackgroundImage');
+    if (savedCustomTheme) {
+      setThemes((prevThemes) => [
+        ...prevThemes,
+        { name: 'Custom', image: savedCustomTheme },
+      ]);
+    }
+  }, []);
+
+  const handleAddCustomTheme = (imageDataUrl) => {
+    setThemes((prevThemes) => [
+      ...prevThemes,
+      { name: 'Custom', image: imageDataUrl },
+    ]);
+    onChangeTheme(imageDataUrl);
+  };
+
   return (
     <div className="theme-modal">
       <h2>Choisissez un thème</h2>
@@ -31,7 +52,7 @@ const ThemeModal = ({ onChangeTheme }) => {
             onClick={() => onChangeTheme(theme.image)}
           />
         ))}
-        <AddTheme />
+        <AddTheme onAddCustomTheme={handleAddCustomTheme} />
       </div>
     </div>
   );

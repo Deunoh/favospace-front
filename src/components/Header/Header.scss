@@ -2,9 +2,9 @@
 .header-container {
   height: v.$header-height;
   width: 100%;
-  // background-color: rgba(56, 56, 61, 0.6);
-  // -webkit-backdrop-filter: blur(14px);
-  // backdrop-filter: blur(14px);
+  background-color: rgba(56, 56, 61, 0.3);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   color: v.$light-font-color;
   display: flex;
   justify-content: space-between;

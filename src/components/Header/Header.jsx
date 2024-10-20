@@ -1,5 +1,5 @@
 import './Header.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTrashAlt } from 'react-icons/fa';
@@ -55,8 +55,15 @@ const Header = ({ displayTrash }) => {
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundAttachment = 'fixed';
+    localStorage.setItem('selectedTheme', newImageUrl);
     setIsThemeModalOpen(false);
   };
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('selectedTheme');
+    if (savedTheme) {
+      changeTheme(savedTheme);
+    }
+  }, []);
 
   return (
     <>
