@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { FaCirclePlus } from 'react-icons/fa6';
+import { saveImageToIndexedDB } from '../../../utils/indexedDBService';
 import './ThemeModal.scss';
 
 const AddTheme = ({ onAddCustomTheme }) => {
@@ -9,16 +10,16 @@ const AddTheme = ({ onAddCustomTheme }) => {
     fileInputRef.current.click();
   };
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = async (e) => {
         const imageDataUrl = e.target.result;
         onAddCustomTheme(imageDataUrl);
 
-        // Save to localStorage
-        localStorage.setItem('customBackgroundImage', imageDataUrl);
+        // Save to IndexedDB instead of localStorage
+        await saveImageToIndexedDB('customBackgroundImage', imageDataUrl);
       };
       reader.readAsDataURL(file);
     }

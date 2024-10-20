@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getImageFromIndexedDB } from '../../../utils/indexedDBService';
 import './ThemeModal.scss';
 import mountain1 from '../../../assets/mountain-1.jpg';
 import mountain2 from '../../../assets/mountain-2.jpg';
@@ -10,8 +11,6 @@ import mountainDark3 from '../../../assets/mountain_dark-3.png';
 import AddTheme from './AddTheme';
 
 const defaultThemes = [
-  // { name: 'Mountain 1', image: mountain1 },
-  // { name: 'Mountain 2', image: mountain2 },
   { name: 'Mountain 3', image: mountain3 },
   { name: 'Mountain 4', image: mountain4 },
   { name: 'Mountain dark 1', image: mountainDark1 },
@@ -23,13 +22,18 @@ const ThemeModal = ({ onChangeTheme }) => {
   const [themes, setThemes] = useState(defaultThemes);
 
   useEffect(() => {
-    const savedCustomTheme = localStorage.getItem('customBackgroundImage');
-    if (savedCustomTheme) {
-      setThemes((prevThemes) => [
-        ...prevThemes,
-        { name: 'Custom', image: savedCustomTheme },
-      ]);
-    }
+    const loadCustomTheme = async () => {
+      const savedCustomTheme = await getImageFromIndexedDB(
+        'customBackgroundImage'
+      );
+      if (savedCustomTheme) {
+        setThemes((prevThemes) => [
+          ...prevThemes,
+          { name: 'Custom', image: savedCustomTheme },
+        ]);
+      }
+    };
+    loadCustomTheme();
   }, []);
 
   const handleAddCustomTheme = (imageDataUrl) => {
