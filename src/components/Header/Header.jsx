@@ -10,6 +10,7 @@ import {
   activateEditMode,
   desactivateEditMode,
 } from '../../actions/markActions';
+import { getImageFromIndexedDB } from '../../utils/indexedDBService';
 
 const Header = ({ displayTrash }) => {
   const dispatch = useDispatch();
@@ -55,14 +56,17 @@ const Header = ({ displayTrash }) => {
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundAttachment = 'fixed';
-    localStorage.setItem('selectedTheme', newImageUrl);
     setIsThemeModalOpen(false);
   };
+
   useEffect(() => {
-    const savedTheme = localStorage.getItem('selectedTheme');
-    if (savedTheme) {
-      changeTheme(savedTheme);
-    }
+    const loadSavedTheme = async () => {
+      const savedTheme = await getImageFromIndexedDB('customBackgroundImage');
+      if (savedTheme) {
+        changeTheme(savedTheme);
+      }
+    };
+    loadSavedTheme();
   }, []);
 
   return (
