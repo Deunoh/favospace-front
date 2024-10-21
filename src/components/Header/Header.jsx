@@ -9,6 +9,7 @@ import UserModal from './UserModal/UserModal';
 import {
   activateEditMode,
   desactivateEditMode,
+  toggleRemoveAccountModal,
 } from '../../actions/markActions';
 import {
   getImageFromIndexedDB,
@@ -41,8 +42,7 @@ const Header = ({ displayTrash }) => {
   };
 
   const handleDeleteAccount = () => {
-    // TODO logique à faire
-    console.log('Suppression du compte');
+    dispatch(toggleRemoveAccountModal());
     setIsUserModalOpen(false);
   };
 

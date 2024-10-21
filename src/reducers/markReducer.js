@@ -9,16 +9,18 @@ import {
   ACTIVATE_EDIT_MODE,
   DESACTIVATE_EDIT_MODE,
   TOGGLE_REMOVE_SPACE_MODAL,
+  TOGGLE_REMOVE_ACCOUNT_MODAL,
 } from '../actions/markActions';
 
 export const initialState = {
   markList: [],
   spaceList: [],
   spaceSelected: '',
+  isEditMode: false,
   isSpaceModalOpen: false,
   isMarkModalOpen: false,
-  isEditMode: false,
   isRemoveSpaceModalOpen: false,
+  isRemoveAccountModalOpen: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -83,6 +85,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isRemoveSpaceModalOpen: !state.isRemoveSpaceModalOpen,
+      };
+    case TOGGLE_REMOVE_ACCOUNT_MODAL:
+      return {
+        ...state,
+        isRemoveAccountModalOpen: !state.isRemoveAccountModalOpen,
       };
     default:
       return state;

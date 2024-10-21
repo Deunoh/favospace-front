@@ -1,19 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleRemoveSpaceModal } from '../../../actions/markActions';
-import './RemoveSpaceConfirmModal.scss';
+import { toggleRemoveAccountModal } from '../../../actions/markActions';
+import './ConfirmModal.scss';
 
-const RemoveSpaceConfirmModal = () => {
+const RemoveAccountConfirmModal = () => {
   const dispatch = useDispatch();
-  const selectedSpace = useSelector((state) => state.mark.spaceSelected);
 
-  const handleConfirmRemove = () => {
-    // dispatch(removeSpace(selectedSpace));
-    dispatch(toggleRemoveSpaceModal());
-    console.log('espace supprimé !');
+  const handleConfirmDelete = () => {
+    dispatch(toggleRemoveAccountModal());
+    console.log('Compte supprimé !');
+    // TODO Logique à faire
   };
 
   const handleCloseModal = () => {
-    dispatch(toggleRemoveSpaceModal());
+    dispatch(toggleRemoveAccountModal());
   };
 
   return (
@@ -21,13 +20,13 @@ const RemoveSpaceConfirmModal = () => {
       <div className="modal-content">
         <h2>Confirmer la suppression</h2>
         <p>
-          Voulez-vous vraiment supprimer l&apos;espace &quot;{selectedSpace}
-          &quot; ? Cela supprimera tous les raccourcis qu&apos;il contient.
+          Êtes-vous sûre de vouloir supprimer votre compte ? Cette action est
+          irréversible.
         </p>
         <div className="modal-actions">
           <button
             type="button"
-            onClick={handleConfirmRemove}
+            onClick={handleConfirmDelete}
             className="confirm-button"
           >
             Supprimer
@@ -45,4 +44,4 @@ const RemoveSpaceConfirmModal = () => {
   );
 };
 
-export default RemoveSpaceConfirmModal;
+export default RemoveAccountConfirmModal;
