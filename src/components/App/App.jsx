@@ -10,6 +10,7 @@ import AddSpaceModal from '../Modals/AddSpaceModal/AddSpaceModal';
 import RemoveSpaceConfirmModal from '../Modals/ConfirmModal/RemoveSpaceConfirmModal';
 import StartButton from '../StartButton/StartButton';
 import RemoveAccountConfirmModal from '../Modals/ConfirmModal/RemoveAccountConfirmModal';
+import AuthModal from '../AuthModal/AuthModal';
 
 function App() {
   const isMarkModalOpen = useSelector((state) => state.mark.isMarkModalOpen);
@@ -41,6 +42,7 @@ function App() {
           <Space />
         </>
       )}
+      <AuthModal />
       {/* Modals */}
       {isMarkModalOpen && <AddMarkModal />}
       {isSpaceModalOpen && <AddSpaceModal />}
