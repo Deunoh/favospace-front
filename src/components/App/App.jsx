@@ -10,6 +10,8 @@ import AddSpaceModal from '../Modals/AddSpaceModal/AddSpaceModal';
 import RemoveSpaceConfirmModal from '../Modals/ConfirmModal/RemoveSpaceConfirmModal';
 import StartButton from '../StartButton/StartButton';
 import RemoveAccountConfirmModal from '../Modals/ConfirmModal/RemoveAccountConfirmModal';
+import AuthModal from '../AuthModal/AuthModal';
+import ToastNotification from '../Modals/ToastNotification';
 
 function App() {
   const isMarkModalOpen = useSelector((state) => state.mark.isMarkModalOpen);
@@ -33,14 +35,15 @@ function App() {
   return (
     <div className="App">
       <Header displayTrash={isSpacesEmpty} />
-      {isSpacesEmpty ? (
+      {/* {isSpacesEmpty ? (
         <StartButton />
       ) : (
         <>
           <SpaceSelect />
           <Space />
         </>
-      )}
+      )} */}
+      <AuthModal />
       {/* Modals */}
       {isMarkModalOpen && <AddMarkModal />}
       {isSpaceModalOpen && <AddSpaceModal />}
