@@ -1,132 +1,132 @@
 export const mockSpaceList = [
-  {
-    id: '1',
-    name: 'Travail',
-  },
-  {
-    id: '2',
-    name: 'Personnel',
-  },
-  {
-    id: '3',
-    name: 'Projets',
-  },
-  {
-    id: '4',
-    name: 'Loisirs',
-  },
-  {
-    id: '5',
-    name: 'Études',
-  },
-  {
-    id: '6',
-    name: 'Voyages',
-  },
-  {
-    id: '7',
-    name: 'Fitness',
-  },
-  {
-    id: '8',
-    name: 'Lecture',
-  },
-  {
-    id: '9',
-    name: 'Cuisine',
-  },
-  {
-    id: '10',
-    name: 'Famille',
-  },
-  {
-    id: '11',
-    name: 'Amis',
-  },
-  {
-    id: '12',
-    name: 'Finances',
-  },
-  {
-    id: '13',
-    name: 'Investissements',
-  },
-  {
-    id: '14',
-    name: 'Santé',
-  },
-  {
-    id: '15',
-    name: 'Shopping',
-  },
-  {
-    id: '16',
-    name: 'Films',
-  },
-  {
-    id: '17',
-    name: 'Musique',
-  },
-  {
-    id: '18',
-    name: 'Jeux vidéo',
-  },
-  {
-    id: '19',
-    name: 'Art',
-  },
-  {
-    id: '20',
-    name: 'Photographie',
-  },
-  {
-    id: '21',
-    name: 'Design',
-  },
-  {
-    id: '22',
-    name: 'Mode',
-  },
-  {
-    id: '23',
-    name: 'Technologie',
-  },
-  {
-    id: '24',
-    name: 'Développement personnel',
-  },
-  {
-    id: '25',
-    name: 'Méditation',
-  },
-  {
-    id: '26',
-    name: 'Sport',
-  },
-  {
-    id: '27',
-    name: 'Jardinage',
-  },
-  {
-    id: '28',
-    name: 'Animaux',
-  },
-  {
-    id: '29',
-    name: 'Maison',
-  },
-  {
-    id: '30',
-    name: 'Événements',
-  },
-  {
-    id: '31',
-    name: 'Blogging',
-  },
-  {
-    id: '32',
-    name: 'Bricolage',
-  },
+  // {
+  //   id: '1',
+  //   name: 'Travail',
+  // },
+  // {
+  //   id: '2',
+  //   name: 'Personnel',
+  // },
+  // {
+  //   id: '3',
+  //   name: 'Projets',
+  // },
+  // {
+  //   id: '4',
+  //   name: 'Loisirs',
+  // },
+  // {
+  //   id: '5',
+  //   name: 'Études',
+  // },
+  // {
+  //   id: '6',
+  //   name: 'Voyages',
+  // },
+  // {
+  //   id: '7',
+  //   name: 'Fitness',
+  // },
+  // {
+  //   id: '8',
+  //   name: 'Lecture',
+  // },
+  // {
+  //   id: '9',
+  //   name: 'Cuisine',
+  // },
+  // {
+  //   id: '10',
+  //   name: 'Famille',
+  // },
+  // {
+  //   id: '11',
+  //   name: 'Amis',
+  // },
+  // {
+  //   id: '12',
+  //   name: 'Finances',
+  // },
+  // {
+  //   id: '13',
+  //   name: 'Investissements',
+  // },
+  // {
+  //   id: '14',
+  //   name: 'Santé',
+  // },
+  // {
+  //   id: '15',
+  //   name: 'Shopping',
+  // },
+  // {
+  //   id: '16',
+  //   name: 'Films',
+  // },
+  // {
+  //   id: '17',
+  //   name: 'Musique',
+  // },
+  // {
+  //   id: '18',
+  //   name: 'Jeux vidéo',
+  // },
+  // {
+  //   id: '19',
+  //   name: 'Art',
+  // },
+  // {
+  //   id: '20',
+  //   name: 'Photographie',
+  // },
+  // {
+  //   id: '21',
+  //   name: 'Design',
+  // },
+  // {
+  //   id: '22',
+  //   name: 'Mode',
+  // },
+  // {
+  //   id: '23',
+  //   name: 'Technologie',
+  // },
+  // {
+  //   id: '24',
+  //   name: 'Développement personnel',
+  // },
+  // {
+  //   id: '25',
+  //   name: 'Méditation',
+  // },
+  // {
+  //   id: '26',
+  //   name: 'Sport',
+  // },
+  // {
+  //   id: '27',
+  //   name: 'Jardinage',
+  // },
+  // {
+  //   id: '28',
+  //   name: 'Animaux',
+  // },
+  // {
+  //   id: '29',
+  //   name: 'Maison',
+  // },
+  // {
+  //   id: '30',
+  //   name: 'Événements',
+  // },
+  // {
+  //   id: '31',
+  //   name: 'Blogging',
+  // },
+  // {
+  //   id: '32',
+  //   name: 'Bricolage',
+  // },
 ];
 
 export const mockFavoritesList = [

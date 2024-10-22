@@ -19,6 +19,7 @@ import {
 const Header = ({ displayTrash }) => {
   const dispatch = useDispatch();
   const isEditMode = useSelector((state) => state.mark.isEditMode);
+  const isUserConnected = useSelector((state) => state.user.isConnected);
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
 
@@ -82,50 +83,62 @@ const Header = ({ displayTrash }) => {
     loadSavedTheme();
   }, []);
 
-  return (
-    <>
-      <header className="header-container">
-        {isEditMode ? (
+  const renderHeaderContent = () => {
+    if (!isUserConnected) {
+      return <h1 className="header-main-title">Favospace</h1>;
+    }
+
+    if (isEditMode) {
+      return (
+        <button
+          type="button"
+          className="finish-edit-button"
+          onClick={handleFinishEdit}
+        >
+          Terminé
+        </button>
+      );
+    }
+
+    return (
+      <>
+        <h1 className="header-main-title">Favospace</h1>
+        <div className="header-settings-container">
+          {!displayTrash && (
+            <FaTrashAlt
+              size={22}
+              className="clickable-icon"
+              onClick={handleEdit}
+            />
+          )}
+
+          <IoIosColorPalette
+            size={22}
+            onClick={toggleThemeModal}
+            className="clickable-icon"
+          />
           <button
             type="button"
-            className="finish-edit-button"
-            onClick={handleFinishEdit}
+            onClick={toggleUserModal}
+            className="user-button"
+            aria-haspopup="true"
+            aria-expanded={isUserModalOpen}
+            title={`Bonjour ${userName}`}
           >
-            Terminé
+            Bonjour {userName}
           </button>
-        ) : (
-          <>
-            <h1 className="header-main-title">Favospace</h1>
-            <div className="header-settings-container">
-              {!displayTrash && (
-                <FaTrashAlt
-                  size={22}
-                  className="clickable-icon"
-                  onClick={handleEdit}
-                />
-              )}
+        </div>
+      </>
+    );
+  };
 
-              <IoIosColorPalette
-                size={22}
-                onClick={toggleThemeModal}
-                className="clickable-icon"
-              />
-              <button
-                type="button"
-                onClick={toggleUserModal}
-                className="user-button"
-                aria-haspopup="true"
-                aria-expanded={isUserModalOpen}
-                title={`Bonjour ${userName}`}
-              >
-                Bonjour {userName}
-              </button>
-            </div>
-          </>
-        )}
-      </header>
-      {isThemeModalOpen && <ThemeModal onChangeTheme={changeTheme} />}
-      {isUserModalOpen && (
+  return (
+    <>
+      <header className="header-container">{renderHeaderContent()}</header>
+      {isUserConnected && isThemeModalOpen && (
+        <ThemeModal onChangeTheme={changeTheme} />
+      )}
+      {isUserConnected && isUserModalOpen && (
         <UserModal
           onLogout={handleLogout}
           onDeleteAccount={handleDeleteAccount}
