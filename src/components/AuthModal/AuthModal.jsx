@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import './AuthModal.scss';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import InputWithIcon from './InputWithIcon';
-import backgroundVideo from '../../assets/space_video.mp4';
-import backgroundImage from '../../assets/space_bg.png';
+import backgroundVideo from '../../assets/earth_video.mp4';
+import backgroundImage from '../../assets/earth_bg.png';
 import {
   changeEmailValue,
   changeNameValue,
   changePasswordValue,
 } from '../../actions/authActions';
-import { useState } from 'react';
 
 const AuthModal = () => {
   const dispatch = useDispatch();

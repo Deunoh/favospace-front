@@ -35,15 +35,15 @@ function App() {
   return (
     <div className="App">
       <Header displayTrash={isSpacesEmpty} />
-      {/* {isSpacesEmpty ? (
+      {isSpacesEmpty ? (
         <StartButton />
       ) : (
         <>
           <SpaceSelect />
           <Space />
         </>
-      )} */}
-      <AuthModal />
+      )}
+      {/* <AuthModal /> */}
       {/* Modals */}
       {isMarkModalOpen && <AddMarkModal />}
       {isSpaceModalOpen && <AddSpaceModal />}
