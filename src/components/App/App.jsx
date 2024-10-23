@@ -1,3 +1,4 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header/Header';
@@ -13,7 +14,23 @@ import RemoveAccountConfirmModal from '../Modals/ConfirmModal/RemoveAccountConfi
 import AuthModal from '../AuthModal/AuthModal';
 import ToastNotification from '../Modals/ToastNotification';
 
+// Composants react router pour gérer l'authentification
+const ProtectedRoute = ({ children, isConnected }) => {
+  if (!isConnected) {
+    return <Navigate to="/authenticate" />;
+  }
+  return children;
+};
+
+const PublicRoute = ({ children, isConnected }) => {
+  if (isConnected) {
+    return <Navigate to="/" />;
+  }
+  return children;
+};
+
 function App() {
+  const isUserConnected = useSelector((state) => state.user.isConnected);
   const isMarkModalOpen = useSelector((state) => state.mark.isMarkModalOpen);
   const isSpaceModalOpen = useSelector((state) => state.mark.isSpaceModalOpen);
   const spaceList = useSelector((state) => state.mark.spaceList);
@@ -34,16 +51,36 @@ function App() {
 
   return (
     <div className="App">
-      <Header displayTrash={isSpacesEmpty} />
-      {isSpacesEmpty ? (
-        <StartButton />
-      ) : (
-        <>
-          <SpaceSelect />
-          <Space />
-        </>
-      )}
-      {/* <AuthModal /> */}
+      <Header displayTrash={isSpacesEmpty} isUserConnected={isUserConnected} />
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute isConnected={isUserConnected}>
+              {isSpacesEmpty ? (
+                <StartButton />
+              ) : (
+                <>
+                  <SpaceSelect />
+                  <Space />
+                </>
+              )}
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Route d'authentification */}
+        <Route
+          path="/authenticate"
+          element={
+            <PublicRoute isConnected={isUserConnected}>
+              <AuthModal />
+            </PublicRoute>
+          }
+        />
+      </Routes>
+
       {/* Modals */}
       {isMarkModalOpen && <AddMarkModal />}
       {isSpaceModalOpen && <AddSpaceModal />}

@@ -16,10 +16,9 @@ import {
   saveImageToIndexedDB,
 } from '../../utils/indexedDBService';
 
-const Header = ({ displayTrash }) => {
+const Header = ({ displayTrash, isUserConnected }) => {
   const dispatch = useDispatch();
   const isEditMode = useSelector((state) => state.mark.isEditMode);
-  const isUserConnected = useSelector((state) => state.user.isConnected);
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
 
@@ -151,6 +150,7 @@ const Header = ({ displayTrash }) => {
 
 Header.propTypes = {
   displayTrash: PropTypes.bool.isRequired,
+  isUserConnected: PropTypes.bool.isRequired,
 };
 
 export default Header;
