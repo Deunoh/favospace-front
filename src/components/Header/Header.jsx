@@ -2,7 +2,7 @@ import './Header.scss';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaRegEdit } from 'react-icons/fa';
 import { IoIosColorPalette } from 'react-icons/io';
 import ThemeModal from './ThemeModal/ThemeModal';
 import UserModal from './UserModal/UserModal';
@@ -105,7 +105,7 @@ const Header = ({ displayTrash }) => {
         <h1 className="header-main-title">Favospace</h1>
         <div className="header-settings-container">
           {!displayTrash && (
-            <FaTrashAlt
+            <FaRegEdit
               size={22}
               className="clickable-icon"
               onClick={handleEdit}
