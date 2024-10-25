@@ -2,7 +2,8 @@ import './Header.scss';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaRegEdit } from 'react-icons/fa';
+// import { FaRegEdit } from 'react-icons/fa';
+import { BsTrash3Fill } from 'react-icons/bs';
 import { IoIosColorPalette } from 'react-icons/io';
 import ThemeModal from './ThemeModal/ThemeModal';
 import UserModal from './UserModal/UserModal';
@@ -21,6 +22,12 @@ const Header = ({ displayTrash, isUserConnected }) => {
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
+
+  // fonction to display bonsoir in evening and bonjour in day
+  const whatSalutation = () => {
+    const hour = new Date().getHours();
+    return hour >= 18 || hour < 4 ? 'Bonsoir' : 'Bonjour';
+  };
 
   // TODO à dynamiser
   const userName = 'Denovann';
@@ -84,7 +91,11 @@ const Header = ({ displayTrash, isUserConnected }) => {
 
   const renderHeaderContent = () => {
     if (!isUserConnected) {
-      return <h1 className="header-main-title">Favospace</h1>;
+      return (
+        <h1 className="header-main-title">
+          Favospace<span className="beta-badge">beta</span>
+        </h1>
+      );
     }
 
     if (isEditMode) {
@@ -101,10 +112,12 @@ const Header = ({ displayTrash, isUserConnected }) => {
 
     return (
       <>
-        <h1 className="header-main-title">Favospace</h1>
+        <h1 className="header-main-title">
+          Favospace<span className="beta-badge">beta</span>
+        </h1>
         <div className="header-settings-container">
           {!displayTrash && (
-            <FaRegEdit
+            <BsTrash3Fill
               size={22}
               className="clickable-icon"
               onClick={handleEdit}
@@ -124,7 +137,7 @@ const Header = ({ displayTrash, isUserConnected }) => {
             aria-expanded={isUserModalOpen}
             title={`Bonjour ${userName}`}
           >
-            Bonjour {userName}
+            {whatSalutation()} {userName}
           </button>
         </div>
       </>
