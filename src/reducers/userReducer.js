@@ -10,7 +10,7 @@ export const initialState = {
   inputName: '',
   inputEmail: '',
   inputPassword: '',
-  isConnected: true,
+  isConnected: false,
 };
 
 const reducer = (state = initialState, action = {}) => {

@@ -9,6 +9,8 @@ import {
   changeEmailValue,
   changeNameValue,
   changePasswordValue,
+  submitLogin,
+  submitSignin,
 } from '../../actions/authActions';
 
 const AuthModal = () => {
@@ -18,13 +20,14 @@ const AuthModal = () => {
   const email = useSelector((state) => state.user.inputEmail);
   const password = useSelector((state) => state.user.inputPassword);
 
-  const handleSubmit = (e) => {
+  const handleSubmitLogin = (e) => {
     e.preventDefault();
-    console.log(isLogin ? 'Connexion' : 'Inscription', {
-      name,
-      email,
-      password,
-    });
+    dispatch(submitLogin());
+  };
+
+  const handleSubmitRegister = (e) => {
+    e.preventDefault();
+    dispatch(submitSignin());
   };
 
   const toggleMode = () => {
@@ -50,7 +53,7 @@ const AuthModal = () => {
         <div className="card-inner">
           <div className="card-front">
             <h2 className="title-connexion">Connexion</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmitLogin}>
               <InputWithIcon
                 icon={<FaEnvelope />}
                 type="email"
@@ -82,7 +85,7 @@ const AuthModal = () => {
           <div className="card-back">
             <h2 className="title-inscription">Créer un compte</h2>
             <span className="message-inscription">Favospace est gratuit !</span>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmitRegister}>
               <InputWithIcon
                 icon={<FaUser />}
                 type="text"
