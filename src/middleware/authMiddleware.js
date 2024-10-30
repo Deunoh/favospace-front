@@ -2,10 +2,12 @@ import axios from 'axios';
 import {
   handleSuccessfulLogin,
   handleSuccessfulRegister,
+  setErrorLogin,
   setErrorsRegister,
   setLoadingLogin,
   setLoadingRegister,
   SUBMIT_LOGIN,
+  SUBMIT_LOGOUT,
   SUBMIT_REGISTER,
 } from '../actions/authActions';
 
@@ -49,18 +51,31 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           store.dispatch(setLoadingLogin(false));
-          // console.log('LOGIN', response.data.data.firstname);
-          // TODO enregistrer token dans cookie
+
           const userId = response.data.user.id;
           const userName = response.data.user.name;
           const userEmail = response.data.user.email;
           store.dispatch(handleSuccessfulLogin(userId, userName, userEmail));
+          localStorage.setItem('token_jwt', response.data.token);
         })
         .catch((error) => {
           store.dispatch(setLoadingLogin(false));
-          console.log('error', error);
-          console.log('error.response', error.response);
-          console.log('error.response.status', error.response.status);
+          const invalidCredentials = error.response.status === 401;
+          console.log(invalidCredentials);
+          console.log(error);
+          if (invalidCredentials) {
+            store.dispatch(
+              setErrorLogin({
+                message: ['Email ou mot de passe incorrect'],
+              })
+            );
+          } else {
+            store.dispatch(
+              setErrorLogin({
+                message: ['Une erreur est survenue, veuillez réessayer'],
+              })
+            );
+          }
         });
       break;
     default:

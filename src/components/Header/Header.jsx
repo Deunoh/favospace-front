@@ -16,6 +16,7 @@ import {
   getImageFromIndexedDB,
   saveImageToIndexedDB,
 } from '../../utils/indexedDBService';
+import { submitLogout } from '../../actions/authActions';
 
 const Header = ({ displayTrash, isUserConnected }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,8 @@ const Header = ({ displayTrash, isUserConnected }) => {
   };
 
   const handleLogout = () => {
-    // TODO logique à faire
+    dispatch(submitLogout());
+    localStorage.removeItem('token_jwt');
     console.log('Déconnexion');
     setIsUserModalOpen(false);
   };

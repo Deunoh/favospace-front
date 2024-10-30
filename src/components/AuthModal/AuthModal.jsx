@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './AuthModal.scss';
 import { Link } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock, FaSpinner } from 'react-icons/fa';
@@ -22,6 +22,17 @@ const AuthModal = () => {
   const name = useSelector((state) => state.user.inputName);
   const email = useSelector((state) => state.user.inputEmail);
   const password = useSelector((state) => state.user.inputPassword);
+  const isSuccessRegister = useSelector(
+    (state) => state.user.isSuccessfulRegister
+  );
+  console.log(isLogin);
+
+  // For turn the form when the register is Ok
+  useEffect(() => {
+    if (isSuccessRegister) {
+      setIsLogin(false);
+    }
+  }, [isSuccessRegister]);
 
   // Erreurs et loading formulaire d'inscription
   const isRegisterLoading = useSelector(
@@ -29,7 +40,7 @@ const AuthModal = () => {
   );
   const isLoginLoading = useSelector((state) => state.user.isLoginLoading);
   const errorsRegister = useSelector((state) => state.user.errorsRegister);
-  console.log('Erreurs ?', errorsRegister);
+  const errorsLogin = useSelector((state) => state.user.errorsLogin);
 
   const handleSubmitLogin = (e) => {
     e.preventDefault();
@@ -82,6 +93,7 @@ const AuthModal = () => {
                 onChange={(e) => dispatch(changePasswordValue(e.target.value))}
                 required
               />
+              <ErrorMessage fieldName="message" errors={errorsLogin} />
               <button
                 type="submit"
                 className="submit-btn"

@@ -5,9 +5,11 @@ import {
   HANDLE_SUCCESSFUL_REGISTER,
   HANDLE_SUCCESSUFUL_LOGIN,
   RESET_SUCCESS_REGISTER,
+  SET_ERRORS_LOGIN,
   SET_ERRORS_REGISTER,
   SET_LOADING_LOGIN,
   SET_LOADING_REGISTER,
+  SUBMIT_LOGOUT,
 } from '../actions/authActions';
 
 export const initialState = {
@@ -22,6 +24,7 @@ export const initialState = {
   isRegisterLoading: false,
   isLoginLoading: false,
   errorsRegister: {},
+  errorsLogin: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -64,6 +67,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         errorsRegister: action.errors,
       };
+    case SET_ERRORS_LOGIN:
+      return {
+        ...state,
+        errorsLogin: action.errors,
+      };
     case HANDLE_SUCCESSFUL_REGISTER:
       return {
         ...state,
@@ -73,6 +81,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isSuccessfulRegister: false,
+      };
+    case SUBMIT_LOGOUT:
+      return {
+        ...state,
+        isConnected: false,
+        isSuccessfulRegister: false,
+        userEmail: '',
+        userName: '',
+        userId: '',
+        inputName: '',
+        inputEmail: '',
+        inputPassword: '',
       };
     default:
       return state;
