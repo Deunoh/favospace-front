@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import './AuthModal.scss';
+import { Link } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock, FaSpinner } from 'react-icons/fa';
 import InputWithIcon from './InputWithIcon';
 import backgroundVideo from '../../assets/earth_video.mp4';
@@ -11,11 +12,9 @@ import {
   changePasswordValue,
   resetSuccessRegister,
   submitLogin,
-  submitSignin,
+  submitRegister,
 } from '../../actions/authActions';
 import ErrorMessage from './ErrorsMessage/ErrorsMessage';
-import ToastNotification from '../Modals/ToastNotification';
-import { Link } from 'react-router-dom';
 
 const AuthModal = () => {
   const dispatch = useDispatch();
@@ -28,6 +27,7 @@ const AuthModal = () => {
   const isRegisterLoading = useSelector(
     (state) => state.user.isRegisterLoading
   );
+  const isLoginLoading = useSelector((state) => state.user.isLoginLoading);
   const errorsRegister = useSelector((state) => state.user.errorsRegister);
   console.log('Erreurs ?', errorsRegister);
 
@@ -38,7 +38,7 @@ const AuthModal = () => {
 
   const handleSubmitRegister = (e) => {
     e.preventDefault();
-    dispatch(submitSignin());
+    dispatch(submitRegister());
   };
 
   const toggleMode = () => {
@@ -82,8 +82,16 @@ const AuthModal = () => {
                 onChange={(e) => dispatch(changePasswordValue(e.target.value))}
                 required
               />
-              <button type="submit" className="submit-btn">
-                Se connecter
+              <button
+                type="submit"
+                className="submit-btn"
+                disabled={isLoginLoading}
+              >
+                {isLoginLoading ? (
+                  <FaSpinner className="spinner" />
+                ) : (
+                  'Se connecter'
+                )}
               </button>
             </form>
             <p className="link-paragraph">

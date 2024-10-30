@@ -6,6 +6,7 @@ import {
   HANDLE_SUCCESSUFUL_LOGIN,
   RESET_SUCCESS_REGISTER,
   SET_ERRORS_REGISTER,
+  SET_LOADING_LOGIN,
   SET_LOADING_REGISTER,
 } from '../actions/authActions';
 
@@ -19,6 +20,7 @@ export const initialState = {
   isConnected: false,
   isSuccessfulRegister: false,
   isRegisterLoading: false,
+  isLoginLoading: false,
   errorsRegister: {},
 };
 
@@ -51,6 +53,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isRegisterLoading: action.isLoading,
+      };
+    case SET_LOADING_LOGIN:
+      return {
+        ...state,
+        isLoginLoading: action.isLoading,
       };
     case SET_ERRORS_REGISTER:
       return {

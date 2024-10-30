@@ -3,16 +3,17 @@ import {
   handleSuccessfulLogin,
   handleSuccessfulRegister,
   setErrorsRegister,
+  setLoadingLogin,
   setLoadingRegister,
   SUBMIT_LOGIN,
-  SUBMIT_SIGNIN,
+  SUBMIT_REGISTER,
 } from '../actions/authActions';
 
 const url = 'http://localhost:8000/api/';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case SUBMIT_SIGNIN:
+    case SUBMIT_REGISTER:
       store.dispatch(setLoadingRegister(true));
       store.dispatch(setErrorsRegister({}));
       axios
@@ -40,12 +41,14 @@ const authMiddleware = (store) => (next) => (action) => {
       // store.dispatch(handleSuccessfulSignin);
       break;
     case SUBMIT_LOGIN:
+      store.dispatch(setLoadingLogin(true));
       axios
         .post(`${url}login_check`, {
           username: store.getState().user.inputEmail,
           password: store.getState().user.inputPassword,
         })
         .then((response) => {
+          store.dispatch(setLoadingLogin(false));
           // console.log('LOGIN', response.data.data.firstname);
           // TODO enregistrer token dans cookie
           const userId = response.data.user.id;
@@ -54,6 +57,7 @@ const authMiddleware = (store) => (next) => (action) => {
           store.dispatch(handleSuccessfulLogin(userId, userName, userEmail));
         })
         .catch((error) => {
+          store.dispatch(setLoadingLogin(false));
           console.log('error', error);
           console.log('error.response', error.response);
           console.log('error.response.status', error.response.status);

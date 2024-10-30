@@ -1,11 +1,12 @@
 export const CHANGE_EMAIL_VALUE = 'CHANGE_EMAIL_VALUE';
 export const CHANGE_NAME_VALUE = 'CHANGE_NAME_VALUE';
 export const CHANGE_PASSWORD_VALUE = 'CHANGE_PASSWORD_VALUE';
-export const SUBMIT_SIGNIN = 'SUBMIT_SIGNIN';
+export const SUBMIT_REGISTER = 'SUBMIT_REGISTER';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const HANDLE_SUCCESSUFUL_LOGIN = 'HANDLE_SUCCESSFUL_LOGIN';
 export const HANDLE_SUCCESSFUL_REGISTER = 'HANDLE_SUCCESSFUL_REGISTER';
 export const SET_LOADING_REGISTER = 'SET_LOADING_REGISTER';
+export const SET_LOADING_LOGIN = 'SET_LOADING_LOGIN';
 export const SET_ERRORS_REGISTER = 'SET_REGISTER_ERRORS';
 export const RESET_SUCCESS_REGISTER = 'RESET_SUCCESS_REGISTER';
 export const changeEmailValue = (inputEmail) => ({
@@ -22,8 +23,8 @@ export const changePasswordValue = (inputPassword) => ({
   type: CHANGE_PASSWORD_VALUE,
   inputPassword,
 });
-export const submitSignin = () => ({
-  type: SUBMIT_SIGNIN,
+export const submitRegister = () => ({
+  type: SUBMIT_REGISTER,
 });
 export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
@@ -39,6 +40,10 @@ export const handleSuccessfulRegister = () => ({
 });
 export const setLoadingRegister = (isLoading) => ({
   type: SET_LOADING_REGISTER,
+  isLoading,
+});
+export const setLoadingLogin = (isLoading) => ({
+  type: SET_LOADING_LOGIN,
   isLoading,
 });
 export const setErrorsRegister = (errors) => ({
