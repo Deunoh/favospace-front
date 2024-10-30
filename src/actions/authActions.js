@@ -7,6 +7,7 @@ export const HANDLE_SUCCESSUFUL_LOGIN = 'HANDLE_SUCCESSFUL_LOGIN';
 export const HANDLE_SUCCESSFUL_REGISTER = 'HANDLE_SUCCESSFUL_REGISTER';
 export const SET_LOADING_REGISTER = 'SET_LOADING_REGISTER';
 export const SET_ERRORS_REGISTER = 'SET_REGISTER_ERRORS';
+export const RESET_SUCCESS_REGISTER = 'RESET_SUCCESS_REGISTER';
 export const changeEmailValue = (inputEmail) => ({
   type: CHANGE_EMAIL_VALUE,
   inputEmail,
@@ -43,4 +44,7 @@ export const setLoadingRegister = (isLoading) => ({
 export const setErrorsRegister = (errors) => ({
   type: SET_ERRORS_REGISTER,
   errors,
+});
+export const resetSuccessRegister = () => ({
+  type: RESET_SUCCESS_REGISTER,
 });

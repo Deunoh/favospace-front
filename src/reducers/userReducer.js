@@ -4,6 +4,7 @@ import {
   CHANGE_PASSWORD_VALUE,
   HANDLE_SUCCESSFUL_REGISTER,
   HANDLE_SUCCESSUFUL_LOGIN,
+  RESET_SUCCESS_REGISTER,
   SET_ERRORS_REGISTER,
   SET_LOADING_REGISTER,
 } from '../actions/authActions';
@@ -60,6 +61,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isSuccessfulRegister: true,
+      };
+    case RESET_SUCCESS_REGISTER:
+      return {
+        ...state,
+        isSuccessfulRegister: false,
       };
     default:
       return state;

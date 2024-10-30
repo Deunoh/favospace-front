@@ -9,6 +9,7 @@ import {
   changeEmailValue,
   changeNameValue,
   changePasswordValue,
+  resetSuccessRegister,
   submitLogin,
   submitSignin,
 } from '../../actions/authActions';
@@ -45,6 +46,7 @@ const AuthModal = () => {
     dispatch(changeNameValue(''));
     dispatch(changeEmailValue(''));
     dispatch(changePasswordValue(''));
+    dispatch(resetSuccessRegister());
   };
 
   return (
