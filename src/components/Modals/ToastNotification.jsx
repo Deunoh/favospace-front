@@ -32,7 +32,7 @@ const ToastNotification = ({ message, type = 'info' }) => {
     justifyContent: 'space-between',
     alignItems: 'center',
     transition: 'transform 0.3s ease-in-out',
-    zIndex: 1000,
+    zIndex: 3000,
   };
 
   const buttonStyle = {

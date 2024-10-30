@@ -28,7 +28,10 @@
 
   .card {
     width: 320px;
-    height: 450px;
+    // height: 450px;
+    // min height pour les erreurs
+    min-height: 450px;
+    height: auto;
     perspective: 1000px;
 
     &-inner {
@@ -48,7 +51,9 @@
     &-back {
       position: absolute;
       width: 100%;
-      height: 100%;
+      // height: 100%;
+      min-height: 450px;
+      height: auto;
       backface-visibility: hidden;
       background-color: #fff;
       border-radius: 40px 20px;
@@ -122,6 +127,19 @@
     }
   }
 
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   .submit-btn {
     padding: 12px;
     background-color: #000;
@@ -140,6 +158,27 @@
 
     &:active {
       transform: scale(0.98);
+    }
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  .policy-message {
+    font-size: 0.75rem;
+    color: gray;
+    text-align: center;
+    // margin: 0.5rem 0 1rem;
+    line-height: 1.2;
+
+    a {
+      color: #000;
+      text-decoration: underline;
+
+      &:hover {
+        color: #0056b3;
+      }
     }
   }
   .link-paragraph {

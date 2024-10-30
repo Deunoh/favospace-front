@@ -30,6 +30,9 @@ const PublicRoute = ({ children, isConnected }) => {
 };
 
 function App() {
+  const isSuccessRegister = useSelector(
+    (state) => state.user.isSuccessfulRegister
+  );
   const isUserConnected = useSelector((state) => state.user.isConnected);
   const isMarkModalOpen = useSelector((state) => state.mark.isMarkModalOpen);
   const isSpaceModalOpen = useSelector((state) => state.mark.isSpaceModalOpen);
@@ -86,6 +89,9 @@ function App() {
       {isSpaceModalOpen && <AddSpaceModal />}
       {isRemoveSpaceModalOpen && <RemoveSpaceConfirmModal />}
       {isRemoveAccountModalOpen && <RemoveAccountConfirmModal />}
+      {isSuccessRegister && (
+        <ToastNotification message="Inscription réussie, veuillez vous connecter" />
+      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import './AuthModal.scss';
-import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaSpinner } from 'react-icons/fa';
 import InputWithIcon from './InputWithIcon';
 import backgroundVideo from '../../assets/earth_video.mp4';
 import backgroundImage from '../../assets/earth_bg.png';
@@ -12,6 +12,9 @@ import {
   submitLogin,
   submitSignin,
 } from '../../actions/authActions';
+import ErrorMessage from './ErrorsMessage/ErrorsMessage';
+import ToastNotification from '../Modals/ToastNotification';
+import { Link } from 'react-router-dom';
 
 const AuthModal = () => {
   const dispatch = useDispatch();
@@ -19,6 +22,13 @@ const AuthModal = () => {
   const name = useSelector((state) => state.user.inputName);
   const email = useSelector((state) => state.user.inputEmail);
   const password = useSelector((state) => state.user.inputPassword);
+
+  // Erreurs et loading formulaire d'inscription
+  const isRegisterLoading = useSelector(
+    (state) => state.user.isRegisterLoading
+  );
+  const errorsRegister = useSelector((state) => state.user.errorsRegister);
+  console.log('Erreurs ?', errorsRegister);
 
   const handleSubmitLogin = (e) => {
     e.preventDefault();
@@ -94,6 +104,7 @@ const AuthModal = () => {
                 onChange={(e) => dispatch(changeNameValue(e.target.value))}
                 required
               />
+              <ErrorMessage fieldName="name" errors={errorsRegister} />
               <InputWithIcon
                 icon={<FaEnvelope />}
                 type="email"
@@ -102,6 +113,7 @@ const AuthModal = () => {
                 onChange={(e) => dispatch(changeEmailValue(e.target.value))}
                 required
               />
+              <ErrorMessage fieldName="email" errors={errorsRegister} />
               <InputWithIcon
                 icon={<FaLock />}
                 type="password"
@@ -110,8 +122,21 @@ const AuthModal = () => {
                 onChange={(e) => dispatch(changePasswordValue(e.target.value))}
                 required
               />
-              <button type="submit" className="submit-btn">
-                S'inscrire
+              <ErrorMessage fieldName="password" errors={errorsRegister} />
+              <p className="policy-message">
+                En vous inscrivant, vous acceptez notre{' '}
+                <Link href="/privacy-policy">politique de confidentialité</Link>
+              </p>
+              <button
+                type="submit"
+                className="submit-btn"
+                disabled={isRegisterLoading}
+              >
+                {isRegisterLoading ? (
+                  <FaSpinner className="spinner" />
+                ) : (
+                  "S'inscrire"
+                )}
               </button>
             </form>
             <p className="link-paragraph">

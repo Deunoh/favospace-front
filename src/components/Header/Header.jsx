@@ -29,8 +29,7 @@ const Header = ({ displayTrash, isUserConnected }) => {
     return hour >= 18 || hour < 4 ? 'Bonsoir' : 'Bonjour';
   };
 
-  // TODO à dynamiser
-  const userName = 'Denovann';
+  const userName = useSelector((state) => state.user.userName);
 
   const toggleThemeModal = () => {
     setIsThemeModalOpen(!isThemeModalOpen);
