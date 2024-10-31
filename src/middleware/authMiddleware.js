@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+  DELETE_USER_ACCOUNT,
   handleSuccessfulLogin,
   handleSuccessfulRegister,
   setErrorLogin,
@@ -9,7 +10,9 @@ import {
   SUBMIT_LOGIN,
   SUBMIT_LOGOUT,
   SUBMIT_REGISTER,
+  submitLogout,
 } from '../actions/authActions';
+import store from '../store/store';
 
 const url = 'http://localhost:8000/api/';
 
@@ -78,6 +81,23 @@ const authMiddleware = (store) => (next) => (action) => {
           }
         });
       break;
+    case DELETE_USER_ACCOUNT:
+      axios
+        .delete(`${url}delete-account`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,
+          },
+        })
+        .then(() => {
+          store.dispatch(submitLogout());
+          localStorage.removeItem('token_jwt');
+          console.log('Compte supprimé !');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
     default:
   }
   next(action);

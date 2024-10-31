@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toggleRemoveAccountModal } from '../../../actions/markActions';
 import './ConfirmModal.scss';
+import { deleteAccountUser } from '../../../actions/authActions';
 
 const RemoveAccountConfirmModal = () => {
   const dispatch = useDispatch();
 
   const handleConfirmDelete = () => {
     dispatch(toggleRemoveAccountModal());
-    console.log('Compte supprimé !');
-    // TODO Logique à faire
+    dispatch(deleteAccountUser());
   };
 
   const handleCloseModal = () => {

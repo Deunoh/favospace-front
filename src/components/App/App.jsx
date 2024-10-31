@@ -13,6 +13,7 @@ import StartButton from '../StartButton/StartButton';
 import RemoveAccountConfirmModal from '../Modals/ConfirmModal/RemoveAccountConfirmModal';
 import AuthModal from '../AuthModal/AuthModal';
 import ToastNotification from '../Modals/ToastNotification';
+import Footer from '../Footer/Footer';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -83,6 +84,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
 
       {/* Modals */}
       {isMarkModalOpen && <AddMarkModal />}

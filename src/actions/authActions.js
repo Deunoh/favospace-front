@@ -11,6 +11,7 @@ export const SET_LOADING_LOGIN = 'SET_LOADING_LOGIN';
 export const SET_ERRORS_REGISTER = 'SET_REGISTER_ERRORS';
 export const SET_ERRORS_LOGIN = 'SET_ERRORS_LOGIN';
 export const RESET_SUCCESS_REGISTER = 'RESET_SUCCESS_REGISTER';
+export const DELETE_USER_ACCOUNT = 'DELETE_USER_ACCOUNT';
 export const changeEmailValue = (inputEmail) => ({
   type: CHANGE_EMAIL_VALUE,
   inputEmail,
@@ -61,4 +62,7 @@ export const setErrorLogin = (errors) => ({
 });
 export const resetSuccessRegister = () => ({
   type: RESET_SUCCESS_REGISTER,
+});
+export const deleteAccountUser = () => ({
+  type: DELETE_USER_ACCOUNT,
 });

@@ -25,7 +25,6 @@ const AuthModal = () => {
   const isSuccessRegister = useSelector(
     (state) => state.user.isSuccessfulRegister
   );
-  console.log(isLogin);
 
   // For turn the form when the register is Ok
   useEffect(() => {
@@ -147,7 +146,7 @@ const AuthModal = () => {
               <ErrorMessage fieldName="password" errors={errorsRegister} />
               <p className="policy-message">
                 En vous inscrivant, vous acceptez notre{' '}
-                <Link href="/privacy-policy">politique de confidentialité</Link>
+                <Link to="/privacy-policy">politique de confidentialité</Link>
               </p>
               <button
                 type="submit"
