@@ -14,6 +14,7 @@ import RemoveAccountConfirmModal from '../Modals/ConfirmModal/RemoveAccountConfi
 import AuthModal from '../AuthModal/AuthModal';
 import ToastNotification from '../Modals/ToastNotification';
 import Footer from '../Footer/Footer';
+import { verifyUser } from '../../actions/authActions';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -51,6 +52,12 @@ function App() {
   useEffect(() => {
     dispatch(fetchSpaces());
     dispatch(fetchMarks());
+  }, [dispatch]);
+
+  // Verify token for keep authentication
+  useEffect(() => {
+    const token = localStorage.getItem('token_jwt');
+    dispatch(verifyUser(token));
   }, [dispatch]);
 
   return (

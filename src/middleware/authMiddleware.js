@@ -8,11 +8,10 @@ import {
   setLoadingLogin,
   setLoadingRegister,
   SUBMIT_LOGIN,
-  SUBMIT_LOGOUT,
   SUBMIT_REGISTER,
   submitLogout,
+  VERIFY_USER,
 } from '../actions/authActions';
-import store from '../store/store';
 
 const url = 'http://localhost:8000/api/';
 
@@ -44,6 +43,27 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       // store.dispatch(handleSuccessfulSignin);
+      break;
+    case VERIFY_USER:
+      if (action.token) {
+        axios
+          .get(`${url}verify-user`, {
+            headers: {
+              Authorization: `Bearer ${action.token}`,
+            },
+          })
+          .then((response) => {
+            const userId = response.data.user.id;
+            const userName = response.data.user.name;
+            const userEmail = response.data.user.email;
+            store.dispatch(handleSuccessfulLogin(userId, userName, userEmail));
+          })
+          .catch(() => {
+            // Token invalide ou expiré
+            localStorage.removeItem('token_jwt');
+            store.dispatch(submitLogout());
+          });
+      }
       break;
     case SUBMIT_LOGIN:
       store.dispatch(setLoadingLogin(true));

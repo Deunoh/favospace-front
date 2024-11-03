@@ -12,6 +12,7 @@ export const SET_ERRORS_REGISTER = 'SET_REGISTER_ERRORS';
 export const SET_ERRORS_LOGIN = 'SET_ERRORS_LOGIN';
 export const RESET_SUCCESS_REGISTER = 'RESET_SUCCESS_REGISTER';
 export const DELETE_USER_ACCOUNT = 'DELETE_USER_ACCOUNT';
+export const VERIFY_USER = 'VERIFY_USER';
 export const changeEmailValue = (inputEmail) => ({
   type: CHANGE_EMAIL_VALUE,
   inputEmail,
@@ -65,4 +66,8 @@ export const resetSuccessRegister = () => ({
 });
 export const deleteAccountUser = () => ({
   type: DELETE_USER_ACCOUNT,
+});
+export const verifyUser = (token) => ({
+  type: VERIFY_USER,
+  token,
 });
