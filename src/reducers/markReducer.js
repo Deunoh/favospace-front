@@ -4,12 +4,14 @@ import {
   SAVE_SPACES,
   ADD_SPACE,
   ADD_MARK,
-  TOGGLE_MARK_MODAL,
-  TOGGLE_SPACE_MODAL,
   ACTIVATE_EDIT_MODE,
   DESACTIVATE_EDIT_MODE,
   TOGGLE_REMOVE_SPACE_MODAL,
   TOGGLE_REMOVE_ACCOUNT_MODAL,
+  TOGGLE_ADD_MARK_MODAL,
+  TOGGLE_EDIT_MARK_MODAL,
+  TOGGLE_ADD_SPACE_MODAL,
+  TOGGLE_EDIT_SPACE_MODAL,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -17,8 +19,11 @@ export const initialState = {
   spaceList: [],
   spaceSelected: '',
   isEditMode: false,
-  isSpaceModalOpen: false,
-  isMarkModalOpen: false,
+  isAddSpaceModalOpen: false,
+  isEditSpaceModalOpen: false,
+  isAddMarkModalOpen: false,
+  isEditMarkModalOpen: false,
+  currentMarkToEdit: null,
   isRemoveSpaceModalOpen: false,
   isRemoveAccountModalOpen: false,
 };
@@ -61,15 +66,26 @@ const reducer = (state = initialState, action = {}) => {
           },
         ],
       };
-    case TOGGLE_MARK_MODAL:
+    case TOGGLE_ADD_MARK_MODAL:
       return {
         ...state,
-        isMarkModalOpen: !state.isMarkModalOpen,
+        isAddMarkModalOpen: !state.isAddMarkModalOpen,
       };
-    case TOGGLE_SPACE_MODAL:
+    case TOGGLE_EDIT_MARK_MODAL:
       return {
         ...state,
-        isSpaceModalOpen: !state.isSpaceModalOpen,
+        isEditMarkModalOpen: !state.isEditMarkModalOpen,
+        currentMarkToEdit: action.mark,
+      };
+    case TOGGLE_ADD_SPACE_MODAL:
+      return {
+        ...state,
+        isAddSpaceModalOpen: !state.isAddSpaceModalOpen,
+      };
+    case TOGGLE_EDIT_SPACE_MODAL:
+      return {
+        ...state,
+        isEditSpaceModalOpen: !state.isEditSpaceModalOpen,
       };
     case ACTIVATE_EDIT_MODE:
       return {

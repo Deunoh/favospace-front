@@ -2,8 +2,7 @@ import './Header.scss';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-// import { FaRegEdit } from 'react-icons/fa';
-import { BsTrash3Fill } from 'react-icons/bs';
+import { FaRegEdit } from 'react-icons/fa';
 import { IoIosColorPalette } from 'react-icons/io';
 import ThemeModal from './ThemeModal/ThemeModal';
 import UserModal from './UserModal/UserModal';
@@ -118,7 +117,7 @@ const Header = ({ displayTrash, isUserConnected }) => {
         </h1>
         <div className="header-settings-container">
           {!displayTrash && (
-            <BsTrash3Fill
+            <FaRegEdit
               size={22}
               className="clickable-icon"
               onClick={handleEdit}

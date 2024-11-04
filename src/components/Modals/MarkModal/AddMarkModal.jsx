@@ -1,8 +1,7 @@
-// import { useState } from 'react';
-import './AddMarkModal.scss';
+import './MarkModal.scss';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { addMark, toggleMarkModal } from '../../../actions/markActions';
+import { addMark, toggleAddMarkModal } from '../../../actions/markActions';
 
 const AddMarkModal = () => {
   const dispatch = useDispatch();
@@ -26,11 +25,11 @@ const AddMarkModal = () => {
     }
 
     dispatch(addMark({ name, url }));
-    dispatch(toggleMarkModal());
+    dispatch(toggleAddMarkModal());
   };
 
   const handleCloseMarkModal = () => {
-    dispatch(toggleMarkModal());
+    dispatch(toggleAddMarkModal());
   };
 
   return (

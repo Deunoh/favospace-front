@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IoIosRemoveCircle } from 'react-icons/io';
+import { FiEdit2 } from 'react-icons/fi';
 import './Mark.scss';
+import { toggleEditMarkModal } from '../../../actions/markActions';
 
 const Mark = ({ url, name }) => {
+  const dispatch = useDispatch();
   // With google
   const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=64`;
   // With icon horse
@@ -15,6 +18,11 @@ const Mark = ({ url, name }) => {
 
   const handleRemove = () => {
     console.log('cliqué !');
+  };
+
+  const handleEditIcon = () => {
+    console.log('Modification');
+    dispatch(toggleEditMarkModal({ url, name }));
   };
 
   return (
@@ -45,6 +53,14 @@ const Mark = ({ url, name }) => {
           </button>
           <div className="TileImgContainer">
             <img src={faviconUrl} alt="" />
+            <button
+              type="button"
+              className="edit-icon-button"
+              onClick={handleEditIcon}
+              aria-label="modifier l'icône"
+            >
+              <FiEdit2 className="edit-pencil" />
+            </button>
           </div>
           <p className="TileTitle">{name}</p>
         </div>

@@ -5,8 +5,10 @@ export const SAVE_SPACES = 'SAVE_SPACES';
 export const SAVE_MARKS = 'SAVE_MARKS';
 export const ADD_SPACE = 'ADD_SPACE';
 export const ADD_MARK = 'ADD_MARK';
-export const TOGGLE_MARK_MODAL = 'TOGGLE_MARK_MODAL';
-export const TOGGLE_SPACE_MODAL = 'TOGGLE_SPACE_MODAL';
+export const TOGGLE_ADD_MARK_MODAL = 'TOGGLE_ADD_MARK_MODAL';
+export const TOGGLE_EDIT_MARK_MODAL = 'TOGGLE_EDIT_MARK_MODAL';
+export const TOGGLE_ADD_SPACE_MODAL = 'TOGGLE_ADD_SPACE_MODAL';
+export const TOGGLE_EDIT_SPACE_MODAL = 'TOGGLE_EDIT_SPACE_MODAL';
 export const ACTIVATE_EDIT_MODE = 'ACTIVATE_EDIT_MODE';
 export const DESACTIVATE_EDIT_MODE = 'DESACTIVATE_EDIT_MODE';
 export const TOGGLE_REMOVE_SPACE_MODAL = 'TOGGLE_REMOVE_SPACE_MODAL';
@@ -43,11 +45,18 @@ export const addMark = (mark) => ({
   type: ADD_MARK,
   mark,
 });
-export const toggleMarkModal = () => ({
-  type: TOGGLE_MARK_MODAL,
+export const toggleAddMarkModal = () => ({
+  type: TOGGLE_ADD_MARK_MODAL,
 });
-export const toggleSpaceModal = () => ({
-  type: TOGGLE_SPACE_MODAL,
+export const toggleEditMarkModal = (mark = null) => ({
+  type: 'TOGGLE_EDIT_MARK_MODAL',
+  mark,
+});
+export const toggleAddSpaceModal = () => ({
+  type: TOGGLE_ADD_SPACE_MODAL,
+});
+export const toggleEditSpaceModal = () => ({
+  type: TOGGLE_EDIT_SPACE_MODAL,
 });
 export const activateEditMode = () => ({
   type: ACTIVATE_EDIT_MODE,

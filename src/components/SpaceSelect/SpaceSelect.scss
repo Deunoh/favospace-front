@@ -57,23 +57,23 @@
       background-color: #333;
       color: #fff;
     }
-    &.edit-mode {
-      animation: wiggle 0.5s infinite;
-      transform-origin: 50% 10%;
-    }
+    // &.edit-mode {
+    //   animation: wiggle 0.5s infinite;
+    //   transform-origin: 50% 10%;
+    // }
   }
 
-  @keyframes wiggle {
-    0% {
-      transform: rotate(-0.7deg);
-      animation-timing-function: ease-in;
-    }
+  // @keyframes wiggle {
+  //   0% {
+  //     transform: rotate(-0.7deg);
+  //     animation-timing-function: ease-in;
+  //   }
 
-    50% {
-      transform: rotate(0.7deg);
-      animation-timing-function: ease-out;
-    }
-  }
+  //   50% {
+  //     transform: rotate(0.7deg);
+  //     animation-timing-function: ease-out;
+  //   }
+  // }
   .add-icon {
     font-size: 1.5rem;
     color: #fff;
@@ -93,6 +93,7 @@
 
     &:hover {
       transform: scale(1.1);
+      color: #d42020;
     }
   }
 }

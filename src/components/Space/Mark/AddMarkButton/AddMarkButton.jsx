@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { BsBookmarkPlusFill } from 'react-icons/bs';
 import './AddMarkButton.scss';
-import { toggleMarkModal } from '../../../../actions/markActions';
+import { toggleAddMarkModal } from '../../../../actions/markActions';
 
 const AddMarkButton = () => {
   const dispatch = useDispatch();
 
   const handleOpenMarkModal = () => {
-    dispatch(toggleMarkModal());
+    dispatch(toggleAddMarkModal());
   };
 
   return (
