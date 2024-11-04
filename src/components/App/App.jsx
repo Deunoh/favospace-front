@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header/Header';
 import SpaceSelect from '../SpaceSelect/SpaceSelect';
 import './App.scss';
-import { fetchMarks, fetchSpaces } from '../../actions/markActions';
+import {
+  changeSpaceSelect,
+  fetchMarks,
+  fetchSpaces,
+} from '../../actions/markActions';
 import Space from '../Space/Space';
 import AddMarkModal from '../Modals/MarkModal/AddMarkModal';
 import AddSpaceModal from '../Modals/SpaceModal/AddSpaceModal';
@@ -62,9 +66,22 @@ function App() {
   const dispatch = useDispatch();
   // call api to save spaces and marks in state
   useEffect(() => {
-    dispatch(fetchSpaces());
-    dispatch(fetchMarks());
-  }, [dispatch]);
+    if (isUserConnected) {
+      dispatch(fetchSpaces());
+    }
+  }, [dispatch, isUserConnected]);
+
+  useEffect(() => {
+    if (isUserConnected && spaceList.length > 0) {
+      dispatch(
+        changeSpaceSelect({
+          id: spaceList[0].id,
+          name: spaceList[0].name,
+        })
+      );
+      dispatch(fetchMarks(spaceList[0].id));
+    }
+  }, [dispatch, spaceList, isUserConnected]);
 
   // Verify token for keep authentication
   useEffect(() => {

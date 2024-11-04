@@ -15,7 +15,7 @@ const EditSpaceModal = () => {
     setError,
   } = useForm({
     defaultValues: {
-      spaceName: selectedSpace,
+      spaceName: selectedSpace.name,
     },
   });
 

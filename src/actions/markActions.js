@@ -23,8 +23,9 @@ export const fetchSpaces = () => ({
   type: FETCH_SPACES,
 });
 
-export const fetchMarks = () => ({
+export const fetchMarks = (spaceId) => ({
   type: FETCH_MARKS,
+  spaceId,
 });
 
 export const saveSpaces = (spaces) => ({

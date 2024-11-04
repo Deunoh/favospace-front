@@ -17,7 +17,7 @@ import {
 export const initialState = {
   markList: [],
   spaceList: [],
-  spaceSelected: '',
+  spaceSelected: null,
   isEditMode: false,
   isAddSpaceModalOpen: false,
   isEditSpaceModalOpen: false,

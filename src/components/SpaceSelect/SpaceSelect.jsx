@@ -2,15 +2,15 @@ import { FaCirclePlus } from 'react-icons/fa6';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import { IoShare } from 'react-icons/io5';
 import { FaRegEdit } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './SpaceSelect.scss';
 import {
   changeSpaceSelect,
   toggleRemoveSpaceModal,
-  toggleAddMarkModal,
   toggleAddSpaceModal,
   toggleEditSpaceModal,
+  fetchMarks,
 } from '../../actions/markActions';
 import ToastNotification from '../Modals/ToastNotification';
 
@@ -31,6 +31,19 @@ const SpaceSelect = () => {
 
   const handleOpenRemoveSpaceModal = () => {
     dispatch(toggleRemoveSpaceModal());
+  };
+
+  const handleSpaceChange = (event) => {
+    const selectedSpaceName = event.currentTarget.value;
+    const space = spaces.find((espace) => espace.name === selectedSpaceName);
+
+    dispatch(
+      changeSpaceSelect({
+        id: space.id,
+        name: space.name,
+      })
+    );
+    dispatch(fetchMarks(space.id));
   };
 
   // TODO a delete quand la fonctionnalité sera terminé, affiche la notification avec le message
@@ -56,11 +69,9 @@ const SpaceSelect = () => {
           className={`space-select ${isEditMode ? 'edit-mode' : ''}`}
           name="space-select"
           id="spaceSelect"
-          value={selectedSpace}
+          value={selectedSpace?.name || ''}
           aria-label="choisissez votre espace"
-          onChange={(event) => {
-            dispatch(changeSpaceSelect(event.currentTarget.value));
-          }}
+          onChange={handleSpaceChange}
           disabled={isEditMode}
         >
           {spaces.map((space) => (
