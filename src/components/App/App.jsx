@@ -6,8 +6,8 @@ import SpaceSelect from '../SpaceSelect/SpaceSelect';
 import './App.scss';
 import { fetchMarks, fetchSpaces } from '../../actions/markActions';
 import Space from '../Space/Space';
-import AddMarkModal from '../Modals/AddMarkModal/AddMarkModal';
-import AddSpaceModal from '../Modals/AddSpaceModal/AddSpaceModal';
+import AddMarkModal from '../Modals/MarkModal/AddMarkModal';
+import AddSpaceModal from '../Modals/SpaceModal/AddSpaceModal';
 import RemoveSpaceConfirmModal from '../Modals/ConfirmModal/RemoveSpaceConfirmModal';
 import StartButton from '../StartButton/StartButton';
 import RemoveAccountConfirmModal from '../Modals/ConfirmModal/RemoveAccountConfirmModal';
@@ -15,6 +15,8 @@ import AuthModal from '../AuthModal/AuthModal';
 import ToastNotification from '../Modals/ToastNotification';
 import Footer from '../Footer/Footer';
 import { verifyUser } from '../../actions/authActions';
+import EditMarkModal from '../Modals/MarkModal/EditMarkModal';
+import EditSpaceModal from '../Modals/SpaceModal/EditSpaceModal';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -36,8 +38,18 @@ function App() {
     (state) => state.user.isSuccessfulRegister
   );
   const isUserConnected = useSelector((state) => state.user.isConnected);
-  const isMarkModalOpen = useSelector((state) => state.mark.isMarkModalOpen);
-  const isSpaceModalOpen = useSelector((state) => state.mark.isSpaceModalOpen);
+  const isAddMarkModalOpen = useSelector(
+    (state) => state.mark.isAddMarkModalOpen
+  );
+  const isEditMarkModalOpen = useSelector(
+    (state) => state.mark.isEditMarkModalOpen
+  );
+  const isAddSpaceModalOpen = useSelector(
+    (state) => state.mark.isAddSpaceModalOpen
+  );
+  const isEditSpaceModalOpen = useSelector(
+    (state) => state.mark.isEditSpaceModalOpen
+  );
   const spaceList = useSelector((state) => state.mark.spaceList);
   const isSpacesEmpty = spaceList.length === 0;
   const isRemoveSpaceModalOpen = useSelector(
@@ -94,8 +106,10 @@ function App() {
       <Footer />
 
       {/* Modals */}
-      {isMarkModalOpen && <AddMarkModal />}
-      {isSpaceModalOpen && <AddSpaceModal />}
+      {isAddMarkModalOpen && <AddMarkModal />}
+      {isEditMarkModalOpen && <EditMarkModal />}
+      {isAddSpaceModalOpen && <AddSpaceModal />}
+      {isEditSpaceModalOpen && <EditSpaceModal />}
       {isRemoveSpaceModalOpen && <RemoveSpaceConfirmModal />}
       {isRemoveAccountModalOpen && <RemoveAccountConfirmModal />}
       {isSuccessRegister && (

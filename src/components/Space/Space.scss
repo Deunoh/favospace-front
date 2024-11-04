@@ -42,43 +42,45 @@
   &::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.5);
   }
-  .edit-icon:nth-child(2n) {
-    animation-name: shake1;
-    animation-duration: 0.3s;
-    animation-iteration-count: infinite;
-    transform-origin: 50% 10%;
-  }
+  // Animation shake like iOS
 
-  .edit-icon:nth-child(2n-1) {
-    animation-name: shake2;
-    animation-duration: 0.3s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    transform-origin: 30% 5%;
-  }
-  @keyframes shake1 {
-    0% {
-      transform: rotate(-1deg);
-      animation-timing-function: ease-in;
-    }
+  // .edit-icon:nth-child(2n) {
+  //   animation-name: shake1;
+  //   animation-duration: 0.3s;
+  //   animation-iteration-count: infinite;
+  //   transform-origin: 50% 10%;
+  // }
 
-    50% {
-      transform: rotate(1.5deg);
-      animation-timing-function: ease-out;
-    }
-  }
+  // .edit-icon:nth-child(2n-1) {
+  //   animation-name: shake2;
+  //   animation-duration: 0.3s;
+  //   animation-iteration-count: infinite;
+  //   animation-direction: alternate;
+  //   transform-origin: 30% 5%;
+  // }
+  // @keyframes shake1 {
+  //   0% {
+  //     transform: rotate(-1deg);
+  //     animation-timing-function: ease-in;
+  //   }
 
-  @keyframes shake2 {
-    0% {
-      transform: rotate(1deg);
-      animation-timing-function: ease-in;
-    }
+  //   50% {
+  //     transform: rotate(1.5deg);
+  //     animation-timing-function: ease-out;
+  //   }
+  // }
 
-    50% {
-      transform: rotate(-1.5deg);
-      animation-timing-function: ease-out;
-    }
-  }
+  // @keyframes shake2 {
+  //   0% {
+  //     transform: rotate(1deg);
+  //     animation-timing-function: ease-in;
+  //   }
+
+  //   50% {
+  //     transform: rotate(-1.5deg);
+  //     animation-timing-function: ease-out;
+  //   }
+  // }
 }
 
 // Stylisation de la barre de défilement pour Firefox

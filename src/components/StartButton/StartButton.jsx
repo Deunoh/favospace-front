@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 import './StartButton.scss';
-import { toggleSpaceModal } from '../../actions/markActions';
+import { toggleAddSpaceModal } from '../../actions/markActions';
 
 const StartButton = () => {
   const dispatch = useDispatch();
   const handleOpenSpaceModal = () => {
-    dispatch(toggleSpaceModal());
+    dispatch(toggleAddSpaceModal());
   };
   return (
     <div className="start-btn-container">
