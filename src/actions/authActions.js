@@ -5,7 +5,6 @@ export const SUBMIT_REGISTER = 'SUBMIT_REGISTER';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SUBMIT_LOGOUT = 'SUBMIT_LOGOUT';
 export const HANDLE_SUCCESSUFUL_LOGIN = 'HANDLE_SUCCESSFUL_LOGIN';
-export const HANDLE_SUCCESSFUL_REGISTER = 'HANDLE_SUCCESSFUL_REGISTER';
 export const SET_LOADING_REGISTER = 'SET_LOADING_REGISTER';
 export const SET_LOADING_LOGIN = 'SET_LOADING_LOGIN';
 export const SET_ERRORS_REGISTER = 'SET_REGISTER_ERRORS';
@@ -41,9 +40,6 @@ export const handleSuccessfulLogin = (id, name, email) => ({
   id,
   name,
   email,
-});
-export const handleSuccessfulRegister = () => ({
-  type: HANDLE_SUCCESSFUL_REGISTER,
 });
 export const setLoadingRegister = (isLoading) => ({
   type: SET_LOADING_REGISTER,

@@ -2,7 +2,6 @@ import axios from 'axios';
 import {
   DELETE_USER_ACCOUNT,
   handleSuccessfulLogin,
-  handleSuccessfulRegister,
   setErrorLogin,
   setErrorsRegister,
   setLoadingLogin,
@@ -12,6 +11,7 @@ import {
   submitLogout,
   VERIFY_USER,
 } from '../actions/authActions';
+import { showToast } from '../actions/markActions';
 
 const url = 'http://localhost:8000/api/';
 
@@ -29,7 +29,9 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(setLoadingRegister(false));
-          store.dispatch(handleSuccessfulRegister());
+          store.dispatch(
+            showToast('Inscription réussie, veuillez vous connecter')
+          );
         })
         .catch((error) => {
           store.dispatch(setLoadingRegister(false));
