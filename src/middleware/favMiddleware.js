@@ -1,11 +1,15 @@
 import axios from 'axios';
 import {
   ADD_MARK,
+  ADD_SPACE,
+  changeSpaceSelect,
   FETCH_MARKS,
   FETCH_SPACES,
   fetchMarks,
+  fetchSpaces,
   saveMarks,
   saveSpaces,
+  showToast,
 } from '../actions/markActions';
 // import { mockSpaceList, mockFavoritesList } from '../data/testData';
 
@@ -57,6 +61,30 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           store.dispatch(fetchMarks(action.mark.spaceId));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case ADD_SPACE:
+      axios
+        .post(
+          `${url}space/add`,
+          { name: action.spaceName },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then((response) => {
+          // const newSpace = response.data;
+
+          store.dispatch(fetchSpaces());
+          store.dispatch(showToast('Nouvel espace créé !'));
+          // Pour être redirigé vers le nouvel espace
+          // store.dispatch(changeSpaceSelect(newSpace));
         })
         .catch((error) => {
           console.log(error);

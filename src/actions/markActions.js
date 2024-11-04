@@ -13,6 +13,7 @@ export const ACTIVATE_EDIT_MODE = 'ACTIVATE_EDIT_MODE';
 export const DESACTIVATE_EDIT_MODE = 'DESACTIVATE_EDIT_MODE';
 export const TOGGLE_REMOVE_SPACE_MODAL = 'TOGGLE_REMOVE_SPACE_MODAL';
 export const TOGGLE_REMOVE_ACCOUNT_MODAL = 'TOGGLE_REMOVE_ACCOUNT_MODAL';
+export const SHOW_TOAST = 'SHOW_TOAST';
 
 export const changeSpaceSelect = (space) => ({
   type: CHANGE_SPACE_SELECT,
@@ -70,4 +71,8 @@ export const toggleRemoveSpaceModal = () => ({
 });
 export const toggleRemoveAccountModal = () => ({
   type: TOGGLE_REMOVE_ACCOUNT_MODAL,
+});
+export const showToast = (message) => ({
+  type: SHOW_TOAST,
+  message,
 });

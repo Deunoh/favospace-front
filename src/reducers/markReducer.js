@@ -12,6 +12,7 @@ import {
   TOGGLE_EDIT_MARK_MODAL,
   TOGGLE_ADD_SPACE_MODAL,
   TOGGLE_EDIT_SPACE_MODAL,
+  SHOW_TOAST,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -26,10 +27,18 @@ export const initialState = {
   currentMarkToEdit: null,
   isRemoveSpaceModalOpen: false,
   isRemoveAccountModalOpen: false,
+  toastMessage: null,
+  isToastVisible: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case SHOW_TOAST:
+      return {
+        ...state,
+        toastMessage: action.message,
+        isToastVisible: true,
+      };
     case CHANGE_SPACE_SELECT:
       return {
         ...state,
@@ -45,27 +54,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         markList: action.marks,
       };
-    case ADD_SPACE:
-      return {
-        ...state,
-        spaceList: [
-          ...state.spaceList,
-          { id: Date.now().toString(), name: action.spaceName },
-        ],
-      };
-    // case ADD_MARK:
-    //   return {
-    //     ...state,
-    //     markList: [
-    //       ...state.markList,
-    //       {
-    //         id: Date.now().toString(),
-    //         name: action.mark.name,
-    //         url: action.mark.url,
-    //         spaceId: state.spaceSelected,
-    //       },
-    //     ],
-    //   };
     case TOGGLE_ADD_MARK_MODAL:
       return {
         ...state,

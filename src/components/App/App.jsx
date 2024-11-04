@@ -38,6 +38,8 @@ const PublicRoute = ({ children, isConnected }) => {
 };
 
 function App() {
+  const isToastVisible = useSelector((state) => state.mark.isToastVisible);
+  const toastMessage = useSelector((state) => state.mark.toastMessage);
   const isSuccessRegister = useSelector(
     (state) => state.user.isSuccessfulRegister
   );
@@ -129,6 +131,8 @@ function App() {
       {isEditSpaceModalOpen && <EditSpaceModal />}
       {isRemoveSpaceModalOpen && <RemoveSpaceConfirmModal />}
       {isRemoveAccountModalOpen && <RemoveAccountConfirmModal />}
+      {isToastVisible && <ToastNotification message={toastMessage} />}
+      {/* TODO A SUPPRIMER */}
       {isSuccessRegister && (
         <ToastNotification message="Inscription réussie, veuillez vous connecter" />
       )}

@@ -1,12 +1,7 @@
-// import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './SpaceModal.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addSpace,
-  changeSpaceSelect,
-  toggleAddSpaceModal,
-} from '../../../actions/markActions';
+import { addSpace, toggleAddSpaceModal } from '../../../actions/markActions';
 
 const AddSpaceModal = () => {
   const dispatch = useDispatch();
@@ -33,7 +28,6 @@ const AddSpaceModal = () => {
       return;
     }
     dispatch(addSpace(spaceName));
-    dispatch(changeSpaceSelect(spaceName));
     dispatch(toggleAddSpaceModal());
   };
 
