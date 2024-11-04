@@ -53,19 +53,19 @@ const reducer = (state = initialState, action = {}) => {
           { id: Date.now().toString(), name: action.spaceName },
         ],
       };
-    case ADD_MARK:
-      return {
-        ...state,
-        markList: [
-          ...state.markList,
-          {
-            id: Date.now().toString(),
-            name: action.mark.name,
-            url: action.mark.url,
-            spaceId: state.spaceSelected,
-          },
-        ],
-      };
+    // case ADD_MARK:
+    //   return {
+    //     ...state,
+    //     markList: [
+    //       ...state.markList,
+    //       {
+    //         id: Date.now().toString(),
+    //         name: action.mark.name,
+    //         url: action.mark.url,
+    //         spaceId: state.spaceSelected,
+    //       },
+    //     ],
+    //   };
     case TOGGLE_ADD_MARK_MODAL:
       return {
         ...state,

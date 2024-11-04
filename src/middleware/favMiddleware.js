@@ -1,7 +1,9 @@
 import axios from 'axios';
 import {
+  ADD_MARK,
   FETCH_MARKS,
   FETCH_SPACES,
+  fetchMarks,
   saveMarks,
   saveSpaces,
 } from '../actions/markActions';
@@ -39,8 +41,6 @@ const favMiddleware = (store) => (next) => (action) => {
           },
         })
         .then((response) => {
-          console.log('MARKS', response);
-
           store.dispatch(saveMarks(response.data.marks));
         })
         .catch((error) => {
@@ -48,6 +48,21 @@ const favMiddleware = (store) => (next) => (action) => {
         });
       break;
     }
+    case ADD_MARK:
+      axios
+        .post(`${url}mark/add`, action.mark, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,
+          },
+        })
+        .then((response) => {
+          store.dispatch(fetchMarks(action.mark.spaceId));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
     default:
   }
   next(action);

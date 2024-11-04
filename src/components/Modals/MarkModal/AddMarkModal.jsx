@@ -1,10 +1,12 @@
 import './MarkModal.scss';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addMark, toggleAddMarkModal } from '../../../actions/markActions';
 
 const AddMarkModal = () => {
   const dispatch = useDispatch();
+  const spaceId = useSelector((state) => state.mark.spaceSelected.id);
+
   const {
     register,
     handleSubmit,
@@ -23,8 +25,7 @@ const AddMarkModal = () => {
         name = url;
       }
     }
-
-    dispatch(addMark({ name, url }));
+    dispatch(addMark({ name, url, spaceId }));
     dispatch(toggleAddMarkModal());
   };
 
