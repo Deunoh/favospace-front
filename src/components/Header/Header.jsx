@@ -44,7 +44,6 @@ const Header = ({ displayTrash, isUserConnected }) => {
   const handleLogout = () => {
     dispatch(submitLogout());
     localStorage.removeItem('token_jwt');
-    console.log('Déconnexion');
     setIsUserModalOpen(false);
   };
 
@@ -54,11 +53,9 @@ const Header = ({ displayTrash, isUserConnected }) => {
   };
 
   const handleEdit = () => {
-    console.log('mode edit');
     dispatch(activateEditMode());
   };
   const handleFinishEdit = () => {
-    console.log('finished edit mode');
     dispatch(desactivateEditMode());
   };
   const changeTheme = async (newImageUrl) => {

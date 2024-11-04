@@ -1,14 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleRemoveSpaceModal } from '../../../actions/markActions';
+import {
+  deleteSpace,
+  toggleRemoveSpaceModal,
+} from '../../../actions/markActions';
 import './ConfirmModal.scss';
 
 const RemoveSpaceConfirmModal = () => {
   const dispatch = useDispatch();
   const selectedSpace = useSelector((state) => state.mark.spaceSelected);
+  const spaceId = useSelector((state) => state.mark.spaceSelected.id);
 
   const handleConfirmRemove = () => {
+    dispatch(deleteSpace(spaceId));
     dispatch(toggleRemoveSpaceModal());
-    console.log('espace supprimé !');
   };
 
   const handleCloseModal = () => {

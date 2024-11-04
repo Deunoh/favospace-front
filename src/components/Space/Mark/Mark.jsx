@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import { FiEdit2 } from 'react-icons/fi';
 import './Mark.scss';
-import { toggleEditMarkModal } from '../../../actions/markActions';
+import { deleteMark, toggleEditMarkModal } from '../../../actions/markActions';
 
-const Mark = ({ url, name }) => {
+const Mark = ({ id, url, name }) => {
   const dispatch = useDispatch();
   // With google
   const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=64`;
@@ -15,9 +15,9 @@ const Mark = ({ url, name }) => {
   // const faviconUrl = `https://icon.horse/icon/${domain}`;
 
   const isEditMode = useSelector((state) => state.mark.isEditMode);
-
+  const spaceId = useSelector((state) => state.mark.spaceSelected.id);
   const handleRemove = () => {
-    console.log('cliqué !');
+    dispatch(deleteMark(id, spaceId));
   };
 
   const handleEditIcon = () => {
@@ -70,6 +70,7 @@ const Mark = ({ url, name }) => {
 };
 
 Mark.propTypes = {
+  id: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };

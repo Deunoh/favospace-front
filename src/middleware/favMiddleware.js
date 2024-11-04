@@ -3,6 +3,9 @@ import {
   ADD_MARK,
   ADD_SPACE,
   changeSpaceSelect,
+  DELETE_MARK,
+  DELETE_SPACE,
+  desactivateEditMode,
   FETCH_MARKS,
   FETCH_SPACES,
   fetchMarks,
@@ -88,6 +91,40 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+        });
+      break;
+    case DELETE_SPACE:
+      axios
+        .delete(`${url}space/${action.spaceId}/delete`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,
+          },
+        })
+        .then((response) => {
+          store.dispatch(showToast('Espace supprimé avec succès'));
+          store.dispatch(fetchSpaces());
+          store.dispatch(desactivateEditMode());
+        })
+        .catch((error) => {
+          console.error(error);
+          store.dispatch(
+            showToast("Erreur lors de la suppression de l'espace")
+          );
+        });
+      break;
+    case DELETE_MARK:
+      axios
+        .delete(`${url}mark/${action.markId}/delete`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,
+          },
+        })
+        .then((response) => {
+          store.dispatch(fetchMarks(action.spaceId));
+        })
+        .catch((error) => {
+          console.error(error);
+          store.dispatch(showToast('Erreur lors de la suppression du favoris'));
         });
       break;
 
