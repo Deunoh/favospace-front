@@ -13,6 +13,7 @@ import {
   TOGGLE_ADD_SPACE_MODAL,
   TOGGLE_EDIT_SPACE_MODAL,
   SHOW_TOAST,
+  HIDE_TOAST,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -38,6 +39,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         toastMessage: action.message,
         isToastVisible: true,
+      };
+    case HIDE_TOAST:
+      return {
+        ...state,
+        toastMessage: null,
+        isToastVisible: false,
       };
     case CHANGE_SPACE_SELECT:
       return {

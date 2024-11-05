@@ -1,11 +1,13 @@
 import './MarkModal.scss';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleEditMarkModal } from '../../../actions/markActions';
+import { toggleEditMarkModal, updateMark } from '../../../actions/markActions';
 
 const EditMarkModal = () => {
   const dispatch = useDispatch();
   const currentMark = useSelector((state) => state.mark.currentMarkToEdit);
+  const currentSpaceId = useSelector((state) => state.mark.spaceSelected.id);
+
   const {
     register,
     handleSubmit,
@@ -18,19 +20,21 @@ const EditMarkModal = () => {
   });
 
   const onSubmit = (data) => {
-    let name = data.markName.trim();
-    const url = data.markUrl.trim();
+    let newMarkName = data.markName.trim();
+    const newMarkUrl = data.markUrl.trim();
 
-    if (!name) {
+    if (!newMarkName) {
       try {
-        const urlObject = new URL(url);
-        name = urlObject.hostname.replace('www.', '');
+        const urlObject = new URL(newMarkUrl);
+        newMarkName = urlObject.hostname.replace('www.', '');
       } catch (error) {
-        name = url;
+        newMarkName = newMarkUrl;
       }
     }
 
-    // dispatch(updateMark({ ...currentMark, name, url }));
+    dispatch(
+      updateMark(currentMark.id, newMarkName, newMarkUrl, currentSpaceId)
+    );
     dispatch(toggleEditMarkModal());
   };
 

@@ -2,7 +2,6 @@ import axios from 'axios';
 import {
   ADD_MARK,
   ADD_SPACE,
-  changeSpaceSelect,
   DELETE_MARK,
   DELETE_SPACE,
   desactivateEditMode,
@@ -13,6 +12,8 @@ import {
   saveMarks,
   saveSpaces,
   showToast,
+  UPDATE_MARK,
+  UPDATE_SPACE,
 } from '../actions/markActions';
 // import { mockSpaceList, mockFavoritesList } from '../data/testData';
 
@@ -20,12 +21,6 @@ const url = 'http://localhost:8000/api/';
 
 const favMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    // case FETCH_SPACES:
-    //   store.dispatch(saveSpaces(mockSpaceList));
-    //   break;
-    // case FETCH_MARKS:
-    //   store.dispatch(saveMarks(mockFavoritesList));
-    //   break;
     case FETCH_SPACES:
       axios
         .get(`${url}space/browse`, {
@@ -125,6 +120,47 @@ const favMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.error(error);
           store.dispatch(showToast('Erreur lors de la suppression du favoris'));
+        });
+      break;
+    case UPDATE_SPACE:
+      axios
+        .patch(
+          `${url}space/${action.spaceId}/edit`,
+          { name: action.newName },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then((response) => {
+          store.dispatch(fetchSpaces());
+          store.dispatch(desactivateEditMode());
+          store.dispatch(showToast('Espace renommé !'));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case UPDATE_MARK:
+      axios
+        .patch(
+          `${url}mark/${action.markId}/edit`,
+          { name: action.newName, url: action.newUrl },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then((response) => {
+          store.dispatch(fetchMarks(action.currentSpaceId));
+          store.dispatch(desactivateEditMode());
+        })
+        .catch((error) => {
+          console.log(error);
         });
       break;
 

@@ -3,6 +3,7 @@ import {
   CHANGE_NAME_VALUE,
   CHANGE_PASSWORD_VALUE,
   HANDLE_SUCCESSUFUL_LOGIN,
+  HANDLE_SUCCESSUFUL_REGISTER,
   RESET_SUCCESS_REGISTER,
   SET_ERRORS_LOGIN,
   SET_ERRORS_REGISTER,
@@ -20,6 +21,7 @@ export const initialState = {
   inputPassword: '',
   isConnected: false,
   isRegisterLoading: false,
+  isSuccessfulRegister: false,
   isLoginLoading: false,
   errorsRegister: {},
   errorsLogin: {},
@@ -49,6 +51,11 @@ const reducer = (state = initialState, action = {}) => {
         userName: action.name,
         userEmail: action.email,
         isConnected: true,
+      };
+    case HANDLE_SUCCESSUFUL_REGISTER:
+      return {
+        ...state,
+        isSuccessfulRegister: true,
       };
     case SET_LOADING_REGISTER:
       return {

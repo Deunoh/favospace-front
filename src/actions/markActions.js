@@ -14,8 +14,11 @@ export const DESACTIVATE_EDIT_MODE = 'DESACTIVATE_EDIT_MODE';
 export const TOGGLE_REMOVE_SPACE_MODAL = 'TOGGLE_REMOVE_SPACE_MODAL';
 export const TOGGLE_REMOVE_ACCOUNT_MODAL = 'TOGGLE_REMOVE_ACCOUNT_MODAL';
 export const DELETE_SPACE = 'DELETE_SPACE';
+export const UPDATE_SPACE = 'UPDATE_SPACE';
 export const DELETE_MARK = 'DELETE_MARK';
+export const UPDATE_MARK = 'UPDATE_MARK';
 export const SHOW_TOAST = 'SHOW_TOAST';
+export const HIDE_TOAST = 'HIDE_TOAST';
 
 export const changeSpaceSelect = (space) => ({
   type: CHANGE_SPACE_SELECT,
@@ -78,12 +81,27 @@ export const deleteSpace = (spaceId) => ({
   type: DELETE_SPACE,
   spaceId,
 });
+export const updateSpace = (spaceId, newName) => ({
+  type: UPDATE_SPACE,
+  spaceId,
+  newName,
+});
 export const deleteMark = (markId, spaceId) => ({
   type: DELETE_MARK,
   markId,
   spaceId,
 });
+export const updateMark = (markId, newName, newUrl, currentSpaceId) => ({
+  type: UPDATE_MARK,
+  markId,
+  newName,
+  newUrl,
+  currentSpaceId,
+});
 export const showToast = (message) => ({
   type: SHOW_TOAST,
   message,
+});
+export const hideToast = () => ({
+  type: HIDE_TOAST,
 });

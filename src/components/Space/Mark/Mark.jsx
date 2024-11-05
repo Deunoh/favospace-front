@@ -22,7 +22,7 @@ const Mark = ({ id, url, name }) => {
 
   const handleEditIcon = () => {
     console.log('Modification');
-    dispatch(toggleEditMarkModal({ url, name }));
+    dispatch(toggleEditMarkModal({ id, url, name }));
   };
 
   return (

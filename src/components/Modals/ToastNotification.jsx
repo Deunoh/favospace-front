@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { IoClose } from 'react-icons/io5';
+import { useDispatch } from 'react-redux';
+import { hideToast } from '../../actions/markActions';
 
 const ToastNotification = ({ message, type = 'info' }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsVisible(true);
     const timer = setTimeout(() => {
       setIsVisible(false);
+      dispatch(hideToast());
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [message]);
+  }, [message, dispatch]);
 
   const bgColor = type === 'error' ? '#EF4444' : '#3B82F6';
 

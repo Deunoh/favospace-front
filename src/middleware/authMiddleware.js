@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   DELETE_USER_ACCOUNT,
   handleSuccessfulLogin,
+  handleSuccessfulRegister,
   setErrorLogin,
   setErrorsRegister,
   setLoadingLogin,
@@ -29,6 +30,7 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(setLoadingRegister(false));
+          store.dispatch(handleSuccessfulRegister());
           store.dispatch(
             showToast('Inscription réussie, veuillez vous connecter')
           );
