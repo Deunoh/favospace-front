@@ -31,9 +31,11 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           store.dispatch(saveSpaces(response.data));
+          store.dispatch(setLoading(false));
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(setLoading(false));
         });
       break;
     case FETCH_MARKS: {
@@ -45,11 +47,9 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           store.dispatch(saveMarks(response.data.marks));
-          store.dispatch(setLoading(false));
         })
         .catch((error) => {
           console.log(error);
-          store.dispatch(setLoading(false));
         });
       break;
     }
