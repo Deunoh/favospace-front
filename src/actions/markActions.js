@@ -98,9 +98,10 @@ export const updateMark = (markId, newName, newUrl, currentSpaceId) => ({
   newUrl,
   currentSpaceId,
 });
-export const showToast = (message) => ({
+export const showToast = (message, typeMessage = 'info') => ({
   type: SHOW_TOAST,
   message,
+  typeMessage,
 });
 export const hideToast = () => ({
   type: HIDE_TOAST,

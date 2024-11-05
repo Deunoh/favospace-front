@@ -28,8 +28,10 @@ export const initialState = {
   currentMarkToEdit: null,
   isRemoveSpaceModalOpen: false,
   isRemoveAccountModalOpen: false,
+  // Toast notification
   toastMessage: null,
   isToastVisible: false,
+  typeMessage: 'info',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -39,6 +41,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         toastMessage: action.message,
         isToastVisible: true,
+        typeMessage: action.typeMessage,
       };
     case HIDE_TOAST:
       return {

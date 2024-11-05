@@ -37,6 +37,12 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           store.dispatch(setLoadingRegister(false));
+          store.dispatch(
+            showToast(
+              "Erreur lors de l'inscription, veuillez réessayer",
+              'error'
+            )
+          );
           if (
             error.response &&
             error.response.data &&
@@ -119,6 +125,9 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(
+            showToast('Erreur lors de la suppression du compte.', 'error')
+          );
         });
       break;
 

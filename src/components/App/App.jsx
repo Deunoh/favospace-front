@@ -41,6 +41,7 @@ function App() {
   // Pour la toast notification
   const isToastVisible = useSelector((state) => state.mark.isToastVisible);
   const toastMessage = useSelector((state) => state.mark.toastMessage);
+  const typeMessage = useSelector((state) => state.mark.typeMessage);
   const isUserConnected = useSelector((state) => state.user.isConnected);
   const isAddMarkModalOpen = useSelector(
     (state) => state.mark.isAddMarkModalOpen
@@ -129,7 +130,9 @@ function App() {
       {isEditSpaceModalOpen && <EditSpaceModal />}
       {isRemoveSpaceModalOpen && <RemoveSpaceConfirmModal />}
       {isRemoveAccountModalOpen && <RemoveAccountConfirmModal />}
-      {isToastVisible && <ToastNotification message={toastMessage} />}
+      {isToastVisible && (
+        <ToastNotification message={toastMessage} type={typeMessage} />
+      )}
     </div>
   );
 }

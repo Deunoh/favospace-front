@@ -62,6 +62,9 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(
+            showToast("Erreur lors de l'ajout du favoris", 'error')
+          );
         });
       break;
     case ADD_SPACE:
@@ -77,15 +80,14 @@ const favMiddleware = (store) => (next) => (action) => {
           }
         )
         .then((response) => {
-          // const newSpace = response.data;
-
           store.dispatch(fetchSpaces());
           store.dispatch(showToast('Nouvel espace créé !'));
-          // Pour être redirigé vers le nouvel espace
-          // store.dispatch(changeSpaceSelect(newSpace));
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(
+            showToast("Erreur lors de l'ajout de l'espace", 'error')
+          );
         });
       break;
     case DELETE_SPACE:
@@ -103,7 +105,7 @@ const favMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.error(error);
           store.dispatch(
-            showToast("Erreur lors de la suppression de l'espace")
+            showToast("Erreur lors de la suppression de l'espace", 'error')
           );
         });
       break;
@@ -119,7 +121,9 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.error(error);
-          store.dispatch(showToast('Erreur lors de la suppression du favoris'));
+          store.dispatch(
+            showToast('Erreur lors de la suppression du favoris', 'error')
+          );
         });
       break;
     case UPDATE_SPACE:
@@ -141,6 +145,9 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(
+            showToast("Erreur lors de la modification de l'espace", 'error')
+          );
         });
       break;
     case UPDATE_MARK:
@@ -161,6 +168,9 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(
+            showToast("Erreur lors de la modification de l'espace", 'error')
+          );
         });
       break;
 
