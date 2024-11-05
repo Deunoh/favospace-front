@@ -83,13 +83,12 @@ const authMiddleware = (store) => (next) => (action) => {
           password: store.getState().user.inputPassword,
         })
         .then((response) => {
-          store.dispatch(setLoadingLogin(false));
-
           const userId = response.data.user.id;
           const userName = response.data.user.name;
           const userEmail = response.data.user.email;
           store.dispatch(handleSuccessfulLogin(userId, userName, userEmail));
           localStorage.setItem('token_jwt', response.data.token);
+          store.dispatch(setLoadingLogin(false));
         })
         .catch((error) => {
           store.dispatch(setLoadingLogin(false));

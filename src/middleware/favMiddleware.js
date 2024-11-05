@@ -15,6 +15,7 @@ import {
   UPDATE_MARK,
   UPDATE_SPACE,
 } from '../actions/markActions';
+import { setLoading } from '../actions/authActions';
 // import { mockSpaceList, mockFavoritesList } from '../data/testData';
 
 const url = 'http://localhost:8000/api/';
@@ -44,9 +45,11 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           store.dispatch(saveMarks(response.data.marks));
+          store.dispatch(setLoading(false));
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(setLoading(false));
         });
       break;
     }

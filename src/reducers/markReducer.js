@@ -1,3 +1,4 @@
+import { SET_LOADING } from '../actions/authActions';
 import {
   CHANGE_SPACE_SELECT,
   SAVE_MARKS,
@@ -17,6 +18,7 @@ import {
 } from '../actions/markActions';
 
 export const initialState = {
+  isLoading: false,
   markList: [],
   spaceList: [],
   spaceSelected: null,
@@ -36,6 +38,11 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case SET_LOADING:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+      };
     case SHOW_TOAST:
       return {
         ...state,

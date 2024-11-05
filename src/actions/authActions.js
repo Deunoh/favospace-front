@@ -1,3 +1,4 @@
+export const SET_LOADING = 'SET_LOADING';
 export const CHANGE_EMAIL_VALUE = 'CHANGE_EMAIL_VALUE';
 export const CHANGE_NAME_VALUE = 'CHANGE_NAME_VALUE';
 export const CHANGE_PASSWORD_VALUE = 'CHANGE_PASSWORD_VALUE';
@@ -71,4 +72,8 @@ export const deleteAccountUser = () => ({
 export const verifyUser = (token) => ({
   type: VERIFY_USER,
   token,
+});
+export const setLoading = (isLoading) => ({
+  type: SET_LOADING,
+  isLoading,
 });

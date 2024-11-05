@@ -18,9 +18,10 @@ import RemoveAccountConfirmModal from '../Modals/ConfirmModal/RemoveAccountConfi
 import AuthModal from '../AuthModal/AuthModal';
 import ToastNotification from '../Modals/ToastNotification';
 import Footer from '../Footer/Footer';
-import { verifyUser } from '../../actions/authActions';
+import { setLoading, verifyUser } from '../../actions/authActions';
 import EditMarkModal from '../Modals/MarkModal/EditMarkModal';
 import EditSpaceModal from '../Modals/SpaceModal/EditSpaceModal';
+import Loading from '../Loading/Loading';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -38,6 +39,8 @@ const PublicRoute = ({ children, isConnected }) => {
 };
 
 function App() {
+  // Loader
+  const isLoading = useSelector((state) => state.mark.isLoading);
   // Pour la toast notification
   const isToastVisible = useSelector((state) => state.mark.isToastVisible);
   const toastMessage = useSelector((state) => state.mark.toastMessage);
@@ -68,6 +71,7 @@ function App() {
   // call api to save spaces and marks in state
   useEffect(() => {
     if (isUserConnected) {
+      dispatch(setLoading(true));
       dispatch(fetchSpaces());
     }
   }, [dispatch, isUserConnected]);
@@ -92,6 +96,7 @@ function App() {
 
   return (
     <div className="App">
+      {isLoading && <Loading />}
       <Header displayTrash={isSpacesEmpty} isUserConnected={isUserConnected} />
 
       <Routes>
