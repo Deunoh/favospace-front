@@ -44,7 +44,7 @@
     margin-bottom: 8px;
     border-radius: 12px;
     overflow: hidden;
-    background-color: rgb(0 0 0 / 20%);
+    background-color: v.$bg-color-transparent;
     backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
@@ -89,15 +89,15 @@
     color: #fff;
     width: 100%;
     font-weight: 600;
-    padding: 0 2px;
+    padding: 2px 2px;
     margin: 0;
     font-size: 14px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-bottom: 2px;
-    background-color: rgb(0 0 0 / 20%);
+    // padding-bottom: 2px;
+    background-color: v.$bg-color-transparent;
     border-radius: 5px;
   }
 }

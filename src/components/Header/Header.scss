@@ -2,7 +2,7 @@
 .header-container {
   height: v.$header-height;
   width: 100%;
-  background-color: rgba(56, 56, 61, 0.3);
+  background-color: v.$bg-color-transparent;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   color: v.$light-font-color;
