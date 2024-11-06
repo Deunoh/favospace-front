@@ -1,12 +1,15 @@
 @use '../../styles/variables' as v;
 .select-container {
-  margin: 4rem 0;
-  width: 100%;
+  margin: 3rem auto;
+  width: v.$width-container-desktop;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  border-radius: 20px;
+  padding: 10px 0;
+  background-color: v.$bg-color-transparent-select;
 
   .space-label {
     font-size: 1.2rem;
@@ -28,7 +31,7 @@
     height: 2.5rem;
     border-radius: 15px;
     // background-color: rgba(255, 255, 255, 0.1);
-    background-color: v.$bg-color-transparent;
+    background-color: transparent;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -105,5 +108,11 @@
   .select-container .space-select {
     background-image: none;
     padding-right: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .select-container {
+    width: v.$width-container-mobile;
   }
 }

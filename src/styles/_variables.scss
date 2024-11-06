@@ -6,6 +6,8 @@ Définition de variables Sass, par exemple :
 $main-title-font: 'GFS Didot', serif;
 $light-font-color: #e0e0e0;
 $header-height: 3.5rem;
+$width-container-desktop: 75%;
+$width-container-mobile: 90%;
 
 // Dégradé
 $default-degrade: linear-gradient(to right, #dc2430, #7b4397);
@@ -14,3 +16,4 @@ $webkit-default-degrade: -webkit-linear-gradient(to right, #dc2430, #7b4397);
 // Couleurs
 // $bg-color-transparent: rgb(0 0 0 / 20%);
 $bg-color-transparent: rgba(56, 56, 61, 0.3);
+$bg-color-transparent-select: rgb(0 0 0 / 20%);
