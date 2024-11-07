@@ -23,6 +23,8 @@ import EditMarkModal from '../Modals/MarkModal/EditMarkModal';
 import EditSpaceModal from '../Modals/SpaceModal/EditSpaceModal';
 import Loading from '../Loading/Loading';
 import NotFound from '../NotFound/NotFound';
+import LegalMentions from '../Legal/LegalMentions';
+import PrivacyPolicy from '../Legal/PrivacyPolicy';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -126,6 +128,9 @@ function App() {
             </PublicRoute>
           }
         />
+        {/* Mentions legales et politique de confidentalité */}
+        <Route path="/legal-mentions" element={<LegalMentions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         {/* Route 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>

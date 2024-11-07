@@ -19,7 +19,7 @@ const Footer = () => {
             Denovann
           </a>
         </p>
-        <Link to="/mentions-legales" className="footer-link">
+        <Link to="/legal-mentions" className="footer-link">
           Mentions légales
         </Link>
       </ul>
