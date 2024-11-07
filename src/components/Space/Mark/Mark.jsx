@@ -8,8 +8,9 @@ import { deleteMark, toggleEditMarkModal } from '../../../actions/markActions';
 const Mark = ({ id, url, name }) => {
   const dispatch = useDispatch();
   // With google
-  const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=64`;
-  // With icon horse
+  // const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=128`;
+  const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${url}`;
+  // With icon horse (limited request)
   // let domain = new URL(url);
   // domain = domain.hostname.replace('www.', '');
   // const faviconUrl = `https://icon.horse/icon/${domain}`;
