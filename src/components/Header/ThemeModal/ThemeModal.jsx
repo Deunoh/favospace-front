@@ -4,21 +4,19 @@ import {
   saveImageToIndexedDB,
 } from '../../../utils/indexedDBService';
 import './ThemeModal.scss';
-import mountain1 from '../../../assets/mountain-1.jpg';
-import mountain2 from '../../../assets/mountain-2.jpg';
-import mountain3 from '../../../assets/mountain-3.jpg';
-import mountain4 from '../../../assets/mountain-4.jpg';
-import mountainDark1 from '../../../assets/mountain_dark-1.png';
-import mountainDark2 from '../../../assets/mountain_dark-2.png';
-import mountainDark3 from '../../../assets/mountain_dark-3.png';
+import space1 from '../../../assets/space1.webp';
+import space2 from '../../../assets/space2.webp';
+import space3 from '../../../assets/space3.webp';
+import star from '../../../assets/star.webp';
+import forest from '../../../assets/forest.webp';
 import AddTheme from './AddTheme';
 
 const defaultThemes = [
-  { name: 'Mountain 3', image: mountain3 },
-  { name: 'Mountain 4', image: mountain4 },
-  { name: 'Mountain dark 1', image: mountainDark1 },
-  { name: 'Mountain dark 2', image: mountainDark2 },
-  { name: 'Mountain dark 3', image: mountainDark3 },
+  { name: 'background1', image: space1 },
+  { name: 'background2', image: space2 },
+  { name: 'background3', image: space3 },
+  { name: 'background4', image: star },
+  { name: 'background5', image: forest },
 ];
 
 const ThemeModal = ({ onChangeTheme }) => {
