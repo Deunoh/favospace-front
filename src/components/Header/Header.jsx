@@ -2,7 +2,7 @@ import './Header.scss';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaRegEdit } from 'react-icons/fa';
+import { FaUserCircle } from 'react-icons/fa';
 import { IoIosColorPalette } from 'react-icons/io';
 import ThemeModal from './ThemeModal/ThemeModal';
 import UserModal from './UserModal/UserModal';
@@ -22,6 +22,17 @@ const Header = ({ displayTrash, isUserConnected }) => {
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
+  // For mobile header
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // fonction to display bonsoir in evening and bonjour in day
   const whatSalutation = () => {
@@ -114,28 +125,39 @@ const Header = ({ displayTrash, isUserConnected }) => {
         </h1>
         <div className="header-settings-container">
           {!displayTrash && (
-            <FaRegEdit
-              size={22}
-              className="clickable-icon"
+            <button
+              type="button"
               onClick={handleEdit}
-            />
+              className="edit-button"
+              title="Éditer les favoris"
+            >
+              Éditer
+            </button>
           )}
-
           <IoIosColorPalette
-            size={22}
+            size={28}
             onClick={toggleThemeModal}
             className="clickable-icon"
           />
-          <button
-            type="button"
-            onClick={toggleUserModal}
-            className="user-button"
-            aria-haspopup="true"
-            aria-expanded={isUserModalOpen}
-            title={`Bonjour ${userName}`}
-          >
-            {whatSalutation()} {userName}
-          </button>
+          {isMobile ? (
+            <FaUserCircle
+              size={22}
+              onClick={toggleUserModal}
+              className="clickable-icon"
+              title={`${whatSalutation()} ${userName}`}
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={toggleUserModal}
+              className="user-button"
+              aria-haspopup="true"
+              aria-expanded={isUserModalOpen}
+              title={`${whatSalutation()} ${userName}`}
+            >
+              {whatSalutation()} {userName}
+            </button>
+          )}
         </div>
       </>
     );
