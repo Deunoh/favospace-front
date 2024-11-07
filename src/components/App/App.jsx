@@ -22,6 +22,7 @@ import { setLoading, verifyUser } from '../../actions/authActions';
 import EditMarkModal from '../Modals/MarkModal/EditMarkModal';
 import EditSpaceModal from '../Modals/SpaceModal/EditSpaceModal';
 import Loading from '../Loading/Loading';
+import NotFound from '../NotFound/NotFound';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -125,6 +126,8 @@ function App() {
             </PublicRoute>
           }
         />
+        {/* Route 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
 

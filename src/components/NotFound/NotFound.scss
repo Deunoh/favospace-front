@@ -1,0 +1,54 @@
+@use '../../styles/variables' as v;
+
+.not-found-container {
+  height: calc(100vh - v.$header-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: v.$light-font-color;
+  background-image: url('../../assets/404.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.not-found-content {
+  margin-top: 25vh;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  h1 {
+    font-size: 6rem;
+    margin: 0;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+
+  .lost-text {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .back-text {
+    margin-top: 2rem;
+
+    a {
+      color: v.$light-font-color;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 0.5rem;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}
