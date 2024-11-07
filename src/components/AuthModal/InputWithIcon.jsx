@@ -6,7 +6,7 @@ const InputWithIcon = ({
   placeholder,
   value,
   onChange,
-  required,
+  required = 'false',
 }) => (
   <div className="input-container">
     {icon}
@@ -28,10 +28,6 @@ InputWithIcon.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
-};
-
-InputWithIcon.defaultProps = {
-  required: false,
 };
 
 export default InputWithIcon;
