@@ -2,7 +2,6 @@ import { FaCirclePlus } from 'react-icons/fa6';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import { IoShare } from 'react-icons/io5';
 import { FaRegEdit } from 'react-icons/fa';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './SpaceSelect.scss';
 import {
@@ -13,7 +12,6 @@ import {
   fetchMarks,
   showToast,
 } from '../../actions/markActions';
-import ToastNotification from '../Modals/ToastNotification';
 
 const SpaceSelect = () => {
   const dispatch = useDispatch();
@@ -48,12 +46,9 @@ const SpaceSelect = () => {
     dispatch(fetchMarks(space.id));
   };
 
-  // TODO a delete quand la fonctionnalité sera terminé, affiche la notification avec le message
   const handleShare = () => {
     const currentSpaceShareToken = selectedSpace.shareToken;
-    console.log(selectedSpace);
     const shareLink = `${window.location.origin}/share/${currentSpaceShareToken}`;
-    console.log(shareLink);
 
     // Copier dans le presse-papier
     navigator.clipboard
