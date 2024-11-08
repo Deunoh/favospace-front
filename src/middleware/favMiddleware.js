@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   ADD_MARK,
   ADD_SPACE,
+  CLONE_SHARED_SPACE,
   DELETE_MARK,
   DELETE_SPACE,
   desactivateEditMode,
@@ -173,6 +174,31 @@ const favMiddleware = (store) => (next) => (action) => {
           console.log(error);
           store.dispatch(
             showToast("Erreur lors de la modification de l'espace", 'error')
+          );
+        });
+      break;
+    case CLONE_SHARED_SPACE:
+      axios
+        .post(
+          `${url}space/clone/${action.token}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,
+            },
+          }
+        )
+        .then((response) => {
+          store.dispatch(fetchSpaces());
+          store.dispatch(setLoading(false));
+          console.log(response);
+          store.dispatch(showToast('Espace cloné avec succès !'));
+        })
+        .catch((error) => {
+          console.log(error);
+          store.dispatch(setLoading(false));
+          store.dispatch(
+            showToast("Erreur lors du clonage de l'espace", 'error')
           );
         });
       break;

@@ -25,6 +25,7 @@ import Loading from '../Loading/Loading';
 import NotFound from '../NotFound/NotFound';
 import LegalMentions from '../Legal/LegalMentions';
 import PrivacyPolicy from '../Legal/PrivacyPolicy';
+import ShareSpaceHandler from './ShareSpaceHandler';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -85,6 +86,7 @@ function App() {
         changeSpaceSelect({
           id: spaceList[0].id,
           name: spaceList[0].name,
+          shareToken: spaceList[0].shareToken,
         })
       );
       dispatch(fetchMarks(spaceList[0].id));
@@ -118,6 +120,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+        {/* Route pour le lien de partage d'espace */}
+        {isUserConnected && (
+          <Route path="/share/:token" element={<ShareSpaceHandler />} />
+        )}
 
         {/* Route d'authentification */}
         <Route

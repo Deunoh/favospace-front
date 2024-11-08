@@ -11,11 +11,11 @@ import {
   toggleAddSpaceModal,
   toggleEditSpaceModal,
   fetchMarks,
+  showToast,
 } from '../../actions/markActions';
 import ToastNotification from '../Modals/ToastNotification';
 
 const SpaceSelect = () => {
-  const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
   const spaces = useSelector((state) => state.mark.spaceList);
 
@@ -42,6 +42,7 @@ const SpaceSelect = () => {
       changeSpaceSelect({
         id: space.id,
         name: space.name,
+        shareToken: space.shareToken,
       })
     );
     dispatch(fetchMarks(space.id));
@@ -49,10 +50,24 @@ const SpaceSelect = () => {
 
   // TODO a delete quand la fonctionnalité sera terminé, affiche la notification avec le message
   const handleShare = () => {
-    setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 5000);
+    const currentSpaceShareToken = selectedSpace.shareToken;
+    console.log(selectedSpace);
+    const shareLink = `${window.location.origin}/share/${currentSpaceShareToken}`;
+    console.log(shareLink);
+
+    // Copier dans le presse-papier
+    navigator.clipboard
+      .writeText(shareLink)
+      .then(() => {
+        dispatch(
+          showToast(
+            'Lien de partage copié dans le presse-papier ! Partagez le !'
+          )
+        );
+      })
+      .catch(() => {
+        dispatch(showToast('Erreur lors de la copie du lien', 'error'));
+      });
   };
 
   return (
@@ -91,9 +106,6 @@ const SpaceSelect = () => {
           />
         )}
       </div>
-      {showToast && (
-        <ToastNotification message="Fonctionnalité en cours de développement" />
-      )}
     </div>
   );
 };
