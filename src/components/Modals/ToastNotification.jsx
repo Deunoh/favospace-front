@@ -37,6 +37,7 @@ const ToastNotification = ({ message, type = 'info' }) => {
     alignItems: 'center',
     transition: 'transform 0.3s ease-in-out',
     zIndex: 3000,
+    textAlign: 'center',
   };
 
   const buttonStyle = {
