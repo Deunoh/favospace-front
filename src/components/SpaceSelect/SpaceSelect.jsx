@@ -2,7 +2,7 @@ import { FaCirclePlus } from 'react-icons/fa6';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import { IoShare } from 'react-icons/io5';
 import { FaRegEdit } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './SpaceSelect.scss';
 import {
@@ -18,6 +18,7 @@ const SpaceSelect = () => {
   const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
   const spaces = useSelector((state) => state.mark.spaceList);
+
   const selectedSpace = useSelector((state) => state.mark.spaceSelected);
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const spaceLabel = spaces.length === 1 ? 'Mon espace' : 'Mes espaces';
