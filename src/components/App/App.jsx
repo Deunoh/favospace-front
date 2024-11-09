@@ -80,7 +80,11 @@ function App() {
     }
   }, [dispatch, isUserConnected]);
 
+  // Pour le rechargement de la page, je verifie l'utilisateur puis je met la valeur du select sur la 1er space
   useEffect(() => {
+    const token = localStorage.getItem('token_jwt');
+    dispatch(verifyUser(token));
+
     if (isUserConnected && spaceList.length > 0) {
       dispatch(
         changeSpaceSelect({
@@ -92,12 +96,6 @@ function App() {
       dispatch(fetchMarks(spaceList[0].id));
     }
   }, [dispatch, spaceList, isUserConnected]);
-
-  // Verify token for keep authentication
-  useEffect(() => {
-    const token = localStorage.getItem('token_jwt');
-    dispatch(verifyUser(token));
-  }, [dispatch]);
 
   return (
     <div className="App">
