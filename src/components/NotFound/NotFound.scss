@@ -1,7 +1,7 @@
 @use '../../styles/variables' as v;
 
 .not-found-container {
-  height: calc(100vh - v.$header-height);
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

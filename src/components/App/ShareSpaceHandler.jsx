@@ -11,8 +11,8 @@ const ShareSpaceHandler = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(cloneSharedSpace(token));
     dispatch(setLoading(true));
+    dispatch(cloneSharedSpace(token));
     navigate('/');
   }, [dispatch, token, navigate]);
 

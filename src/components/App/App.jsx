@@ -121,9 +121,10 @@ function App() {
           }
         />
         {/* Route pour le lien de partage d'espace */}
-        {isUserConnected && (
+        {/* {isUserConnected && (
           <Route path="/share/:token" element={<ShareSpaceHandler />} />
-        )}
+        )} */}
+        <Route path="/share/:token" element={<ShareSpaceHandler />} />
 
         {/* Route d'authentification */}
         <Route
