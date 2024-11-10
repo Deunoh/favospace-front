@@ -19,7 +19,8 @@ import {
 import { setLoading } from '../actions/authActions';
 // import { mockSpaceList, mockFavoritesList } from '../data/testData';
 
-const url = 'http://localhost:8000/api/';
+const url = 'https://api.favospace.fr/api/';
+// const url = 'http://localhost:8000/api/';
 
 const favMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

@@ -14,7 +14,8 @@ import {
 } from '../actions/authActions';
 import { showToast } from '../actions/markActions';
 
-const url = 'http://localhost:8000/api/';
+// const url = 'http://localhost:8000/api/';
+const url = 'https://api.favospace.fr/api/';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -68,10 +69,11 @@ const authMiddleware = (store) => (next) => (action) => {
             const userEmail = response.data.user.email;
             store.dispatch(handleSuccessfulLogin(userId, userName, userEmail));
           })
-          .catch(() => {
+          .catch((error) => {
             // Token invalide ou expiré
-            localStorage.removeItem('token_jwt');
+            // localStorage.removeItem('token_jwt');
             store.dispatch(submitLogout());
+            console.log(error);
           });
       }
       break;
