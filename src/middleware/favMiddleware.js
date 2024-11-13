@@ -133,7 +133,7 @@ const favMiddleware = (store) => (next) => (action) => {
       break;
     case UPDATE_SPACE:
       axios
-        .patch(
+        .put(
           `${url}space/${action.spaceId}/edit`,
           { name: action.newName },
           {
@@ -157,7 +157,7 @@ const favMiddleware = (store) => (next) => (action) => {
       break;
     case UPDATE_MARK:
       axios
-        .patch(
+        .put(
           `${url}mark/${action.markId}/edit`,
           { name: action.newName, url: action.newUrl },
           {
