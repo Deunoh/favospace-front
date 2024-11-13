@@ -1,13 +1,12 @@
 @use '../../styles/variables' as v;
-
 .start-btn-container {
   width: 98vw;
   height: calc(100vh - v.$header-height);
   display: flex;
   justify-content: center;
   align-items: center;
+  // background-color: #0f172a;
   overflow: hidden;
-  position: relative;
 }
 
 .start-btn {
@@ -20,11 +19,8 @@
   color: #fff;
   cursor: pointer;
   position: relative;
-  z-index: 1;
+  z-index: 0;
   border-radius: 12px;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-
   &::after {
     content: '';
     z-index: -1;
@@ -35,11 +31,8 @@
     left: 0;
     top: 0;
     border-radius: 10px;
-    // Pour safari
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
   }
-
+  // glow
   &::before {
     content: '';
     background: linear-gradient(
@@ -57,24 +50,15 @@
     top: -2px;
     left: -2px;
     background-size: 600%;
-    z-index: -2;
+    z-index: -1;
     width: calc(100% + 4px);
     height: calc(100% + 4px);
-    // flou pour safari
-    -webkit-filter: blur(15px);
     filter: blur(15px);
     animation: glowing 20s linear infinite;
     transition: opacity 0.3s ease-in-out;
     border-radius: 10px;
     opacity: 1;
-    // Amelioration pour safari
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: filter;
   }
-
   @keyframes glowing {
     0% {
       background-position: 0 0;
@@ -86,23 +70,9 @@
       background-position: 0 0;
     }
   }
-
-  @-webkit-keyframes glowing {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 400% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
-
   &:hover::after {
     background: transparent;
   }
-
   &:active {
     font-weight: bold;
   }
