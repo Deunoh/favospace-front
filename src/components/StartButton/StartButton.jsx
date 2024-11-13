@@ -14,7 +14,7 @@ const StartButton = () => {
         type="button"
         onClick={handleOpenSpaceModal}
       >
-        Créer mon premier éspace
+        Créer mon premier espace
       </button>
     </div>
   );
