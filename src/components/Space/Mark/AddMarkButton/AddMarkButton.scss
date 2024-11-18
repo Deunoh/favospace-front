@@ -55,6 +55,9 @@
     svg {
       color: rgba(255, 255, 255, 0.9);
       transition: all 0.3s ease;
+      @media screen and (max-width: 767px) {
+        color: rgba(33, 241, 180, 0.9);
+      }
     }
 
     &::after {
