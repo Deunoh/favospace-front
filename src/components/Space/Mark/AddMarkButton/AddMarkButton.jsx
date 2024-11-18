@@ -17,7 +17,7 @@ const AddMarkButton = () => {
       className="AddMarkButton"
     >
       <div className="TileImgContainer">
-        <BsBookmarkPlusFill size={40} />
+        <BsBookmarkPlusFill size={32} />
       </div>
       <p className="TileTitle">Ajouter</p>
     </button>

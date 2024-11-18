@@ -10,10 +10,10 @@ const Space = () => {
   return (
     <div className="space-container">
       <div className="space-content">
+        {!isEditMode && <AddMarkButton />}
         {marks.map((mark) => (
           <Mark key={mark.id} {...mark} />
         ))}
-        {!isEditMode && <AddMarkButton />}
       </div>
     </div>
   );

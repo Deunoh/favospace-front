@@ -159,7 +159,11 @@ const favMiddleware = (store) => (next) => (action) => {
       axios
         .put(
           `${url}mark/${action.markId}/edit`,
-          { name: action.newName, url: action.newUrl },
+          {
+            name: action.newName,
+            url: action.newUrl,
+            description: action.newDescription,
+          },
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,

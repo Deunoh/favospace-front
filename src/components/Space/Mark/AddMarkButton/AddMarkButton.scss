@@ -1,5 +1,4 @@
 .AddMarkButton {
-  // padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,14 +7,30 @@
   background: none;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
 
   @media screen and (max-width: 767px) {
     width: 75px;
   }
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+
+    .TileImgContainer {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 32px rgba(33, 241, 180, 0.15);
+
+      svg {
+        transform: scale(1.1);
+        color: rgba(33, 241, 180, 0.9);
+      }
+    }
+
+    .TileTitle {
+      background: rgba(255, 255, 255, 0.15);
+      letter-spacing: 0.5px;
+    }
   }
 
   &:focus {
@@ -27,29 +42,56 @@
     width: 64px;
     height: 64px;
     margin-bottom: 8px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: rgb(33 241 180 / 35%);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
-    border: 1px solid #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    transition: all 0.3s ease;
+    overflow: hidden;
+
+    svg {
+      color: rgba(255, 255, 255, 0.9);
+      transition: all 0.3s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(
+        circle at center,
+        rgba(33, 241, 180, 0.1) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
   }
 
   .TileTitle {
     color: #fff;
     width: 100%;
-    font-weight: 600;
-    padding: 2px 2px;
+    font-weight: 500;
+    padding: 4px 8px;
     margin: 0;
     font-size: 14px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: rgb(33 241 180 / 20%);
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
   }
 }
