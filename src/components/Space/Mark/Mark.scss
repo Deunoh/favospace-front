@@ -37,6 +37,54 @@
     }
   }
 
+  .info-icon-container {
+    all: unset;
+    z-index: 99;
+    position: absolute;
+    top: -4px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+    @media screen and (max-width: 767px) {
+      right: -5px;
+      top: -8px;
+      font-size: 1.4rem;
+      opacity: 0.7 !important;
+    }
+
+    &:hover {
+      color: #e0e0e0;
+      animation: shake 0.5s ease-in-out;
+      transform: scale(1.1);
+    }
+
+    @keyframes shake {
+      0% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(-15deg);
+      }
+      50% {
+        transform: rotate(15deg);
+      }
+      75% {
+        transform: rotate(-15deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &:hover .info-icon-container {
+    opacity: 1;
+  }
+
   .TileImgContainer {
     position: relative;
     width: 64px;

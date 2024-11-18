@@ -16,12 +16,14 @@ const EditMarkModal = () => {
     defaultValues: {
       markName: currentMark.name,
       markUrl: currentMark.url,
+      markDescription: currentMark.description,
     },
   });
 
   const onSubmit = (data) => {
     let newMarkName = data.markName.trim();
     const newMarkUrl = data.markUrl.trim();
+    const newMarkDescription = data.markDescription.trim() || null;
 
     if (!newMarkName) {
       try {
@@ -33,7 +35,13 @@ const EditMarkModal = () => {
     }
 
     dispatch(
-      updateMark(currentMark.id, newMarkName, newMarkUrl, currentSpaceId)
+      updateMark(
+        currentMark.id,
+        newMarkName,
+        newMarkUrl,
+        newMarkDescription,
+        currentSpaceId
+      )
     );
     dispatch(toggleEditMarkModal());
   };
@@ -74,6 +82,19 @@ const EditMarkModal = () => {
           />
           {errors.markUrl && (
             <p className="error-message">{errors.markUrl.message}</p>
+          )}
+          <input
+            type="text"
+            {...register('markDescription', {
+              maxLength: {
+                value: 255,
+                message: 'La description ne peut pas dépasser 255 caractères',
+              },
+            })}
+            placeholder="Description du lien (Optionnel)"
+          />
+          {errors.markDescription && (
+            <p className="error-message">{errors.markDescription.message}</p>
           )}
 
           <div className="modal-actions">

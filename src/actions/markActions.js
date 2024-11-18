@@ -92,11 +92,18 @@ export const deleteMark = (markId, spaceId) => ({
   markId,
   spaceId,
 });
-export const updateMark = (markId, newName, newUrl, currentSpaceId) => ({
+export const updateMark = (
+  markId,
+  newName,
+  newUrl,
+  newDescription,
+  currentSpaceId
+) => ({
   type: UPDATE_MARK,
   markId,
   newName,
   newUrl,
+  newDescription,
   currentSpaceId,
 });
 export const showToast = (message, typeMessage = 'info') => ({

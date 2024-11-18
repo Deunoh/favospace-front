@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import './MarkModal.scss';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +17,7 @@ const AddMarkModal = () => {
   const onSubmit = (data) => {
     let name = data.markName.trim();
     const url = data.markUrl.trim();
+    const description = data.markDescription.trim() || null;
 
     if (!name) {
       try {
@@ -25,7 +27,7 @@ const AddMarkModal = () => {
         name = url;
       }
     }
-    dispatch(addMark({ name, url, spaceId }));
+    dispatch(addMark({ name, url, description, spaceId }));
     dispatch(toggleAddMarkModal());
   };
 
@@ -39,6 +41,22 @@ const AddMarkModal = () => {
         <h2>Ajouter un nouveau lien</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
+            autoFocus
+            type="url"
+            className="url-input"
+            {...register('markUrl', {
+              required: "L'URL du lien est requise",
+              pattern: {
+                value: /^(https?:\/\/)?([\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)?$/,
+                message: 'Veuillez entrer une URL valide',
+              },
+            })}
+            placeholder="URL du lien"
+          />
+          {errors.markUrl && (
+            <p className="error-message">{errors.markUrl.message}</p>
+          )}
+          <input
             type="text"
             {...register('markName', {
               minLength: {
@@ -51,20 +69,18 @@ const AddMarkModal = () => {
           {errors.markName && (
             <p className="error-message">{errors.markName.message}</p>
           )}
-
           <input
-            type="url"
-            {...register('markUrl', {
-              required: "L'URL du lien est requise",
-              pattern: {
-                value: /^(https?:\/\/)?([\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)?$/,
-                message: 'Veuillez entrer une URL valide',
+            type="text"
+            {...register('markDescription', {
+              maxLength: {
+                value: 255,
+                message: 'La description ne peut pas dépasser 255 caractères',
               },
             })}
-            placeholder="URL du lien"
+            placeholder="Description du lien (Optionnel)"
           />
-          {errors.markUrl && (
-            <p className="error-message">{errors.markUrl.message}</p>
+          {errors.markDescription && (
+            <p className="error-message">{errors.markDescription.message}</p>
           )}
 
           <div className="modal-actions">

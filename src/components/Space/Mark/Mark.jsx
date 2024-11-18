@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoIosRemoveCircle } from 'react-icons/io';
+import { BsFillPatchQuestionFill } from 'react-icons/bs';
 import { FiEdit2 } from 'react-icons/fi';
 import './Mark.scss';
 import { deleteMark, toggleEditMarkModal } from '../../../actions/markActions';
+import DescriptionModal from '../../Modals/DescriptionModal/DescriptionModal';
 
-const Mark = ({ id, url, name }) => {
+const Mark = ({ id, url, name, description = null }) => {
+  const [showDescriptionModal, setShowDescriptionModal] = useState(false);
   const dispatch = useDispatch();
   // With google
   // const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=128`;
@@ -20,10 +24,13 @@ const Mark = ({ id, url, name }) => {
   const handleRemove = () => {
     dispatch(deleteMark(id, spaceId));
   };
+  const handleDescription = () => {
+    console.log('modal description');
+    setShowDescriptionModal(true);
+  };
 
   const handleEditIcon = () => {
-    console.log('Modification');
-    dispatch(toggleEditMarkModal({ id, url, name }));
+    dispatch(toggleEditMarkModal({ id, url, name, description }));
   };
 
   return (
@@ -36,6 +43,21 @@ const Mark = ({ id, url, name }) => {
           rel="noreferrer"
           className="Mark"
         >
+          {description && (
+            <button
+              type="button"
+              className="info-icon-container"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleDescription();
+              }}
+              aria-label="voir la description"
+            >
+              <BsFillPatchQuestionFill className="info-icon" />
+            </button>
+          )}
+
           <div className="TileImgContainer">
             <img src={faviconUrl} alt="" />
           </div>
@@ -66,6 +88,12 @@ const Mark = ({ id, url, name }) => {
           <p className="TileTitle">{name}</p>
         </div>
       )}
+      {showDescriptionModal && description && (
+        <DescriptionModal
+          description={description}
+          onClose={() => setShowDescriptionModal(false)}
+        />
+      )}
     </>
   );
 };
@@ -74,5 +102,6 @@ Mark.propTypes = {
   id: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  description: PropTypes.string,
 };
 export default Mark;
