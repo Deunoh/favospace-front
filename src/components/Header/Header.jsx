@@ -14,6 +14,7 @@ import {
 import {
   getImageFromIndexedDB,
   saveImageToIndexedDB,
+  deleteImageFromIndexedDB,
 } from '../../utils/indexedDBService';
 import { submitLogout } from '../../actions/authActions';
 
