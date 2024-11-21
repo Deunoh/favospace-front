@@ -12,14 +12,14 @@ import defaultIcon from '../../../assets/default-mark-icon.png';
 const Mark = ({ id, url, name, description = null }) => {
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
   const dispatch = useDispatch();
-  // With google
-  // const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=128`;
-  // const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${url}`;
-  // With icon horse (limited request)
   const domain = new URL(url).hostname;
-  const faviconUrl = `https://icon.horse/icon/${domain}`;
-  // With duckduckgo
-  // const domain = new URL(url).hostname;
+  // With google
+  // const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${url}`;
+  // With faviconextractor
+  const faviconUrl = `https://www.faviconextractor.com/favicon/${domain}?larger=true`;
+  // With icon horse (limited request)
+  // const faviconUrl = `https://icon.horse/icon/${domain}`;
+  // With duckduckgo (poor quality)
   // const faviconUrl = `https://icons.duckduckgo.com/ip3/${domain}.ico`;
 
   const isEditMode = useSelector((state) => state.mark.isEditMode);
