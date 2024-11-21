@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import { BsFillPatchQuestionFill } from 'react-icons/bs';
@@ -16,9 +16,11 @@ const Mark = ({ id, url, name, description = null }) => {
   // const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=128`;
   // const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${url}`;
   // With icon horse (limited request)
-  let domain = new URL(url);
-  domain = domain.hostname.replace('www.', '');
+  const domain = new URL(url).hostname;
   const faviconUrl = `https://icon.horse/icon/${domain}`;
+  // With duckduckgo
+  // const domain = new URL(url).hostname;
+  // const faviconUrl = `https://icons.duckduckgo.com/ip3/${domain}.ico`;
 
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const spaceId = useSelector((state) => state.mark.spaceSelected.id);
