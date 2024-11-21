@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import { BsFillPatchQuestionFill } from 'react-icons/bs';
@@ -7,25 +7,26 @@ import { FiEdit2 } from 'react-icons/fi';
 import './Mark.scss';
 import { deleteMark, toggleEditMarkModal } from '../../../actions/markActions';
 import DescriptionModal from '../../Modals/DescriptionModal/DescriptionModal';
+import defaultIcon from '../../../assets/default-mark-icon.png';
 
 const Mark = ({ id, url, name, description = null }) => {
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
   const dispatch = useDispatch();
   // With google
   // const faviconUrl = `https://www.google.com/s2/favicons?domain=${url}&sz=128`;
-  const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${url}`;
+  // const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${url}`;
   // With icon horse (limited request)
-  // let domain = new URL(url);
-  // domain = domain.hostname.replace('www.', '');
-  // const faviconUrl = `https://icon.horse/icon/${domain}`;
+  let domain = new URL(url);
+  domain = domain.hostname.replace('www.', '');
+  const faviconUrl = `https://icon.horse/icon/${domain}`;
 
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const spaceId = useSelector((state) => state.mark.spaceSelected.id);
   const handleRemove = () => {
     dispatch(deleteMark(id, spaceId));
   };
+
   const handleDescription = () => {
-    console.log('modal description');
     setShowDescriptionModal(true);
   };
 
@@ -42,6 +43,7 @@ const Mark = ({ id, url, name, description = null }) => {
           target="_blank"
           rel="noreferrer"
           className="Mark"
+          title={name}
         >
           {description && (
             <button

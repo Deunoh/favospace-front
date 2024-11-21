@@ -16,6 +16,7 @@ import {
   saveImageToIndexedDB,
 } from '../../utils/indexedDBService';
 import { submitLogout } from '../../actions/authActions';
+import { Link } from 'react-router-dom';
 
 const Header = ({ displayTrash, isUserConnected }) => {
   const dispatch = useDispatch();
@@ -121,7 +122,8 @@ const Header = ({ displayTrash, isUserConnected }) => {
     return (
       <>
         <h1 className="header-main-title">
-          Favospace<span className="beta-badge">beta</span>
+          <Link to="/">Favospace</Link>
+          <span className="beta-badge">beta</span>
         </h1>
         <div className="header-settings-container">
           {!displayTrash && (
