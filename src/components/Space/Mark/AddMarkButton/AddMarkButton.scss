@@ -96,5 +96,8 @@
     border-radius: 8px;
     transition: all 0.3s ease;
     backdrop-filter: blur(4px);
+    @media screen and (max-width: 767px) {
+      text-overflow: unset;
+    }
   }
 }
