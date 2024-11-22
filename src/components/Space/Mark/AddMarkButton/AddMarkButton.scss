@@ -98,6 +98,7 @@
     backdrop-filter: blur(4px);
     @media screen and (max-width: 767px) {
       text-overflow: unset;
+      padding: 4px 5px;
     }
   }
 }
