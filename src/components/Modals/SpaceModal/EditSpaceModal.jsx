@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import './SpaceModal.scss';
+import '../Modals.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   toggleEditSpaceModal,

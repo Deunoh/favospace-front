@@ -1,4 +1,4 @@
-import './MarkModal.scss';
+import '../Modals.scss';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleEditMarkModal, updateMark } from '../../../actions/markActions';
