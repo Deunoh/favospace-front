@@ -20,6 +20,7 @@ export const UPDATE_MARK = 'UPDATE_MARK';
 export const SHOW_TOAST = 'SHOW_TOAST';
 export const HIDE_TOAST = 'HIDE_TOAST';
 export const CLONE_SHARED_SPACE = 'CLONE_SHARED_SPACE';
+export const SET_MARK_LOADING = 'SET_MARK_LOADING';
 
 export const changeSpaceSelect = (space) => ({
   type: CHANGE_SPACE_SELECT,
@@ -117,4 +118,8 @@ export const hideToast = () => ({
 export const cloneSharedSpace = (token) => ({
   type: CLONE_SHARED_SPACE,
   token,
+});
+export const setMarkLoading = (isLoading) => ({
+  type: SET_MARK_LOADING,
+  isLoading,
 });

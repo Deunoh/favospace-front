@@ -16,11 +16,13 @@ const Mark = ({ id, url, name, description = null }) => {
 
   // get favicon
   const domain = new URL(url).hostname;
+
   const FAVICON_EXCEPTIONS = [
     'github.com',
     'github.io',
     'youtube.com',
     'www.youtube.com',
+    'www.canalplus.com',
   ];
 
   // With google

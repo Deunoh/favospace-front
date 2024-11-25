@@ -11,7 +11,9 @@ import {
   toggleEditSpaceModal,
   fetchMarks,
   showToast,
+  setMarkLoading,
 } from '../../actions/markActions';
+import { setLoading } from '../../actions/authActions';
 
 const SpaceSelect = () => {
   const dispatch = useDispatch();
@@ -35,6 +37,8 @@ const SpaceSelect = () => {
   const handleSpaceChange = (event) => {
     const selectedSpaceName = event.currentTarget.value;
     const space = spaces.find((espace) => espace.name === selectedSpaceName);
+
+    dispatch(setMarkLoading(true));
 
     dispatch(
       changeSpaceSelect({

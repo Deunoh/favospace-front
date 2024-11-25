@@ -15,10 +15,12 @@ import {
   TOGGLE_EDIT_SPACE_MODAL,
   SHOW_TOAST,
   HIDE_TOAST,
+  SET_MARK_LOADING,
 } from '../actions/markActions';
 
 export const initialState = {
   isLoading: false,
+  isMarksLoading: false,
   markList: [],
   spaceList: [],
   spaceSelected: null,
@@ -42,6 +44,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLoading: action.isLoading,
+      };
+
+    case SET_MARK_LOADING:
+      return {
+        ...state,
+        isMarksLoading: action.isLoading,
       };
     case SHOW_TOAST:
       return {

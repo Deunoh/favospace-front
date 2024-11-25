@@ -12,6 +12,7 @@ import {
   fetchSpaces,
   saveMarks,
   saveSpaces,
+  setMarkLoading,
   showToast,
   UPDATE_MARK,
   UPDATE_SPACE,
@@ -49,9 +50,11 @@ const favMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           store.dispatch(saveMarks(response.data.marks));
+          store.dispatch(setMarkLoading(false));
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(setMarkLoading(false));
         });
       break;
     }
