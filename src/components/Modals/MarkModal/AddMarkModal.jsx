@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import './MarkModal.scss';
+import '../Modals.scss';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMark, toggleAddMarkModal } from '../../../actions/markActions';

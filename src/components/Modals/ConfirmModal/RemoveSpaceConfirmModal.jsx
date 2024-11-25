@@ -3,7 +3,7 @@ import {
   deleteSpace,
   toggleRemoveSpaceModal,
 } from '../../../actions/markActions';
-import './ConfirmModal.scss';
+import '../Modals.scss';
 
 const RemoveSpaceConfirmModal = () => {
   const dispatch = useDispatch();

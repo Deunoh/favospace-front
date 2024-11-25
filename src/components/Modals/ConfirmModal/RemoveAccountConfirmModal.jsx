@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { toggleRemoveAccountModal } from '../../../actions/markActions';
-import './ConfirmModal.scss';
+import '../Modals.scss';
 import { deleteAccountUser } from '../../../actions/authActions';
 
 const RemoveAccountConfirmModal = () => {
