@@ -1,3 +1,5 @@
+@use '../../../../styles/variables' as v;
+
 .AddMarkButton {
   display: flex;
   flex-direction: column;
@@ -17,18 +19,20 @@
     transform: scale(1.05);
 
     .TileImgContainer {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 8px 32px rgba(33, 241, 180, 0.15);
+      background: v.$interactive-bg;
+      border-color: v.$interactive-border-hover;
+      box-shadow: 0 4px 10px v.$interactive-shadow-hover,
+        0 0 15px v.$interactive-shadow-hover,
+        0 0 10px v.$interactive-shadow-hover inset;
 
       svg {
         transform: scale(1.1);
-        color: rgba(33, 241, 180, 0.9);
+        color: v.$interactive-icon;
       }
     }
 
     .TileTitle {
-      background: rgba(255, 255, 255, 0.15);
+      background: v.$interactive-bg-hover;
       letter-spacing: 0.5px;
     }
   }
@@ -43,20 +47,21 @@
     height: 64px;
     margin-bottom: 8px;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: v.$interactive-bg;
+    border: 2px solid v.$interactive-border;
     backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
     overflow: hidden;
-
+    box-shadow: 0 4px 10px v.$interactive-shadow, 0 0 15px v.$interactive-shadow,
+      0 0 10px v.$interactive-shadow inset;
     svg {
-      color: rgba(255, 255, 255, 0.9);
+      color: v.$interactive-icon;
       transition: all 0.3s ease;
       @media screen and (max-width: 767px) {
-        color: rgba(33, 241, 180, 0.9);
+        color: rgba(0, 180, 240, 1);
       }
     }
 
@@ -69,15 +74,11 @@
       bottom: 0;
       background: radial-gradient(
         circle at center,
-        rgba(33, 241, 180, 0.1) 0%,
-        transparent 70%
+        rgba(0, 200, 255, 0.3),
+        transparent 80%
       );
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    &:hover::after {
       opacity: 1;
+      transition: opacity 0.3s ease;
     }
   }
 
@@ -92,7 +93,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background: rgba(255, 255, 255, 0.1);
+    background: v.$interactive-bg;
     border-radius: 8px;
     transition: all 0.3s ease;
     backdrop-filter: blur(4px);

@@ -19,6 +19,25 @@ $webkit-default-degrade: -webkit-linear-gradient(to right, #dc2430, #7b4397);
 $bg-color-transparent: rgba(56, 56, 61, 0.3);
 $bg-color-transparent-select: rgb(0 0 0 / 20%);
 
+// Couleurs boutons interaction
+
+// $interactive-bg: rgba(0, 200, 255, 0.2);
+// $interactive-border: rgba(0, 180, 240, 0.4);
+// $interactive-shadow: rgba(0, 180, 240, 0.25);
+// $interactive-bg-hover: rgba(0, 200, 255, 0.35);
+// $interactive-border-hover: rgba(0, 200, 255, 0.5);
+// $interactive-shadow-hover: rgba(0, 200, 255, 0.35);
+// $interactive-shadow-active: rgba(0, 180, 240, 0.2);
+// $interactive-icon: rgba(0, 200, 255, 1);
+$interactive-bg: rgba(0, 150, 220, 0.2);
+$interactive-border: rgba(0, 140, 210, 0.4);
+$interactive-shadow: rgba(0, 140, 210, 0.25);
+$interactive-bg-hover: rgba(0, 150, 220, 0.35);
+$interactive-border-hover: rgba(0, 150, 220, 0.5);
+$interactive-shadow-hover: rgba(0, 150, 220, 0.35);
+$interactive-shadow-active: rgba(0, 140, 210, 0.2);
+$interactive-icon: rgba(0, 150, 220, 1);
+
 // Modals
 $dark-bg: #1a1a1a;
 $dark-surface: #2d2d2d;
@@ -27,8 +46,8 @@ $secondary-text: #a0a0a0;
 $border-color: #404040;
 $danger: #dc3545;
 $danger-hover: #c82333;
-$primary-btn: #666666;
-$primary-btn-hover: #777777;
+$primary-btn: #00563d;
+$primary-btn-hover: #007a55;
 $neutral-btn: #2b2b2b;
 $neutral-btn-hover: #3a3a3a;
 $overlay-color: rgba(0, 0, 0, 0.75);
