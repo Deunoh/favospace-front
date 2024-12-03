@@ -1,4 +1,5 @@
 import './Header.scss';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +17,7 @@ import {
   saveImageToIndexedDB,
 } from '../../utils/indexedDBService';
 import { submitLogout } from '../../actions/authActions';
-import { Link } from 'react-router-dom';
+import InteractiveBtn from '../InteractiveBtn/InteractiveBtn';
 
 const Header = ({ displayTrash, isUserConnected }) => {
   const dispatch = useDispatch();
@@ -127,14 +128,11 @@ const Header = ({ displayTrash, isUserConnected }) => {
         </h1>
         <div className="header-settings-container">
           {!displayTrash && (
-            <button
-              type="button"
+            <InteractiveBtn
+              label="Éditer"
               onClick={handleEdit}
-              className="edit-button"
               title="Éditer les favoris"
-            >
-              Éditer
-            </button>
+            />
           )}
           <IoIosColorPalette
             size={28}
