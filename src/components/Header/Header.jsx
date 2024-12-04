@@ -17,7 +17,7 @@ import {
   saveImageToIndexedDB,
 } from '../../utils/indexedDBService';
 import { submitLogout } from '../../actions/authActions';
-import InteractiveBtn from '../InteractiveBtn/InteractiveBtn';
+import InteractiveBtn from '../Buttons/InteractiveBtn/InteractiveBtn';
 
 const Header = ({ displayTrash, isUserConnected }) => {
   const dispatch = useDispatch();
