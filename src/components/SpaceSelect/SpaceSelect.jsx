@@ -1,7 +1,7 @@
 import { FaCirclePlus } from 'react-icons/fa6';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import { IoShare } from 'react-icons/io5';
-import { FaRegEdit } from 'react-icons/fa';
+import { MdEditSquare } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import './SpaceSelect.scss';
 import {
@@ -13,6 +13,7 @@ import {
   showToast,
   setMarkLoading,
 } from '../../actions/markActions';
+import ActionButton from '../Buttons/ActionButton/ActionButton';
 
 const SpaceSelect = () => {
   const dispatch = useDispatch();
@@ -75,9 +76,13 @@ const SpaceSelect = () => {
       </label>
       <div className="select-wrapper">
         {!isEditMode ? (
-          <IoShare className="add-icon" onClick={handleShare} />
+          <ActionButton icon={IoShare} label="Partager" onClick={handleShare} />
         ) : (
-          <FaRegEdit className="add-icon" onClick={handleOpenEditSpaceModal} />
+          <ActionButton
+            icon={MdEditSquare}
+            label="Modifier"
+            onClick={handleOpenEditSpaceModal}
+          />
         )}
         <select
           className={`space-select ${isEditMode ? 'edit-mode' : ''}`}
@@ -98,8 +103,9 @@ const SpaceSelect = () => {
             onClick={handleOpenRemoveSpaceModal}
           />
         ) : (
-          <FaCirclePlus
-            className="add-icon"
+          <ActionButton
+            icon={FaCirclePlus}
+            label="Ajouter"
             onClick={handleOpenAddSpaceModal}
           />
         )}
