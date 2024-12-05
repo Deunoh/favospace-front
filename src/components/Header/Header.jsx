@@ -71,6 +71,8 @@ const Header = ({ displayTrash, isUserConnected }) => {
   const handleFinishEdit = () => {
     dispatch(desactivateEditMode());
   };
+
+  // logique pour changer l'image de fond
   const changeTheme = async (newImageUrl) => {
     document.body.style.backgroundImage = `url(${newImageUrl})`;
     document.body.style.backgroundSize = 'cover';
@@ -82,6 +84,19 @@ const Header = ({ displayTrash, isUserConnected }) => {
     await saveImageToIndexedDB('currentTheme', newImageUrl);
   };
 
+  // Logique pour changer la couleur du theme
+  const changeColorTheme = (newTheme) => {
+    // Utilisation de Object recommander par ESlint
+    Object.entries(newTheme.variables).forEach(([key, value]) => {
+      document.documentElement.style.setProperty(key, value);
+    });
+    setIsThemeModalOpen(false);
+
+    // Sauvegarde dans le localstorage
+    localStorage.setItem('currentColorTheme', JSON.stringify(newTheme));
+  };
+
+  // chargement au demarrage de l'image de fond
   useEffect(() => {
     const loadSavedTheme = async () => {
       const currentTheme = await getImageFromIndexedDB('currentTheme');
@@ -97,6 +112,21 @@ const Header = ({ displayTrash, isUserConnected }) => {
       }
     };
     loadSavedTheme();
+  }, []);
+
+  // chargement au demarrage de la couleur du theme
+  useEffect(() => {
+    const loadSavedColorTheme = () => {
+      const savedColorTheme = localStorage.getItem('currentColorTheme');
+      if (savedColorTheme) {
+        const parsedColorTheme = JSON.parse(savedColorTheme);
+        Object.entries(parsedColorTheme.variables).forEach(([key, value]) => {
+          document.documentElement.style.setProperty(key, value);
+        });
+      }
+    };
+
+    loadSavedColorTheme();
   }, []);
 
   const renderHeaderContent = () => {
@@ -167,7 +197,10 @@ const Header = ({ displayTrash, isUserConnected }) => {
     <>
       <header className="header-container">{renderHeaderContent()}</header>
       {isUserConnected && isThemeModalOpen && (
-        <ThemeModal onChangeTheme={changeTheme} />
+        <ThemeModal
+          onChangeTheme={changeTheme}
+          onChangeColorTheme={changeColorTheme}
+        />
       )}
       {isUserConnected && isUserModalOpen && (
         <UserModal

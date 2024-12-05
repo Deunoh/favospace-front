@@ -15,8 +15,8 @@
     transform: scale(1.05);
 
     .IconContainer {
-      border-color: v.$interactive-border-hover;
-      background-color: v.$interactive-bg;
+      border-color: var(--interactive-border-hover);
+      background-color: var(--interactive-bg);
       svg {
         // color: v.$interactive-icon;
         transform: scale(1.1);
@@ -24,13 +24,13 @@
     }
 
     .ActionLabel {
-      background: v.$interactive-bg-hover;
+      background: var(--interactive-bg-hover);
       letter-spacing: 0.5px;
     }
   }
 
   .IconContainer {
-    background-color: v.$interactive-bg-hover;
+    background-color: var(--interactive-bg-hover);
     width: 50px;
     height: 50px;
     margin-bottom: 8px;
@@ -38,9 +38,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid v.$interactive-border;
-    box-shadow: 0 4px 10px v.$interactive-shadow, 0 0 15px v.$interactive-shadow,
-      0 0 10px v.$interactive-shadow inset;
+    border: 2px solid var(--interactive-border);
+    box-shadow: 0 4px 10px var(--interactive-shadow),
+      0 0 15px var(--interactive-shadow),
+      0 0 10px var(--interactive-shadow) inset;
     transition: all 0.3s ease;
 
     svg {
@@ -53,7 +54,7 @@
     font-size: 12px;
     color: #fff;
     text-align: center;
-    background: v.$interactive-bg;
+    background: var(--interactive-bg);
     padding: 4px 6px;
     border-radius: 6px;
     transition: all 0.3s ease;

@@ -3,6 +3,7 @@ import {
   getImageFromIndexedDB,
   saveImageToIndexedDB,
 } from '../../../utils/indexedDBService';
+import themesColor from '../../../data/themesColor';
 import './ThemeModal.scss';
 import space1 from '../../../assets/space1.webp';
 import space2 from '../../../assets/space2.webp';
@@ -19,9 +20,10 @@ const defaultThemes = [
   { name: 'background5', image: forest },
 ];
 
-const ThemeModal = ({ onChangeTheme }) => {
+const ThemeModal = ({ onChangeTheme, onChangeColorTheme }) => {
   const [themes, setThemes] = useState(defaultThemes);
 
+  // chargement de l'image ajouter par l'utilisateur
   useEffect(() => {
     const loadCustomTheme = async () => {
       const savedCustomTheme = await getImageFromIndexedDB(
@@ -37,6 +39,7 @@ const ThemeModal = ({ onChangeTheme }) => {
     loadCustomTheme();
   }, []);
 
+  // sauvegarde de l'image de l'utilisateur dans indexdb
   const handleAddCustomTheme = async (imageDataUrl) => {
     setThemes((prevThemes) => [
       ...prevThemes,
@@ -53,15 +56,31 @@ const ThemeModal = ({ onChangeTheme }) => {
     <div className="theme-modal">
       <h2>Choisissez un thème</h2>
       <div className="theme-grid">
-        {themes.map((theme, index) => (
-          <div
-            key={index}
+        {themes.map((theme) => (
+          <button
+            type="button"
+            key={theme.name}
             className="theme-option"
             style={{ backgroundImage: `url(${theme.image})` }}
             onClick={() => onChangeTheme(theme.image)}
+            aria-label={`Choisir le thème ${theme.name}`}
           />
         ))}
         <AddTheme onAddCustomTheme={handleAddCustomTheme} />
+      </div>
+      <div className="theme-color-option">
+        {themesColor.map((theme) => (
+          <button
+            type="button"
+            key={theme.name}
+            className="theme-circle"
+            style={{
+              backgroundColor: theme.color,
+            }}
+            onClick={() => onChangeColorTheme(theme)}
+            aria-label={`Changer pour le thème ${theme.name}`}
+          />
+        ))}
       </div>
     </div>
   );

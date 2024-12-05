@@ -19,6 +19,10 @@
   }
 
   .theme-option {
+    //reset button
+    border: none;
+    background: none;
+    padding: 0;
     height: 100px;
     border-radius: 5px;
     cursor: pointer;
@@ -28,6 +32,9 @@
 
     &:hover {
       transform: scale(1.05);
+    }
+    &:focus {
+      outline: 2px solid rgba(0, 150, 220, 0.7); // pour ally
     }
   }
   .add-theme-option {
@@ -50,6 +57,24 @@
     svg {
       color: #ffffff;
       transition: all 0.3s ease;
+    }
+  }
+
+  .theme-color-option {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+    .theme-circle {
+      border: 5px solid #fff;
+      border-radius: 50%;
+      width: 35px;
+      aspect-ratio: 1/1;
+      cursor: pointer;
+    }
+    .theme-circle:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
     }
   }
 }
