@@ -20,13 +20,14 @@
 
     .TileImgContainer {
       border-color: v.$interactive-border-hover;
+      background-color: v.$interactive-bg;
       box-shadow: 0 4px 10px v.$interactive-shadow-hover,
         0 0 15px v.$interactive-shadow-hover,
         0 0 10px v.$interactive-shadow-hover inset;
 
       svg {
         transform: scale(1.1);
-        color: v.$interactive-icon;
+        // color: v.$interactive-icon;
       }
     }
 
@@ -42,12 +43,12 @@
 
   .TileImgContainer {
     position: relative;
+    background-color: v.$interactive-bg-hover;
     width: 64px;
     height: 64px;
     margin-bottom: 8px;
     border-radius: 16px;
     border: 2px solid v.$interactive-border;
-    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,27 +57,8 @@
     box-shadow: 0 4px 10px v.$interactive-shadow, 0 0 15px v.$interactive-shadow,
       0 0 10px v.$interactive-shadow inset;
     svg {
-      color: v.$interactive-icon;
+      color: #fff;
       transition: all 0.3s ease;
-      @media screen and (max-width: 767px) {
-        color: rgba(0, 180, 240, 1);
-      }
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(
-        circle at center,
-        rgba(0, 200, 255, 0.3),
-        transparent 80%
-      );
-      opacity: 1;
-      transition: opacity 0.3s ease;
     }
   }
 

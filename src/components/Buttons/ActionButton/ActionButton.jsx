@@ -6,7 +6,7 @@ const ActionButton = ({ icon: Icon, label, onClick }) => {
   return (
     <button type="button" onClick={onClick} className="ActionButton">
       <div className="IconContainer">
-        <Icon size={32} />
+        <Icon size={30} />
       </div>
       <p className="ActionLabel">{label}</p>
     </button>

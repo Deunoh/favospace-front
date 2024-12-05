@@ -16,8 +16,9 @@
 
     .IconContainer {
       border-color: v.$interactive-border-hover;
+      background-color: v.$interactive-bg;
       svg {
-        color: v.$interactive-icon;
+        // color: v.$interactive-icon;
         transform: scale(1.1);
       }
     }
@@ -29,6 +30,7 @@
   }
 
   .IconContainer {
+    background-color: v.$interactive-bg-hover;
     width: 50px;
     height: 50px;
     margin-bottom: 8px;
@@ -42,7 +44,7 @@
     transition: all 0.3s ease;
 
     svg {
-      color: v.$interactive-icon;
+      color: #fff;
       transition: transform 0.3s ease, color 0.3s ease;
     }
   }
@@ -55,5 +57,11 @@
     padding: 4px 6px;
     border-radius: 6px;
     transition: all 0.3s ease;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .ActionButton {
+    width: 50px;
   }
 }
