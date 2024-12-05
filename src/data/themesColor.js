@@ -1,0 +1,88 @@
+const themesColor = [
+  {
+    name: 'Bleu',
+    variables: {
+      '--interactive-bg': 'rgba(0, 150, 220)',
+      '--interactive-border': 'rgba(0, 140, 210, 0.4)',
+      '--interactive-shadow': 'rgba(0, 140, 210, 0.25)',
+      '--interactive-bg-hover': 'rgba(0, 150, 220, 0.35)',
+      '--interactive-border-hover': 'rgba(0, 150, 220, 0.5)',
+      '--interactive-shadow-hover': 'rgba(0, 150, 220, 0.35)',
+      '--interactive-shadow-active': 'rgba(0, 140, 210, 0.2)',
+      '--interactive-icon': 'rgba(0, 150, 220, 1)',
+    },
+    color: '#0096dc',
+  },
+  {
+    name: 'Jaune',
+    variables: {
+      '--interactive-bg': 'rgba(220, 180, 0)',
+      '--interactive-border': 'rgba(210, 170, 0, 0.4)',
+      '--interactive-shadow': 'rgba(210, 170, 0, 0.25)',
+      '--interactive-bg-hover': 'rgba(220, 180, 0, 0.35)',
+      '--interactive-border-hover': 'rgba(220, 180, 0, 0.5)',
+      '--interactive-shadow-hover': 'rgba(220, 180, 0, 0.35)',
+      '--interactive-shadow-active': 'rgba(210, 170, 0, 0.2)',
+      '--interactive-icon': 'rgba(220, 180, 0, 1)',
+    },
+    color: '#dcb400',
+  },
+  {
+    name: 'Violet',
+    variables: {
+      '--interactive-bg': 'rgba(150, 0, 220)',
+      '--interactive-border': 'rgba(140, 0, 210, 0.4)',
+      '--interactive-shadow': 'rgba(140, 0, 210, 0.25)',
+      '--interactive-bg-hover': 'rgba(150, 0, 220, 0.35)',
+      '--interactive-border-hover': 'rgba(150, 0, 220, 0.5)',
+      '--interactive-shadow-hover': 'rgba(150, 0, 220, 0.35)',
+      '--interactive-shadow-active': 'rgba(140, 0, 210, 0.2)',
+      '--interactive-icon': 'rgba(150, 0, 220, 1)',
+    },
+    color: '#9600dc',
+  },
+  {
+    name: 'Vert',
+    variables: {
+      '--interactive-bg': 'rgba(0, 220, 150)',
+      '--interactive-border': 'rgba(0, 210, 140, 0.4)',
+      '--interactive-shadow': 'rgba(0, 210, 140, 0.25)',
+      '--interactive-bg-hover': 'rgba(0, 220, 150, 0.35)',
+      '--interactive-border-hover': 'rgba(0, 220, 150, 0.5)',
+      '--interactive-shadow-hover': 'rgba(0, 220, 150, 0.35)',
+      '--interactive-shadow-active': 'rgba(0, 210, 140, 0.2)',
+      '--interactive-icon': 'rgba(0, 220, 150, 1)',
+    },
+    color: '#00dc96',
+  },
+  {
+    name: 'Rouge',
+    variables: {
+      '--interactive-bg': 'rgba(220, 50, 50)',
+      '--interactive-border': 'rgba(210, 40, 40, 0.4)',
+      '--interactive-shadow': 'rgba(210, 40, 40, 0.25)',
+      '--interactive-bg-hover': 'rgba(220, 50, 50, 0.35)',
+      '--interactive-border-hover': 'rgba(220, 50, 50, 0.5)',
+      '--interactive-shadow-hover': 'rgba(220, 50, 50, 0.35)',
+      '--interactive-shadow-active': 'rgba(210, 40, 40, 0.2)',
+      '--interactive-icon': 'rgba(220, 50, 50, 1)',
+    },
+    color: '#dc3232',
+  },
+  {
+    name: 'Noir',
+    variables: {
+      '--interactive-bg': 'rgba(50, 50, 50)',
+      '--interactive-border': 'rgba(60, 60, 60, 0.4)',
+      '--interactive-shadow': 'rgba(40, 40, 40, 0.25)',
+      '--interactive-bg-hover': 'rgba(70, 70, 70, 0.35)',
+      '--interactive-border-hover': 'rgba(80, 80, 80, 0.5)',
+      '--interactive-shadow-hover': 'rgba(60, 60, 60, 0.35)',
+      '--interactive-shadow-active': 'rgba(30, 30, 30, 0.2)',
+      '--interactive-icon': 'rgba(200, 200, 200, 1)',
+    },
+    color: '#323232',
+  },
+];
+
+export default themesColor;

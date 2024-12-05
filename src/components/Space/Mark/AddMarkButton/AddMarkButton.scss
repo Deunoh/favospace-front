@@ -19,20 +19,19 @@
     transform: scale(1.05);
 
     .TileImgContainer {
-      border-color: v.$interactive-border-hover;
-      background-color: v.$interactive-bg;
-      box-shadow: 0 4px 10px v.$interactive-shadow-hover,
-        0 0 15px v.$interactive-shadow-hover,
-        0 0 10px v.$interactive-shadow-hover inset;
+      border-color: var(--interactive-border-hover);
+      background-color: var(--interactive-bg);
+      box-shadow: 0 4px 10px var(--interactive-shadow-hover),
+        0 0 15px var(--interactive-shadow-hover),
+        0 0 10px var(--interactive-shadow-hover) inset;
 
       svg {
         transform: scale(1.1);
-        // color: v.$interactive-icon;
       }
     }
 
     .TileTitle {
-      background: v.$interactive-bg-hover;
+      background: var(--interactive-bg-hover);
       letter-spacing: 0.5px;
     }
   }
@@ -43,19 +42,20 @@
 
   .TileImgContainer {
     position: relative;
-    background-color: v.$interactive-bg-hover;
+    background-color: var(--interactive-bg-hover);
     width: 64px;
     height: 64px;
     margin-bottom: 8px;
     border-radius: 16px;
-    border: 2px solid v.$interactive-border;
+    border: 2px solid var(--interactive-border);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
     overflow: hidden;
-    box-shadow: 0 4px 10px v.$interactive-shadow, 0 0 15px v.$interactive-shadow,
-      0 0 10px v.$interactive-shadow inset;
+    box-shadow: 0 4px 10px var(--interactive-shadow),
+      0 0 15px var(--interactive-shadow),
+      0 0 10px var(--interactive-shadow) inset;
     svg {
       color: #fff;
       transition: all 0.3s ease;
@@ -73,7 +73,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background: v.$interactive-bg;
+    background: var(--interactive-bg);
     border-radius: 8px;
     transition: all 0.3s ease;
     backdrop-filter: blur(4px);
