@@ -8,7 +8,9 @@ import {
   setLoadingLogin,
   setLoadingRegister,
   SUBMIT_LOGIN,
+  SUBMIT_NEW_PASSWORD,
   SUBMIT_REGISTER,
+  SUBMIT_RESET_PASSWORD,
   submitLogout,
   VERIFY_USER,
 } from '../actions/authActions';
@@ -128,6 +130,35 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(error);
           store.dispatch(
             showToast('Erreur lors de la suppression du compte.', 'error')
+          );
+        });
+      break;
+    case SUBMIT_RESET_PASSWORD:
+      axios
+        .post(`${url}forgot-password`, { email: action.email })
+        .then(() => {
+          store.dispatch(
+            showToast('Email de réinitialisation du mot de passe envoyé')
+          );
+        })
+        .catch(() => {
+          store.dispatch(
+            showToast('Une erreur est survenue. Vérifiez votre email.', 'error')
+          );
+        });
+      break;
+    case SUBMIT_NEW_PASSWORD:
+      axios
+        .post(`${url}reset-password`, {
+          token: action.token,
+          password: action.password,
+        })
+        .then(() => {
+          store.dispatch(showToast('Mot de passe réinitialisé avec succès.'));
+        })
+        .catch(() => {
+          store.dispatch(
+            showToast('Une erreur est survenue, veuillez réessayer', 'error')
           );
         });
       break;

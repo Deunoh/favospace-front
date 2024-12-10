@@ -26,6 +26,7 @@ import NotFound from '../NotFound/NotFound';
 import LegalMentions from '../Legal/LegalMentions';
 import PrivacyPolicy from '../Legal/PrivacyPolicy';
 import ShareSpaceHandler from './ShareSpaceHandler';
+import ResetPassword from '../AuthModal/ResetPassword/ResetPassword';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -119,9 +120,6 @@ function App() {
           }
         />
         {/* Route pour le lien de partage d'espace */}
-        {/* {isUserConnected && (
-          <Route path="/share/:token" element={<ShareSpaceHandler />} />
-        )} */}
         <Route path="/share/:token" element={<ShareSpaceHandler />} />
 
         {/* Route d'authentification */}
@@ -130,6 +128,14 @@ function App() {
           element={
             <PublicRoute isConnected={isUserConnected}>
               <AuthModal />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/reset-password/:token"
+          element={
+            <PublicRoute isConnected={isUserConnected}>
+              <ResetPassword />
             </PublicRoute>
           }
         />

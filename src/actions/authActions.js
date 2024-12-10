@@ -15,6 +15,9 @@ export const SET_ERRORS_LOGIN = 'SET_ERRORS_LOGIN';
 export const RESET_SUCCESS_REGISTER = 'RESET_SUCCESS_REGISTER';
 export const DELETE_USER_ACCOUNT = 'DELETE_USER_ACCOUNT';
 export const VERIFY_USER = 'VERIFY_USER';
+export const SUBMIT_RESET_PASSWORD = 'SUBMIT_RESET_PASSWORD';
+export const SUBMIT_NEW_PASSWORD = 'SUBMIT_NEW_PASSWORD';
+
 export const changeEmailValue = (inputEmail) => ({
   type: CHANGE_EMAIL_VALUE,
   inputEmail,
@@ -76,4 +79,13 @@ export const verifyUser = (token) => ({
 export const setLoading = (isLoading) => ({
   type: SET_LOADING,
   isLoading,
+});
+export const submitResetPassword = (email) => ({
+  type: SUBMIT_RESET_PASSWORD,
+  email,
+});
+export const submitNewPassword = (token, password) => ({
+  type: SUBMIT_NEW_PASSWORD,
+  token,
+  password,
 });

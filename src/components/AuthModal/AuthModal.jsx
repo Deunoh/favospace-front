@@ -13,11 +13,15 @@ import {
   resetSuccessRegister,
   submitLogin,
   submitRegister,
+  submitResetPassword,
 } from '../../actions/authActions';
 import ErrorMessage from './ErrorsMessage/ErrorsMessage';
 
 const AuthModal = () => {
   const dispatch = useDispatch();
+  // For reset password
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [resetEmail, setResetEmail] = useState('');
   const [isLogin, setIsLogin] = useState(false);
   const name = useSelector((state) => state.user.inputName);
   const email = useSelector((state) => state.user.inputEmail);
@@ -51,6 +55,12 @@ const AuthModal = () => {
     dispatch(submitRegister());
   };
 
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    dispatch(submitResetPassword(resetEmail));
+    setShowForgotPassword(false);
+  };
+
   const toggleMode = () => {
     setIsLogin(!isLogin);
     dispatch(changeNameValue(''));
@@ -68,50 +78,88 @@ const AuthModal = () => {
         loop
         muted
         playsInline
+        onError={backgroundImage}
       >
         <source src={backgroundVideo} type="video/mp4" />
       </video>
       <div className={`card ${isLogin ? 'flipped' : ''}`}>
         <div className="card-inner">
-          <div className="card-front">
-            <h2 className="title-connexion">Connexion</h2>
-            <form onSubmit={handleSubmitLogin}>
-              <InputWithIcon
-                icon={<FaEnvelope />}
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => dispatch(changeEmailValue(e.target.value))}
-                required
-              />
-              <InputWithIcon
-                icon={<FaLock />}
-                type="password"
-                placeholder="Mot de passe"
-                value={password}
-                onChange={(e) => dispatch(changePasswordValue(e.target.value))}
-                required
-              />
-              <ErrorMessage fieldName="message" errors={errorsLogin} />
-              <button
-                type="submit"
-                className="submit-btn"
-                disabled={isLoginLoading}
-              >
-                {isLoginLoading ? (
-                  <FaSpinner className="spinner" />
-                ) : (
-                  'Se connecter'
-                )}
-              </button>
-            </form>
-            <p className="link-paragraph">
-              Pas encore de compte ?{' '}
-              <button type="button" className="link" onClick={toggleMode}>
-                S'inscrire
-              </button>
-            </p>
-          </div>
+          {showForgotPassword ? (
+            <div className="card-front card-forgot">
+              <h2>Réinitialisation du mot de passe</h2>
+              <form onSubmit={handleResetPassword}>
+                <InputWithIcon
+                  icon={<FaEnvelope />}
+                  type="email"
+                  placeholder="Email"
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  required
+                />
+                <div className="form-buttons">
+                  <button type="submit" className="submit-btn">
+                    Envoyer
+                  </button>
+                  <button
+                    type="button"
+                    className="cancel-btn"
+                    onClick={() => setShowForgotPassword(false)}
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+          ) : (
+            <div className="card-front">
+              <h2 className="title-connexion">Connexion</h2>
+              <form onSubmit={handleSubmitLogin}>
+                <InputWithIcon
+                  icon={<FaEnvelope />}
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => dispatch(changeEmailValue(e.target.value))}
+                  required
+                />
+                <InputWithIcon
+                  icon={<FaLock />}
+                  type="password"
+                  placeholder="Mot de passe"
+                  value={password}
+                  onChange={(e) =>
+                    dispatch(changePasswordValue(e.target.value))
+                  }
+                  required
+                />
+                <ErrorMessage fieldName="message" errors={errorsLogin} />
+                <button
+                  type="submit"
+                  className="submit-btn"
+                  disabled={isLoginLoading}
+                >
+                  {isLoginLoading ? (
+                    <FaSpinner className="spinner" />
+                  ) : (
+                    'Se connecter'
+                  )}
+                </button>
+                <button
+                  type="button"
+                  className="link forgot-pwd"
+                  onClick={() => setShowForgotPassword(true)}
+                >
+                  Mot de passe oublié ?
+                </button>
+              </form>
+              <p className="link-paragraph">
+                Pas encore de compte ?{' '}
+                <button type="button" className="link" onClick={toggleMode}>
+                  S&apos;inscrire
+                </button>
+              </p>
+            </div>
+          )}
 
           <div className="card-back">
             <h2 className="title-inscription">Créer un compte</h2>
