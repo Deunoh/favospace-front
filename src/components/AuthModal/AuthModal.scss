@@ -66,6 +66,36 @@
     &-back {
       transform: rotateY(180deg);
     }
+    &-forgot {
+      .form-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        .submit-btn {
+          margin-bottom: 0;
+        }
+
+        .cancel-btn {
+          background-color: #dc3545;
+          color: #fff;
+          padding: 12px;
+          border: none;
+          transition: background-color 0.3s, transform 0.1s;
+          font-size: 16px;
+          font-weight: bold;
+          border-radius: 8px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #c82333;
+          }
+          &:active {
+            transform: scale(0.98);
+          }
+        }
+      }
+    }
   }
 
   h2 {
@@ -187,6 +217,10 @@
     font-size: small;
     font-weight: 200;
     color: gray;
+  }
+
+  .forgot-pwd {
+    margin: -2rem 0 1.5rem;
   }
 
   .link {
