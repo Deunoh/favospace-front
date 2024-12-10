@@ -78,7 +78,6 @@ const AuthModal = () => {
         loop
         muted
         playsInline
-        onError={backgroundImage}
       >
         <source src={backgroundVideo} type="video/mp4" />
       </video>

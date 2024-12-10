@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FaLock, FaSpinner } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -11,6 +11,7 @@ import { submitNewPassword } from '../../../actions/authActions';
 
 const ResetPassword = () => {
   const { token } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoginLoading = useSelector((state) => state.user.isLoginLoading);
   const [newPassword, setNewPassword] = useState('');
@@ -19,6 +20,14 @@ const ResetPassword = () => {
 
   const handleSubmitPassword = (e) => {
     e.preventDefault();
+
+    if (newPassword.length < 8) {
+      setErrorPasswordMessage({
+        message: ['Le mot de passe doit contenir au moins 8 caractères.'],
+      });
+      return;
+    }
+
     if (newPassword !== confirmPassword) {
       setErrorPasswordMessage({
         message: ['Les mots de passe ne correspondent pas.'],
@@ -28,6 +37,7 @@ const ResetPassword = () => {
 
     setErrorPasswordMessage({});
     dispatch(submitNewPassword(token, newPassword));
+    navigate('/authenticate');
   };
 
   return (

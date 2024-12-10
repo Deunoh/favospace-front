@@ -16,8 +16,8 @@ import {
 } from '../actions/authActions';
 import { showToast } from '../actions/markActions';
 
-// const url = 'http://localhost:8000/api/';
-const url = 'https://api.favospace.fr/api/';
+const url = 'http://localhost:8000/api/';
+// const url = 'https://api.favospace.fr/api/';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -138,7 +138,9 @@ const authMiddleware = (store) => (next) => (action) => {
         .post(`${url}forgot-password`, { email: action.email })
         .then(() => {
           store.dispatch(
-            showToast('Email de réinitialisation du mot de passe envoyé')
+            showToast(
+              'Email de réinitialisation du mot de passe envoyé, verifiez vos spams !'
+            )
           );
         })
         .catch(() => {
