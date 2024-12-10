@@ -16,8 +16,8 @@ import {
 } from '../actions/authActions';
 import { showToast } from '../actions/markActions';
 
-const url = 'http://localhost:8000/api/';
-// const url = 'https://api.favospace.fr/api/';
+// const url = 'http://localhost:8000/api/';
+const url = 'https://api.favospace.fr/api/';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
