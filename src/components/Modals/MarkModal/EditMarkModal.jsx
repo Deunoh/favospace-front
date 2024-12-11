@@ -23,7 +23,7 @@ const EditMarkModal = () => {
   const onSubmit = (data) => {
     let newMarkName = data.markName.trim();
     const newMarkUrl = data.markUrl.trim();
-    const newMarkDescription = data.markDescription.trim() || null;
+    const newMarkDescription = data.markDescription?.trim() || null;
 
     if (!newMarkName) {
       try {
