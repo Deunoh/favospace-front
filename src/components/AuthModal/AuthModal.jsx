@@ -216,6 +216,16 @@ const AuthModal = () => {
           </div>
         </div>
       </div>
+      <div className="favospace-button-container">
+        <a
+          href="https://denovann.notion.site/C-est-quoi-Favospace-159b3f087b968043b753f96623a2d51d?pvs=73"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="favospace-button"
+        >
+          C'est quoi, Favospace ?
+        </a>
+      </div>
     </div>
   );
 };
