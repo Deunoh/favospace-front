@@ -1,7 +1,7 @@
 @use '../../styles/variables' as v;
 .space-container {
   width: v.$width-container-desktop;
-  height: 60vh;
+  height: 50vh;
   // background-color: rgba(255, 255, 255, 0.1);
   background-color: rgb(0 0 0 / 10%);
   backdrop-filter: blur(4px);
