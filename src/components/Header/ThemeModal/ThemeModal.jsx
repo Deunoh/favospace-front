@@ -5,19 +5,19 @@ import {
 } from '../../../utils/indexedDBService';
 import themesColor from '../../../data/themesColor';
 import './ThemeModal.scss';
-import space1 from '../../../assets/space1.webp';
-import space2 from '../../../assets/space2.webp';
+import space1 from '../../../assets/earth2.jpg';
+import space2 from '../../../assets/universe.webp';
 import space3 from '../../../assets/space3.webp';
-import star from '../../../assets/star.webp';
-import forest from '../../../assets/forest.webp';
+import space4 from '../../../assets/earth.webp';
+import space5 from '../../../assets/nasaearth.webp';
 import AddTheme from './AddTheme';
 
 const defaultThemes = [
   { name: 'background1', image: space1 },
   { name: 'background2', image: space2 },
   { name: 'background3', image: space3 },
-  { name: 'background4', image: star },
-  { name: 'background5', image: forest },
+  { name: 'background4', image: space4 },
+  { name: 'background5', image: space5 },
 ];
 
 const ThemeModal = ({ onChangeTheme, onChangeColorTheme }) => {
