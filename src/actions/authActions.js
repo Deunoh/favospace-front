@@ -17,6 +17,9 @@ export const DELETE_USER_ACCOUNT = 'DELETE_USER_ACCOUNT';
 export const VERIFY_USER = 'VERIFY_USER';
 export const SUBMIT_RESET_PASSWORD = 'SUBMIT_RESET_PASSWORD';
 export const SUBMIT_NEW_PASSWORD = 'SUBMIT_NEW_PASSWORD';
+export const UPDATE_USER_ACCOUNT = 'UPDATE_USER_ACCOUNT';
+export const SET_UPDATE_ERRORS = 'SET_UPDATE_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const changeEmailValue = (inputEmail) => ({
   type: CHANGE_EMAIL_VALUE,
@@ -88,4 +91,15 @@ export const submitNewPassword = (token, password) => ({
   type: SUBMIT_NEW_PASSWORD,
   token,
   password,
+});
+export const updateUserAccount = (userInfos) => ({
+  type: UPDATE_USER_ACCOUNT,
+  userInfos,
+});
+export const setUpdateErrors = (errors) => ({
+  type: SET_UPDATE_ERRORS,
+  errors,
+});
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS,
 });

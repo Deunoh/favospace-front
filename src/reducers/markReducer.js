@@ -16,6 +16,7 @@ import {
   SHOW_TOAST,
   HIDE_TOAST,
   SET_MARK_LOADING,
+  TOGGLE_MODIFY_REMOVE_ACCOUNT_MODAL,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -29,6 +30,7 @@ export const initialState = {
   isEditSpaceModalOpen: false,
   isAddMarkModalOpen: false,
   isEditMarkModalOpen: false,
+  isModifyAccountModalOpen: false,
   currentMarkToEdit: null,
   isRemoveSpaceModalOpen: false,
   isRemoveAccountModalOpen: false,
@@ -99,6 +101,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isEditSpaceModalOpen: !state.isEditSpaceModalOpen,
+      };
+    case TOGGLE_MODIFY_REMOVE_ACCOUNT_MODAL:
+      return {
+        ...state,
+        isModifyAccountModalOpen: !state.isModifyAccountModalOpen,
       };
     case ACTIVATE_EDIT_MODE:
       return {

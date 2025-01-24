@@ -7,14 +7,16 @@ import {
   setErrorsRegister,
   setLoadingLogin,
   setLoadingRegister,
+  setUpdateErrors,
   SUBMIT_LOGIN,
   SUBMIT_NEW_PASSWORD,
   SUBMIT_REGISTER,
   SUBMIT_RESET_PASSWORD,
   submitLogout,
+  UPDATE_USER_ACCOUNT,
   VERIFY_USER,
 } from '../actions/authActions';
-import { showToast } from '../actions/markActions';
+import { showToast, toggleModifyAccountModal } from '../actions/markActions';
 
 // const url = 'http://localhost:8000/api/';
 const url = 'https://api.favospace.fr/api/';
@@ -162,6 +164,40 @@ const authMiddleware = (store) => (next) => (action) => {
           store.dispatch(
             showToast('Une erreur est survenue, veuillez réessayer', 'error')
           );
+        });
+      break;
+    case UPDATE_USER_ACCOUNT:
+      axios
+        .put(`${url}modify-user`, action.userInfos, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token_jwt')}`,
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => {
+          store.dispatch(
+            handleSuccessfulLogin(
+              response.data.user.id,
+              response.data.user.name,
+              response.data.user.email
+            )
+          );
+          store.dispatch(showToast('Informations mises à jour avec succès'));
+          store.dispatch(toggleModifyAccountModal());
+        })
+        .catch((error) => {
+          store.dispatch(
+            showToast('Une erreur est survenue lors de la mise à jour', 'error')
+          );
+          if (
+            error.response &&
+            error.response.data &&
+            error.response.data.errors
+          ) {
+            console.log(error.response.data.errors);
+
+            store.dispatch(setUpdateErrors(error.response.data.errors));
+          }
         });
       break;
 

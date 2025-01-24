@@ -1,11 +1,14 @@
 import './UserModal.scss';
 
-const UserModal = ({ onLogout, onDeleteAccount, onClose }) => {
+const UserModal = ({ onLogout, onDeleteAccount, onOpenUserInfos }) => {
   return (
     <div className="user-modal">
       <div className="user-modal-content">
         <button type="button" onClick={onLogout}>
           Se déconnecter
+        </button>
+        <button type="button" onClick={onOpenUserInfos}>
+          Mes informations
         </button>
         <button
           type="button"
@@ -14,9 +17,6 @@ const UserModal = ({ onLogout, onDeleteAccount, onClose }) => {
         >
           Supprimer mon compte
         </button>
-        {/* <button type="button" onClick={onClose} className="close-modal">
-          X
-        </button> */}
       </div>
     </div>
   );

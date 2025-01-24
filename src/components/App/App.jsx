@@ -27,6 +27,7 @@ import LegalMentions from '../Legal/LegalMentions';
 import PrivacyPolicy from '../Legal/PrivacyPolicy';
 import ShareSpaceHandler from './ShareSpaceHandler';
 import ResetPassword from '../AuthModal/ResetPassword/ResetPassword';
+import UserInfos from '../Modals/UserInfos/UserInfos';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -62,6 +63,9 @@ function App() {
   );
   const isEditSpaceModalOpen = useSelector(
     (state) => state.mark.isEditSpaceModalOpen
+  );
+  const isModifyAccountModalOpen = useSelector(
+    (state) => state.mark.isModifyAccountModalOpen
   );
   const spaceList = useSelector((state) => state.mark.spaceList);
   const isSpacesEmpty = spaceList.length === 0;
@@ -154,6 +158,7 @@ function App() {
       {isEditSpaceModalOpen && <EditSpaceModal />}
       {isRemoveSpaceModalOpen && <RemoveSpaceConfirmModal />}
       {isRemoveAccountModalOpen && <RemoveAccountConfirmModal />}
+      {isModifyAccountModalOpen && <UserInfos />}
       {isToastVisible && (
         <ToastNotification message={toastMessage} type={typeMessage} />
       )}
