@@ -2,6 +2,7 @@ import {
   CHANGE_EMAIL_VALUE,
   CHANGE_NAME_VALUE,
   CHANGE_PASSWORD_VALUE,
+  CLEAR_ERRORS,
   HANDLE_SUCCESSUFUL_LOGIN,
   HANDLE_SUCCESSUFUL_REGISTER,
   RESET_SUCCESS_REGISTER,
@@ -9,6 +10,7 @@ import {
   SET_ERRORS_REGISTER,
   SET_LOADING_LOGIN,
   SET_LOADING_REGISTER,
+  SET_UPDATE_ERRORS,
   SUBMIT_LOGOUT,
 } from '../actions/authActions';
 
@@ -25,6 +27,7 @@ export const initialState = {
   isLoginLoading: false,
   errorsRegister: {},
   errorsLogin: {},
+  updateErrors: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -93,6 +96,18 @@ const reducer = (state = initialState, action = {}) => {
         inputName: '',
         inputEmail: '',
         inputPassword: '',
+      };
+    case SET_UPDATE_ERRORS:
+      return {
+        ...state,
+        updateErrors: action.errors,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        errorsRegister: {},
+        errorsLogin: {},
+        updateErrors: {},
       };
     default:
       return state;

@@ -11,6 +11,7 @@ import {
   activateEditMode,
   desactivateEditMode,
   toggleRemoveAccountModal,
+  toggleModifyAccountModal,
 } from '../../actions/markActions';
 import {
   getImageFromIndexedDB,
@@ -62,6 +63,11 @@ const Header = ({ displayTrash, isUserConnected }) => {
 
   const handleDeleteAccount = () => {
     dispatch(toggleRemoveAccountModal());
+    setIsUserModalOpen(false);
+  };
+
+  const handleModalUserInfos = () => {
+    dispatch(toggleModifyAccountModal());
     setIsUserModalOpen(false);
   };
 
@@ -206,7 +212,7 @@ const Header = ({ displayTrash, isUserConnected }) => {
         <UserModal
           onLogout={handleLogout}
           onDeleteAccount={handleDeleteAccount}
-          onClose={() => setIsUserModalOpen(false)}
+          onOpenUserInfos={handleModalUserInfos}
         />
       )}
     </>
