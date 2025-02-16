@@ -23,6 +23,7 @@ export const SHOW_TOAST = 'SHOW_TOAST';
 export const HIDE_TOAST = 'HIDE_TOAST';
 export const CLONE_SHARED_SPACE = 'CLONE_SHARED_SPACE';
 export const SET_MARK_LOADING = 'SET_MARK_LOADING';
+export const TOGGLE_EXPERT_MODE = 'TOGGLE_EXPERT_MODE';
 
 export const changeSpaceSelect = (space) => ({
   type: CHANGE_SPACE_SELECT,
@@ -127,4 +128,7 @@ export const cloneSharedSpace = (token) => ({
 export const setMarkLoading = (isLoading) => ({
   type: SET_MARK_LOADING,
   isLoading,
+});
+export const toggleExpertMode = () => ({
+  type: TOGGLE_EXPERT_MODE,
 });
