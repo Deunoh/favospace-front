@@ -103,10 +103,11 @@ const Header = ({ displayTrash, isUserConnected }) => {
     localStorage.setItem('currentColorTheme', JSON.stringify(newTheme));
   };
 
-  // Ajoutez cette fonction pour sauvegarder le mode expert
+  // sauvegarde du mode expert
   const handleExpertModeChange = (isExpert) => {
     dispatch(toggleExpertMode());
     localStorage.setItem('expertMode', JSON.stringify(isExpert));
+    setIsThemeModalOpen(false);
   };
 
   // chargement au demarrage de l'image de fond
@@ -142,7 +143,7 @@ const Header = ({ displayTrash, isUserConnected }) => {
     loadSavedColorTheme();
   }, []);
 
-  // Ajoutez cet useEffect pour charger le mode expert au démarrage
+  // mode expert au demarrage
   useEffect(() => {
     const loadExpertMode = () => {
       const savedExpertMode = localStorage.getItem('expertMode');

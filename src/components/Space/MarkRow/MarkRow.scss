@@ -1,0 +1,79 @@
+@use '../../../styles/variables' as v;
+
+.MarkRow {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: v.$bg-color-transparent;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  .mark-content {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+
+    .mark-field {
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 200px;
+      display: flex;
+      align-items: center;
+    }
+    .mark-field-description {
+      width: 300px;
+    }
+
+    .name-field {
+      gap: 0.8rem;
+
+      .favicon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .actions {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+    padding-left: 1rem;
+
+    button {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      font-size: 1.1rem;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      &.delete-button {
+        color: #ff3b30;
+        border-color: rgba(255, 59, 48, 0.2);
+        background-color: rgba(255, 59, 48, 0.1);
+
+        &:hover {
+          background-color: rgba(255, 59, 48, 0.2);
+        }
+      }
+    }
+  }
+}
