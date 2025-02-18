@@ -13,13 +13,17 @@ const Mark = ({ id, url, name, description = null }) => {
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const spaceId = useSelector((state) => state.mark.spaceSelected.id);
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
+  const [isRemoving, setIsRemoving] = useState(false);
   const dispatch = useDispatch();
 
   // Fonction qui recupere l'icone du site
   const faviconUrl = getFavicon(url);
 
   const handleRemove = () => {
-    dispatch(deleteMark(id, spaceId));
+    setIsRemoving(true);
+    setTimeout(() => {
+      dispatch(deleteMark(id, spaceId));
+    }, 300);
   };
 
   const handleDescription = () => {
@@ -63,7 +67,7 @@ const Mark = ({ id, url, name, description = null }) => {
         </a>
       )}
       {isEditMode && (
-        <div className="Mark edit-icon">
+        <div className={`Mark edit-icon ${isRemoving ? 'removing' : ''}`}>
           <button
             type="button"
             className="remove-icon-container"

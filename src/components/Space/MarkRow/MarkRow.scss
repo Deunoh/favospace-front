@@ -1,5 +1,39 @@
 @use '../../../styles/variables' as v;
 
+//Animation à l'affichage
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+// Animation de suppression
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+    background-color: rgba(255, 59, 48, 0.2);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-200px);
+    background-color: rgba(255, 59, 48, 0.4);
+  }
+}
+
+@keyframes defilement {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 .MarkRow {
   display: flex;
   align-items: center;
@@ -12,9 +46,16 @@
   width: 100%;
   min-width: fit-content;
   max-width: 100%;
+  animation: slideIn 0.3s ease-out;
+  transform: translateX(0);
 
   &:hover {
     transform: scale(1.01);
+  }
+
+  &.removing {
+    animation: slideOut 0.3s ease-in forwards;
+    pointer-events: none;
   }
 
   .mark-content {
@@ -38,10 +79,18 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         min-width: 0;
+        padding-bottom: 2px;
       }
     }
     .description-field {
       width: v.$expert-width-description;
+      &:hover span {
+        white-space: nowrap;
+        overflow: visible;
+        animation: defilement 8s linear infinite;
+        animation-delay: 0.5s;
+        padding-right: 50px;
+      }
     }
     .url-field {
       width: v.$expert-width-url;

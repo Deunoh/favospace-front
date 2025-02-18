@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiEdit2 } from 'react-icons/fi';
 import { IoIosRemoveCircle } from 'react-icons/io';
@@ -11,17 +12,21 @@ const MarkRow = ({ id, url, name, description = null }) => {
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const spaceId = useSelector((state) => state.mark.spaceSelected.id);
   const faviconUrl = getFavicon(url);
+  const [isRemoving, setIsRemoving] = useState(false);
 
   const handleEditIcon = () => {
     dispatch(toggleEditMarkModal({ id, url, name, description }));
   };
 
   const handleRemove = () => {
-    dispatch(deleteMark(id, spaceId));
+    setIsRemoving(true);
+    setTimeout(() => {
+      dispatch(deleteMark(id, spaceId));
+    }, 300);
   };
 
   return (
-    <div className="MarkRow">
+    <div className={`MarkRow ${isRemoving ? 'removing' : ''}`}>
       <a target="_blank" rel="noreferrer" href={url} className="mark-content">
         <div className="mark-field name-field">
           <img src={faviconUrl} alt="" className="favicon" />
