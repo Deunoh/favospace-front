@@ -7,7 +7,11 @@
   background-color: v.$bg-color-transparent;
   border-radius: 8px;
   margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
   transition: transform 0.2s ease;
+  width: 100%;
+  min-width: fit-content;
+  max-width: 100%;
 
   &:hover {
     transform: scale(1.01);
@@ -17,6 +21,7 @@
     display: flex;
     gap: 1rem;
     flex-grow: 1;
+    justify-content: space-between;
 
     .mark-field {
       color: #fff;
@@ -25,21 +30,36 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      width: 200px;
       display: flex;
       align-items: center;
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+      }
     }
-    .mark-field-description {
-      width: 300px;
+    .description-field {
+      width: v.$expert-width-description;
+    }
+    .url-field {
+      width: v.$expert-width-url;
     }
 
     .name-field {
+      width: v.$expert-width-name;
       gap: 0.8rem;
 
       .favicon {
-        width: 32px;
-        height: 32px;
+        width: v.$expert-width-favicon;
+        height: v.$expert-width-favicon;
         flex-shrink: 0;
+      }
+
+      span {
+        min-width: 0;
+        flex: 1;
       }
     }
   }

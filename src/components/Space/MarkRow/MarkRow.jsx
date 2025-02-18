@@ -6,7 +6,7 @@ import './MarkRow.scss';
 import { toggleEditMarkModal, deleteMark } from '../../../actions/markActions';
 import getFavicon from '../../../utils/getFavicon';
 
-const MarkRow = ({ id, url, name, description }) => {
+const MarkRow = ({ id, url, name, description = null }) => {
   const dispatch = useDispatch();
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const spaceId = useSelector((state) => state.mark.spaceSelected.id);
@@ -21,15 +21,19 @@ const MarkRow = ({ id, url, name, description }) => {
   };
 
   return (
-    <a target="_blank" rel="noreferrer" href={url} className="MarkRow">
-      <div className="mark-content">
+    <div className="MarkRow">
+      <a target="_blank" rel="noreferrer" href={url} className="mark-content">
         <div className="mark-field name-field">
           <img src={faviconUrl} alt="" className="favicon" />
           <span>{name}</span>
         </div>
-        <div className="mark-field mark-field-description">{description}</div>
-        <div className="mark-field">{url}</div>
-      </div>
+        <div className="mark-field description-field">
+          <span>{description}</span>
+        </div>
+        <div className="mark-field url-field">
+          <span>{url}</span>
+        </div>
+      </a>
 
       {isEditMode && (
         <div className="actions">
@@ -46,7 +50,7 @@ const MarkRow = ({ id, url, name, description }) => {
           </button>
         </div>
       )}
-    </a>
+    </div>
   );
 };
 

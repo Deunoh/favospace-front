@@ -15,7 +15,13 @@ const Space = () => {
 
   return (
     <div className="space-container">
-      <div className="space-content">
+      <div
+        className={
+          !isExpertMode
+            ? 'space-content'
+            : 'space-content space-content--expert'
+        }
+      >
         {isExpertMode ? (
           <>
             {!isEditMode && <AddMarkRowButton />}

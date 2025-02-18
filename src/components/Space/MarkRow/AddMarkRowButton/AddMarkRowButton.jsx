@@ -21,10 +21,6 @@ const AddMarkRowButton = () => {
           <BsBookmarkPlusFill className="add-icon" />
           <span>Ajouter un favoris</span>
         </div>
-        <div className="mark-field mark-field-description">
-          Description (optionnel)
-        </div>
-        <div className="mark-field">https://...</div>
       </div>
     </button>
   );
