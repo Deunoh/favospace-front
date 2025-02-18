@@ -1,0 +1,148 @@
+@use '../../../styles/variables' as v;
+
+//Animation à l'affichage
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+// Animation de suppression
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+    background-color: rgba(255, 59, 48, 0.2);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-200px);
+    background-color: rgba(255, 59, 48, 0.4);
+  }
+}
+
+@keyframes defilement {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.MarkRow {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: v.$bg-color-transparent;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+  width: 100%;
+  min-width: fit-content;
+  max-width: 100%;
+  animation: slideIn 0.3s ease-out;
+  transform: translateX(0);
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  &.removing {
+    animation: slideOut 0.3s ease-in forwards;
+    pointer-events: none;
+  }
+
+  .mark-content {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+    justify-content: space-between;
+
+    .mark-field {
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+        padding-bottom: 2px;
+      }
+    }
+    .description-field {
+      width: v.$expert-width-description;
+      &:hover span {
+        white-space: nowrap;
+        overflow: visible;
+        animation: defilement 8s linear infinite;
+        animation-delay: 0.5s;
+        padding-right: 50px;
+      }
+    }
+    .url-field {
+      width: v.$expert-width-url;
+    }
+
+    .name-field {
+      width: v.$expert-width-name;
+      gap: 0.8rem;
+
+      .favicon {
+        width: v.$expert-width-favicon;
+        height: v.$expert-width-favicon;
+        flex-shrink: 0;
+      }
+
+      span {
+        min-width: 0;
+        flex: 1;
+      }
+    }
+  }
+
+  .actions {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+    padding-left: 1rem;
+
+    button {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      font-size: 1.1rem;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      &.delete-button {
+        color: #ff3b30;
+        border-color: rgba(255, 59, 48, 0.2);
+        background-color: rgba(255, 59, 48, 0.1);
+
+        &:hover {
+          background-color: rgba(255, 59, 48, 0.2);
+        }
+      }
+    }
+  }
+}

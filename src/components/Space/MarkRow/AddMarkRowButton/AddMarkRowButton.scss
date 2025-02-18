@@ -1,0 +1,68 @@
+@use '../../../../styles/variables' as v;
+
+.AddMarkRowButton {
+  all: unset;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: var(--interactive-bg-hover);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  min-width: fit-content;
+  max-width: 100%;
+  min-width: calc(
+    v.$expert-width-name + v.$expert-width-description + v.$expert-width-url +
+      v.$expert-width-favicon
+  );
+
+  &:hover {
+    transform: scale(1.01);
+    background-color: var(--interactive-bg);
+
+    .mark-content {
+      .mark-field {
+        letter-spacing: 0.5px;
+      }
+
+      .add-icon {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .mark-content {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+
+    .mark-field {
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 200px;
+      display: flex;
+      align-items: center;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+
+    .name-field {
+      gap: 0.8rem;
+
+      .add-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+}

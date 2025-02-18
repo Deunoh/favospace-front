@@ -3,8 +3,6 @@ import {
   CHANGE_SPACE_SELECT,
   SAVE_MARKS,
   SAVE_SPACES,
-  ADD_SPACE,
-  ADD_MARK,
   ACTIVATE_EDIT_MODE,
   DESACTIVATE_EDIT_MODE,
   TOGGLE_REMOVE_SPACE_MODAL,
@@ -17,6 +15,7 @@ import {
   HIDE_TOAST,
   SET_MARK_LOADING,
   TOGGLE_MODIFY_REMOVE_ACCOUNT_MODAL,
+  TOGGLE_EXPERT_MODE,
 } from '../actions/markActions';
 
 export const initialState = {
@@ -34,6 +33,7 @@ export const initialState = {
   currentMarkToEdit: null,
   isRemoveSpaceModalOpen: false,
   isRemoveAccountModalOpen: false,
+  isExpertMode: false,
   // Toast notification
   toastMessage: null,
   isToastVisible: false,
@@ -126,6 +126,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isRemoveAccountModalOpen: !state.isRemoveAccountModalOpen,
+      };
+    case TOGGLE_EXPERT_MODE:
+      return {
+        ...state,
+        isExpertMode: !state.isExpertMode,
       };
     default:
       return state;

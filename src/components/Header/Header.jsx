@@ -12,6 +12,7 @@ import {
   desactivateEditMode,
   toggleRemoveAccountModal,
   toggleModifyAccountModal,
+  toggleExpertMode,
 } from '../../actions/markActions';
 import {
   getImageFromIndexedDB,
@@ -102,6 +103,13 @@ const Header = ({ displayTrash, isUserConnected }) => {
     localStorage.setItem('currentColorTheme', JSON.stringify(newTheme));
   };
 
+  // sauvegarde du mode expert
+  const handleExpertModeChange = (isExpert) => {
+    dispatch(toggleExpertMode());
+    localStorage.setItem('expertMode', JSON.stringify(isExpert));
+    setIsThemeModalOpen(false);
+  };
+
   // chargement au demarrage de l'image de fond
   useEffect(() => {
     const loadSavedTheme = async () => {
@@ -134,6 +142,18 @@ const Header = ({ displayTrash, isUserConnected }) => {
 
     loadSavedColorTheme();
   }, []);
+
+  // mode expert au demarrage
+  useEffect(() => {
+    const loadExpertMode = () => {
+      const savedExpertMode = localStorage.getItem('expertMode');
+      if (savedExpertMode && JSON.parse(savedExpertMode)) {
+        dispatch(toggleExpertMode());
+      }
+    };
+
+    loadExpertMode();
+  }, [dispatch]);
 
   const renderHeaderContent = () => {
     if (!isUserConnected) {
@@ -206,6 +226,7 @@ const Header = ({ displayTrash, isUserConnected }) => {
         <ThemeModal
           onChangeTheme={changeTheme}
           onChangeColorTheme={changeColorTheme}
+          onChangeExpertMode={handleExpertModeChange}
         />
       )}
       {isUserConnected && isUserModalOpen && (

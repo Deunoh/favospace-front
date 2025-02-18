@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   getImageFromIndexedDB,
   saveImageToIndexedDB,
@@ -20,8 +22,13 @@ const defaultThemes = [
   { name: 'background5', image: space5 },
 ];
 
-const ThemeModal = ({ onChangeTheme, onChangeColorTheme }) => {
+const ThemeModal = ({
+  onChangeTheme,
+  onChangeColorTheme,
+  onChangeExpertMode,
+}) => {
   const [themes, setThemes] = useState(defaultThemes);
+  const isExpertMode = useSelector((state) => state.mark.isExpertMode);
 
   // chargement de l'image ajouter par l'utilisateur
   useEffect(() => {
@@ -82,8 +89,30 @@ const ThemeModal = ({ onChangeTheme, onChangeColorTheme }) => {
           />
         ))}
       </div>
+      <div className="mode-switch">
+        <button
+          type="button"
+          className={`mode-button ${!isExpertMode ? 'active' : ''}`}
+          onClick={() => onChangeExpertMode(false)}
+        >
+          Normal
+        </button>
+        <button
+          type="button"
+          className={`mode-button ${isExpertMode ? 'active' : ''}`}
+          onClick={() => onChangeExpertMode(true)}
+        >
+          Expert
+        </button>
+      </div>
     </div>
   );
+};
+
+ThemeModal.propTypes = {
+  onChangeTheme: PropTypes.func.isRequired,
+  onChangeColorTheme: PropTypes.func.isRequired,
+  onChangeExpertMode: PropTypes.func.isRequired,
 };
 
 export default ThemeModal;
