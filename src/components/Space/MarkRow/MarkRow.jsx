@@ -5,13 +5,12 @@ import { FiEdit2 } from 'react-icons/fi';
 import { IoIosRemoveCircle } from 'react-icons/io';
 import './MarkRow.scss';
 import { toggleEditMarkModal, deleteMark } from '../../../actions/markActions';
-import getFavicon from '../../../utils/getFavicon';
+import Favicon from '../../../utils/Favicon';
 
 const MarkRow = ({ id, url, name, description = null }) => {
   const dispatch = useDispatch();
   const isEditMode = useSelector((state) => state.mark.isEditMode);
   const spaceId = useSelector((state) => state.mark.spaceSelected.id);
-  const faviconUrl = getFavicon(url);
   const [isRemoving, setIsRemoving] = useState(false);
 
   const handleEditIcon = () => {
@@ -29,7 +28,7 @@ const MarkRow = ({ id, url, name, description = null }) => {
     <div className={`MarkRow ${isRemoving ? 'removing' : ''}`}>
       <a target="_blank" rel="noreferrer" href={url} className="mark-content">
         <div className="mark-field name-field">
-          <img src={faviconUrl} alt="" className="favicon" />
+          <Favicon url={url} className="favicon" />
           <span>{name}</span>
         </div>
         <div className="mark-field description-field">

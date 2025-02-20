@@ -7,7 +7,7 @@ import { FiEdit2 } from 'react-icons/fi';
 import './Mark.scss';
 import { deleteMark, toggleEditMarkModal } from '../../../actions/markActions';
 import DescriptionModal from '../../Modals/DescriptionModal/DescriptionModal';
-import getFavicon from '../../../utils/getFavicon';
+import Favicon from '../../../utils/Favicon';
 
 const Mark = ({ id, url, name, description = null }) => {
   const isEditMode = useSelector((state) => state.mark.isEditMode);
@@ -15,9 +15,6 @@ const Mark = ({ id, url, name, description = null }) => {
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
   const dispatch = useDispatch();
-
-  // Fonction qui recupere l'icone du site
-  const faviconUrl = getFavicon(url);
 
   const handleRemove = () => {
     setIsRemoving(true);
@@ -61,7 +58,7 @@ const Mark = ({ id, url, name, description = null }) => {
           )}
 
           <div className="TileImgContainer">
-            <img src={faviconUrl} alt="" />
+            <Favicon url={url} />
           </div>
           <p className="TileTitle">{name}</p>
         </a>
@@ -77,7 +74,7 @@ const Mark = ({ id, url, name, description = null }) => {
             <IoIosRemoveCircle className="remove-icon" />
           </button>
           <div className="TileImgContainer">
-            <img src={faviconUrl} alt="" />
+            <Favicon url={url} />
             <button
               type="button"
               className="edit-icon-button"
