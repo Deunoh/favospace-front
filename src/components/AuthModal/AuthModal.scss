@@ -260,4 +260,60 @@
       border-color: #ffffff;
     }
   }
+  .divider {
+    text-align: center;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    color: #777;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        rgba(204, 204, 204, 0.2),
+        rgba(204, 204, 204, 0.8) 50%,
+        rgba(204, 204, 204, 0.2)
+      );
+    }
+
+    &::before {
+      margin-right: 1rem;
+    }
+
+    &::after {
+      margin-left: 1rem;
+    }
+  }
+  .google-btn {
+    width: 100%;
+    padding: 10px;
+    color: #000;
+    border: 1px solid #ededef;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    &:hover {
+      border: 1px solid #2d79f3;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
 }
