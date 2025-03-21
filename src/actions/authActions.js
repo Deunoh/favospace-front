@@ -20,6 +20,7 @@ export const SUBMIT_NEW_PASSWORD = 'SUBMIT_NEW_PASSWORD';
 export const UPDATE_USER_ACCOUNT = 'UPDATE_USER_ACCOUNT';
 export const SET_UPDATE_ERRORS = 'SET_UPDATE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const SUBMIT_GOOGLE_LOGIN = 'SUBMIT_GOOGLE_LOGIN';
 
 export const changeEmailValue = (inputEmail) => ({
   type: CHANGE_EMAIL_VALUE,
@@ -102,4 +103,8 @@ export const setUpdateErrors = (errors) => ({
 });
 export const clearErrors = () => ({
   type: CLEAR_ERRORS,
+});
+export const submitGoogleLogin = (googleCredential) => ({
+  type: SUBMIT_GOOGLE_LOGIN,
+  googleCredential,
 });

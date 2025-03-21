@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as jwtDecode from 'jwt-decode';
 import {
   DELETE_USER_ACCOUNT,
   handleSuccessfulLogin,
@@ -8,6 +9,7 @@ import {
   setLoadingLogin,
   setLoadingRegister,
   setUpdateErrors,
+  SUBMIT_GOOGLE_LOGIN,
   SUBMIT_LOGIN,
   SUBMIT_NEW_PASSWORD,
   SUBMIT_REGISTER,
@@ -200,6 +202,39 @@ const authMiddleware = (store) => (next) => (action) => {
           }
         });
       break;
+    case SUBMIT_GOOGLE_LOGIN: {
+      store.dispatch(setLoadingLogin(true));
+
+      // const decoded = jwt_decode(action.googleCredential);
+      const decoded = (jwtDecode.default || jwtDecode.jwtDecode)(
+        action.googleCredential
+      );
+
+      const { email, name } = decoded;
+
+      axios
+        .post(`${url}auth/google`, { email, name })
+        .then((response) => {
+          const { token } = response.data;
+          console.log('googletoken', token);
+
+          localStorage.setItem('token_jwt', token);
+          store.dispatch(handleSuccessfulLogin(null, name, email));
+        })
+        .catch((error) => {
+          console.error('Erreur Google login', error);
+          store.dispatch(
+            setErrorLogin({
+              message: ['Échec de la connexion via Google.'],
+            })
+          );
+        })
+        .finally(() => {
+          store.dispatch(setLoadingLogin(false));
+        });
+
+      break;
+    }
 
     default:
   }

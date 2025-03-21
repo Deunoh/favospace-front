@@ -1,3 +1,4 @@
+import { GoogleLogin } from '@react-oauth/google';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import './AuthModal.scss';
@@ -11,11 +12,13 @@ import {
   changeNameValue,
   changePasswordValue,
   resetSuccessRegister,
+  submitGoogleLogin,
   submitLogin,
   submitRegister,
   submitResetPassword,
 } from '../../actions/authActions';
 import ErrorMessage from './ErrorsMessage/ErrorsMessage';
+import { showToast } from '../../actions/markActions';
 
 const AuthModal = () => {
   const dispatch = useDispatch();
@@ -167,6 +170,18 @@ const AuthModal = () => {
                   S&apos;inscrire
                 </button>
               </p>
+              <div className="divider">Ou continuer avec</div>
+              <div className="Oauth-container">
+                <GoogleLogin
+                  onSuccess={(credentialResponse) => {
+                    dispatch(submitGoogleLogin(credentialResponse.credential));
+                  }}
+                  onError={() =>
+                    dispatch(showToast('Erreur lors de la connexion', 'error'))
+                  }
+                  className="google-btn"
+                />
+              </div>
             </div>
           )}
 
