@@ -157,11 +157,7 @@ const Header = ({ displayTrash, isUserConnected }) => {
 
   const renderHeaderContent = () => {
     if (!isUserConnected) {
-      return (
-        <h1 className="header-main-title">
-          Favospace<span className="beta-badge">beta</span>
-        </h1>
-      );
+      return <h1 className="header-main-title">Favospace</h1>;
     }
 
     if (isEditMode) {
@@ -180,7 +176,6 @@ const Header = ({ displayTrash, isUserConnected }) => {
       <>
         <h1 className="header-main-title">
           <Link to="/">Favospace</Link>
-          <span className="beta-badge">beta</span>
         </h1>
         <div className="header-settings-container">
           {!displayTrash && (

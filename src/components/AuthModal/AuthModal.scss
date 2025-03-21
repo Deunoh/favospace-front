@@ -292,28 +292,8 @@
       margin-left: 1rem;
     }
   }
-  .google-btn {
-    width: 100%;
-    padding: 10px;
-    color: #000;
-    border: 1px solid #ededef;
-    background-color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-    font-size: 16px;
-    font-weight: bold;
+  .Oauth-container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 10px;
-
-    &:hover {
-      border: 1px solid #2d79f3;
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
   }
 }

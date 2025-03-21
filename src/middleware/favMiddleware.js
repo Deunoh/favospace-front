@@ -18,7 +18,6 @@ import {
   UPDATE_SPACE,
 } from '../actions/markActions';
 import { setLoading } from '../actions/authActions';
-// import { mockSpaceList, mockFavoritesList } from '../data/testData';
 
 const url = 'https://api.favospace.fr/api/';
 // const url = 'http://localhost:8000/api/';
