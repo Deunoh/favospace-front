@@ -8,10 +8,16 @@ const FAVICON_EXCEPTIONS = [
   'www.youtube.com',
   'www.canalplus.com',
   'music.apple.com',
+  'sharepoint.com',
 ];
 
 const getFavicon = (url) => {
-  const domain = new URL(url).hostname;
+  let domain = new URL(url).hostname;
+
+  if (domain === 'groupeisagri.sharepoint.com') {
+    domain = 'sharepoint.com';
+  }
+
   if (FAVICON_EXCEPTIONS.includes(domain)) {
     return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
   }

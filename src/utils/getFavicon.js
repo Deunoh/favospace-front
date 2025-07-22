@@ -19,6 +19,7 @@ const FAVICON_EXCEPTIONS = [
 
 const getFavicon = (url) => {
   const domain = new URL(url).hostname;
+
   return FAVICON_EXCEPTIONS.includes(domain)
     ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64`
     : `https://www.faviconextractor.com/favicon/${domain}?larger=true`;
