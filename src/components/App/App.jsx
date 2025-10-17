@@ -28,6 +28,7 @@ import PrivacyPolicy from '../Legal/PrivacyPolicy';
 import ShareSpaceHandler from './ShareSpaceHandler';
 import ResetPassword from '../AuthModal/ResetPassword/ResetPassword';
 import UserInfos from '../Modals/UserInfos/UserInfos';
+import ClosureAlert from '../Modals/ClosureAlert/ClosureAlert';
 
 // Composants react router pour gérer l'authentification
 const ProtectedRoute = ({ children, isConnected }) => {
@@ -162,6 +163,9 @@ function App() {
       {isToastVisible && (
         <ToastNotification message={toastMessage} type={typeMessage} />
       )}
+      
+      {/* Alerte de fermeture du site */}
+      <ClosureAlert />
     </div>
   );
 }
