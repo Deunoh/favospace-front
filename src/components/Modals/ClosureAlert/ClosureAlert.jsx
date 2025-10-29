@@ -78,11 +78,11 @@ const ClosureAlert = () => {
           </h2>
           
           <p className="closure-alert__message">
-            Nous vous informons que <strong>Favospace fermera définitivement ses portes le 1er novembre 2025</strong>.
+            Nous vous informons que <strong>Favospace fermera définitivement ses portes le 7 novembre 2025</strong>.
           </p>
           
           <p className="closure-alert__message">
-            Avant cette date, pensez à télécharger tous vos favoris au format HTML compatible avec Chrome, Firefox, Edge et Safari.
+            Avant cette date, pensez à télécharger tous vos favoris au format HTML compatible avec Chrome, Edge, Brave (Navigateurs chromium).
           </p>
           
           <button 
